@@ -1,6 +1,6 @@
 # Set up Bruktglede
 
-NB! This project uses 'yarn' and NOT 'npm'. So all new dependencies you add NEED to be added through yarn.
+NB! This project uses 'yarn' and NOT 'npm'. So all new dependencies you add NEED to be added through yarn (instead of npm install, it is often yarn add).
 
 ## Step-by-step
 
