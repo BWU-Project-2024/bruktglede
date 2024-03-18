@@ -11,3 +11,7 @@ NB! This project uses 'yarn' and NOT 'npm'. So all new dependencies you add NEED
 5. Link the codebase to vercel with `vercel link`.
 6. Add the vercel .env database variables `vercel env pull .env.development.local`. This will download all neccessary .env variables needed.
 7. Run next app on local host with `yarn dev`.
+
+## Domain
+
+The aplication is available at `https://bruktglede.vercel.app/`
