@@ -1,9 +1,10 @@
 // import prisma from "@/lib/prisma";
-// import Homepage from "@/components/pages/Homepage";
-export default function Home() {
+import { Home } from "@/components/pages/Home"
+
+export default function HjemRoute() {
     return (
-        <div>
-            <p>hello</p>
-        </div>
+        <>
+            <Home />
+        </>
     )
 }
