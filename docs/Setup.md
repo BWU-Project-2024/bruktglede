@@ -1,6 +1,6 @@
 # Set up Bruktglede
 
-NB! This project uses 'yarn' and NOT 'npm'. So all new dependencies you add NEED to be added through yarn (instead of npm install, it is often yarn add).
+NB! This project uses `yarn` and NOT `npm`. So all new dependencies you add NEED to be added through yarn (instead of npm install, it's often yarn add).
 
 ## Step-by-step
 
@@ -8,7 +8,7 @@ NB! This project uses 'yarn' and NOT 'npm'. So all new dependencies you add NEED
 2. Add all dependencies with `yarn install`.
 3. Install Vercel CLI globally on your computer: `sudo yarn global add vercel@latest`.
 4. Check if the download of vercel was successfull by typing `vercel --version`.
-5. Link the codebase to vercel with `vercel link`.
+5. (Not sure about this one) Link the codebase to vercel with `vercel link` .
 6. Add the vercel .env database variables `vercel env pull .env.development.local`. This will download all neccessary .env variables needed.
 7. Run next app on local host with `yarn dev`.
 

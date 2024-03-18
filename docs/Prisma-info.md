@@ -3,13 +3,14 @@
 ## Documentation
 
 [Prisma in fullstack](https://www.prisma.io/docs/orm/overview/prisma-in-your-stack/fullstack)
+
 [Prisma Queries](https://www.prisma.io/docs/orm/prisma-client/queries)
 
 ## Definition
 
 Prisma is a framework for writing easier SQL queries. We use this instead of the default Vercel Postgres quering. Therefore, always google "vercel postgres prisma" to find solutions, since there is a difference.
 
-The SQL models are created in the "schema.prisma" file, while the APIs are created in the "api" folder under "app".
+The SQL models are created in the "schema.prisma" file, while the APIs are created in the `api` folder under `app`.
 
 ## Commands
 
