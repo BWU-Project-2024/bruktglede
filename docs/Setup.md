@@ -11,11 +11,3 @@ NB! This project uses 'yarn' and NOT 'npm'. So all new dependencies you add NEED
 5. Link the codebase to vercel with `vercel link`.
 6. Add the vercel .env database variables `vercel env pull .env.development.local`. This will download all neccessary .env variables needed.
 7. Run next app on local host with `yarn dev`.
-
-## Remove Tailwind CSS import warning (if you got it)
-
-1. CMD + SHIFT + P
-2. Type: "Open user settings" (not the JSON)
-3. Search for "file associations".
-4. Add item, and write \*.css in "key" and tailwindcss in "value".
-5. Press Ok.
