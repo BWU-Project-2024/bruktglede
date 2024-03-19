@@ -10,4 +10,5 @@
 body {
     color: rgb(var(--text));
     background: rgb(var(--background));
+    font-family: var(--opensans);
 }

@@ -1,5 +1,4 @@
 import { Jomhuria, Open_Sans } from "next/font/google";
-import Head from "next/head";
 import "./globals.css";
 
 const opensans = Open_Sans({ subsets: ["latin"], variable: "--font-opensans" });
@@ -12,12 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-
         <html lang="en">
-            <Head>
-                <link rel="stylesheet" href={opensans.href} />
-                <link rel="stylesheet" href={jomhuria.href} />
-            </Head>
             <body className={opensans.className}>{children}</body>
         </html>
     );
