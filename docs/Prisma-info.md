@@ -19,3 +19,7 @@ The SQL models are created in the "schema.prisma" file, while the APIs are creat
 `npx prisma db push`: This command, on the other hand, is part of Prisma Client and is used to synchronize the Prisma schema with the actual database schema. It directly interacts with the database specified in your Prisma schema file (schema.prisma) and applies any changes or additions to the database.
 
 To get an actual visualization of the SQL schemas, type `npx prisma studio` that will open up the studio in the browser.
+
+## Prisma Models syntax
+
+[Data modeling (relational databases)](https://www.prisma.io/docs/orm/prisma-schema/data-model/models)
