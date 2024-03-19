@@ -16,3 +16,6 @@ NB! This project uses `yarn` and NOT `npm`. So all new dependencies you add NEED
 ## Domain
 
 The aplication is available at `https://bruktglede.vercel.app/`
+
+git remote show origin  
+git remote set-url origin https://github.com/lisamarimyrene/bruktglede
