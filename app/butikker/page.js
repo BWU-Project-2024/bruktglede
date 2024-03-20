@@ -1,9 +1,9 @@
-import { Butikker } from "@/components/pages/Butikker"
+import { ButikkerPage } from "@/components/pages/ButikkerPage";
 
 export default function ButikkerRoute() {
     return (
         <>
-            <Butikker />
+            <ButikkerPage />
         </>
-    )
+    );
 }

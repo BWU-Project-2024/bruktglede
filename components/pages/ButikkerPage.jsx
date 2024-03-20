@@ -1,9 +1,9 @@
 
-export const ArrangementId = () => {
+export const ButikkerPage = () => {
     return (
         <main>
             <h1>
-                Arrangement :id page
+                Butikker page
             </h1>
         </main>
     )

@@ -1,10 +1,10 @@
 // import prisma from "@/lib/prisma";
-import { Home } from "@/components/pages/Home";
+import { HomePage } from "@/components/pages/HomePage";
 
 export default function HjemRoute() {
     return (
         <>
-            <Home />
+            <HomePage />
         </>
     );
 }

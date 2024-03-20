@@ -1,9 +1,8 @@
-
-export const Butikker = () => {
+export const ButikkInfoCMSPage = () => {
     return (
         <main>
             <h1>
-                Butikker page
+                Butikk info CMS page
             </h1>
         </main>
     )

@@ -1,9 +1,9 @@
-import { ButikkId } from "@/components/pages/ButikkId"
+import { ButikkIdPage } from "@/components/pages/ButikkIdPage";
 
 export default function ButikkIdRoute() {
     return (
         <>
-            <ButikkId />
+            <ButikkIdPage />
         </>
-    )
+    );
 }
