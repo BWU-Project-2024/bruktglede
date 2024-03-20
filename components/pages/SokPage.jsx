@@ -1,9 +1,9 @@
 
-export const Arrangementer = () => {
+export const SokPage = () => {
     return (
         <main>
             <h1>
-                Arrangementer page
+                Søk page
             </h1>
         </main>
     )
