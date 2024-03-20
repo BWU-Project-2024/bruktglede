@@ -35,4 +35,4 @@ To use Client Components, you can add the React `"use client"` directive at the 
 
 The "use client" is used to declare a boundary between a Server and Client Component modules. This means that by defining a `"use client"` in a file, all other modules imported into it, including child components, are considered part of the client bundle.
 
-An example of when to use a Client Component, is for example a "delete post button" where the UI will update after you click the button. If this was a Server Component, you would need to refresh the page to see the changes..
+An example of when to use a Client Component, is for example a "delete post button" where the UI will update after you click the button. If this was a Server Component, you would need to refresh the page to see the changes.
