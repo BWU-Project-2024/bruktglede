@@ -4,5 +4,6 @@ export const Header = ({ title, description }) => {
             <h1 className="font-jomhuria text-5xl text-forestgreen-default p-2">{title}</h1>
             <p className="px-2 text-base">{description}</p>
         </header>
+        
     );
 };
