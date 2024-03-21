@@ -10,3 +10,7 @@ export async function GET() {
         return NextResponse.error("Internal Server Error", 500);
     }
 }
+
+// POST new storeroute
+export async function POST() 
+
