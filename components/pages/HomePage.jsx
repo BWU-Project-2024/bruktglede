@@ -1,10 +1,19 @@
+import { Header } from "../Header"
+import { StoreTag } from "../StoreTag"
+import { CategoryTag } from "../CategoryTag"
 
 export const HomePage = () => {
     return (
+      <div>
+         <Header title="Homepage" description="Beskrivende tekst"></Header>
+            
         <main>
-            <h1 className="text-3xl">
-                Home page
-            </h1>
+           
+          <StoreTag title="Fretex"></StoreTag>
+          <CategoryTag title="Klær"></CategoryTag>
+          
+           
         </main>
+        </div>
     )
 }
