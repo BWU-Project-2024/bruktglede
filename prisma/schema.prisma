@@ -18,41 +18,55 @@ datasource db {
 
 model User {
   id       Int    @id @default(autoincrement())
-  userRole Role   @default(SUPERUSER)
   username String @unique
   email    String @unique
   password String
   store    Store?
+  userRole Role   @relation(fields: [roleId], references: [id])
+  roleId   Int
 
   @@unique([username, email]) //there can only be one user with the same username and email
   @@index([username]) //set a index for username for easier quering/sorting later
 }
 
+model Role {
+  id    Int    @id @default(autoincrement())
+  role  String @unique
+  users User[]
+}
+
 model Store {
-  id          Int            @id @default(autoincrement())
-  user        User           @relation(fields: [userId], references: [id])
-  userId      Int            @unique
-  name        String
-  img         String
-  description String
-  tags        Tag[]
-  stations    Station[]
-  posts       Post[]
-  OpeningTime OpeningTimes[]
+  id           Int            @id @default(autoincrement())
+  user         User           @relation(fields: [userId], references: [id])
+  userId       Int            @unique
+  name         String         @unique
+  img          String
+  description  String
+  tags         Tag[]
+  stations     Station[]
+  posts        Post[]
+  openingTimes OpeningTimes[]
 
   @@index([name]) //set a index for (store)name for easier quering/sorting later
 }
 
 model OpeningTimes {
   id          Int     @id @default(autoincrement())
-  day         Day     @default(MANDAG)
   open        Boolean @default(true)
-  openingHour Int
-  closingHour Int
+  day         Day     @relation(fields: [dayId], references: [id])
+  dayId       Int     @unique
+  openingHour Int?
+  closingHour Int?
   store       Store   @relation(fields: [storeId], references: [id])
   storeId     Int
 
-  @@unique([day, storeId]) // The store could only have one of each day type
+  @@unique([dayId, storeId]) // The store could only have one of each day type
+}
+
+model Day {
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  openingTimes OpeningTimes?
 }
 
 model Tag {
@@ -70,41 +84,28 @@ model Station {
   tags    Tag[]
   store   Store  @relation(fields: [storeId], references: [id])
   storeId Int
+
+  @@unique([title, address]) // The store could not have two stations with the same title and address
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  postType  PostType @default(ARTIKKEL)
-  createdAt DateTime @default(now()) @db.Date
-  updatedAt DateTime @updatedAt
-  img       String?
-  title     String
-  ingress   String?
-  subtitle  String?
-  bodyText  String?
-  tags      Tag[]
-  author    Store    @relation(fields: [authorId], references: [id])
-  authorId  Int
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now()) @db.Date
+  updatedAt  DateTime @updatedAt
+  img        String?
+  title      String
+  ingress    String?
+  subtitle   String?
+  bodyText   String?
+  tags       Tag[]
+  author     Store    @relation(fields: [authorId], references: [id])
+  authorId   Int
+  postType   PostType @relation(fields: [postTypeId], references: [id])
+  postTypeId Int
 }
 
-enum Role {
-  USER
-  ADMIN
-  SUPERUSER
-}
-
-enum PostType {
-  ARRANGEMENT
-  ARTIKKEL
-  HOYDEPUNKT
-}
-
-enum Day {
-  MANDAG
-  TIRSDAG
-  ONSDAG
-  TORSDAG
-  FREDAG
-  LORDAG
-  SONDAG
+model PostType {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  posts Post[]
 }

@@ -12,5 +12,4 @@ export async function GET() {
 }
 
 // POST new storeroute
-export async function POST() 
-
+// export async function POST()

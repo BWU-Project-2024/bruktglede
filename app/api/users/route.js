@@ -14,4 +14,4 @@ export async function GET() {
 
 //! Need to hash password
 // POST new user route
-export async function POST() 
+export async function POST() {}

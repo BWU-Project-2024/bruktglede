@@ -8,6 +8,8 @@ Next.js is rendered on the server, whereas in React it renderes in the client.
 
 [Optimization - HTML elements](https://nextjs.org/docs/app/building-your-application/optimizing)
 
+[Data Fetching](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating)
+
 Next.js is built upon React, therefore we still use 'jsx' filetypes in Next.js. We can also use React dependencies for Next.js
 
 ## Routing

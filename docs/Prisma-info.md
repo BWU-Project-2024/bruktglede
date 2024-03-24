@@ -18,6 +18,8 @@ The SQL models are created in the "schema.prisma" file, while the APIs are creat
 
 ## Commands
 
+Add the Prisma extention to see best syntax in file.
+
 `yarn prisma` to see all available commands.
 
 `npx prisma studio`: This command let you get an actual visualization of the SQL schemas, that will open up the studio in the browser.
