@@ -4,48 +4,27 @@ Then, based on the incoming request, you can modify the response by rewriting,
 redirecting, modifying the request or response headers, or responding directly.
 **/
 import NextAuth from "next-auth";
+import { authConfig } from "@/auth.config";
 import { 
     DEFAULT_LOGIN_REDIRECT,
-    apiAuthPrefix,
     authRoutes,
     publicRoutes
-} from "@/routes"
+} from "@/lib/routes"
 
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
-    const { nextUrl } = req;
-    const isLoggedIn = !!req.auth;
+	const { nextUrl } = req;
 
-    // Define routes
-    const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
-    const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
-    const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+	const isAuthenticated = !!req.auth;
+	const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
 
-    //* The order of the if statements matters.
+	if (isPublicRoute && isAuthenticated)
+		return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
 
-    //Check if it is an API Auth route
-    if (isApiAuthRoute) {
-        return null;
-    }
-
-    // Check if it is an Auth route
-    if (isAuthRoute) {
-        //Check if logged in
-        if (isLoggedIn) {
-            return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-        }
-        return null;
-    }
-
-    // If not logged in, and it is not a public route (trying to access auth route)
-    if (!isLoggedIn && !isPublicRoute) {
-        // Then direct user to login page
-        return Response.redirect(new URL("/auth/login", nextUrl));
-    }
-
-    return null;
-})
+	if (!isAuthenticated && !isPublicRoute)
+		return Response.redirect(new URL(authRoutes, nextUrl));
+});
 
 // Routes in here would invoke the middleware auth function
 export const config = {

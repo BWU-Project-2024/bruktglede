@@ -1,51 +1,34 @@
-"use client"
-import { useForm } from "react-hook-form";
-import { useState, useTransition } from "react";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
-import { FormField } from "./LoginFormField";
+'use client';
 
-export const LoginForm = () => {
-    const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get("callbackUrl");
-    const [isPending, startTransition] = useTransition();
+import { login } from '@/lib/actions';
+import { useFormState } from 'react-dom';
+import { Input } from './Input';
 
-    // useForm
-    const {
-        register,
-        handleSubmit,
-        setError,
-        formState: { errors },
-    } = useForm();
+const loginInitialState = {
+    message: '',
+    errors: {
+        email: '',
+        password: '',
+        credentials: '',
+        unknown: '',
+    },
+};
 
-    // onSubmit
-    const onSubmit = (data) => {
-        console.log(data);
-    };
+const Form = () => {
+    const [formState, formAction] = useFormState(login, loginInitialState);
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <p>hello</p>
-            <div className="grid col-auto">
-                <input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    {...register("email")}
-                    error={errors.email}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    {...register("password")}
-                    error={errors.email}
-                />
-
-                <button type="submit" className="submit-button" disabled={isPending}>
-                    {isPending ? "Submitting..." : "Submit"}
-                </button>
-            </div>
+        <form action={formAction} className='space-y-4 w-full max-w-sm'>
+            <Input required name='email' placeholder='email' />
+            <Input
+                required
+                name='password'
+                type='password'
+                placeholder='password'
+            />
+            <button type='submit'>
+                submit
+            </button>
         </form>
-    );
+    )
 }
