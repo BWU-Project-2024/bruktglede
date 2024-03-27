@@ -21,7 +21,7 @@ export const Footer = ({ title, description }) => {
                 </ul>
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8 opacity-60" />
-            <span class="block text-sm text-ivory-default sm:text-center ">Nettsiden er laget av Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje </span>
+            <span class="block text-sm text-ivory-default sm:text-center ">Nettsiden er utviklet av Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje, på vegne av Bacheloroppgave i Webutvikling ved NTNU. </span>
         </div>
     </footer>
         
