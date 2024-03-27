@@ -9,7 +9,7 @@ export const ArtikkelIdPage = () => {
         <main className="flex-1">
         
         </main>
-        <Footer></Footer>
+        <Footer />
         </div>
     )
 }

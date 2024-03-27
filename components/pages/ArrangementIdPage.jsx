@@ -9,7 +9,7 @@ export const ArrangementIdPage = () => {
         <main className="flex-1">
         
         </main>
-        <Footer></Footer>
+        <Footer />
         </div>
     )
 }
