@@ -1,3 +1,4 @@
+import { LoginForm } from "../auth/LoginForm"
 
 export const LoginPage = () => {
     return (
@@ -5,6 +6,7 @@ export const LoginPage = () => {
             <h1 className="">
                 Login page
             </h1>
+            <LoginForm />
         </main>
     )
 }

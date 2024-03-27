@@ -29,3 +29,5 @@ Add the Prisma extention to see best syntax in file.
 `npx prisma generate`: populates/generates the project with model fields (need to be done after every migrate).
 
 `npx prisma db push`: This command, on the other hand, is part of Prisma Client and is used to synchronize the Prisma schema with the actual database schema. It directly interacts with the database specified in your Prisma schema file (schema.prisma) and applies any changes or additions to the database.
+
+npx prisma migrate reset

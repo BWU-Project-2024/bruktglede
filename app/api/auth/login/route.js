@@ -1,28 +1,26 @@
-// import bcrypt from "bcrypt";
-// import jwt from "jsonwebtoken";
-// import prisma from "../../../../lib/prisma";
-// import { generateToken } from "../jwt";
-// // Inside your login API route handler
-// const token = generateToken({ userId: user.id });
+import { NextResponse, NextRequest } from "next/server";
+import prisma from "@/lib/prisma";
+import bcrypt from 'bcrypt';
 
-// export async function POST(req, res) {
-//     const { email, password } = req.body;
-
-//     try {
-//         const user = await prisma.user.findUnique({ where: { email } });
-//         if (!user) {
-//             return res.status(401).json({ message: "Invalid credentials" });
-//         }
-//         const passwordMatch = await bcrypt.compare(password, user.password);
-//         if (!passwordMatch) {
-//             return res.status(401).json({ message: "Invalid credentials" });
-//         }
-//         const token = jwt.sign({ userId: user.id }, "your-secret-key", {
-//             expiresIn: "1h",
-//         });
-//         return res.status(200).json({ token });
-//     } catch (error) {
-//         console.error("Error authenticating user:", error);
-//         return res.status(500).json({ message: "Internal Server Error" });
-//     }
-// }
+//* POST login route
+export async function POST(req, res) {
+    try {
+        const { email, password } = await req.json();
+        const user = await prisma.user.findUnique({ 
+            where: {
+                email: email,
+            }
+        });
+        if (!user) {
+            return NextResponse.error("Invalid email", 401 );
+        }
+        const passwordMatches = await bcrypt.compare(password, user.password);
+        if (!passwordMatches) {
+            return NextResponse.error("Invalid password", 401);
+        }
+        return NextResponse.json({ message: "Login successful", user });
+    } catch (error) {
+        console.log("Error logging in:", error);
+        return NextResponse.error("Internal Server Error", 500);
+    }
+}

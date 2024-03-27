@@ -1,15 +1,21 @@
 import { NextResponse } from "next/server";
-import prisma from "../../../../lib/prisma";
-export const dynamic = "force-dynamic";
+import prisma from "@/lib/prisma";
+// import { getServerSession } from "next-auth";
+// import { AuthOptions } from "../../auth/[...nextauth]/route";
 
-// Get one store based on id
+
+//* Get one user based on id
 export async function GET(req, { params }) {
+    // const session = await getServerSession(AuthOptions)
     try {
         const id = parseInt(params.id);
         const user = await prisma.user.findUnique({
             where: {
                 id: id,
             },
+            // include: {
+            //     authenticated: !!session
+            // }
         });
         return NextResponse.json(user);
     } catch (error) {
@@ -19,19 +25,17 @@ export async function GET(req, { params }) {
 }
 
 //! Need to hash password
-// Update one store based on id
+//* Update one store based on id
 export async function PUT(req, { params }) {
     try {
-        const data = await req.json();
-        console.log(data);
-
+        const { username, password } = await req.json();
         const id = parseInt(params.id);
-        const { password } = data;
 
-        const updateUser = await prisma.store.update({
+        const updateUser = await prisma.user.update({
             where: { id: id },
             data: {
-                password,
+                username: username,
+                password: password,
             },
         });
         return NextResponse.json(updateUser);
@@ -41,11 +45,11 @@ export async function PUT(req, { params }) {
     }
 }
 
-// Delete one store based on id
+//* Delete one user based on id
 export async function DELETE(req, { params }) {
     try {
         const id = parseInt(params.id);
-        const deleteUser = await prisma.store.delete({
+        const deleteUser = await prisma.user.delete({
             where: { id: id },
         });
         return NextResponse.json(deleteUser);

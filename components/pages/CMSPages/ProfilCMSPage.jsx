@@ -1,9 +1,17 @@
-export const ProfilCMSPage = () => {
+import { auth } from "@/auth"
+
+export const ProfilCMSPage = async () => {
+    const session = await auth();
     return (
         <main>
-            <h1>
-                Profil CMS page
-            </h1>
+            {session && session.user ? (
+                <>
+                    <h1>Profil CMS page</h1>
+                    <p>{session.user}</p>
+                </>
+            ) : (
+                <p>No access!</p>
+            )}
         </main>
     )
-}
+} 
