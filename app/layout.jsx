@@ -14,9 +14,7 @@ export default function RootLayout({ children, params: { session, ...params } })
     return (
         <html lang="en">
             <body className={opensans.className}>
-                {/* <SessionProvider session={session}> */}
                 {children}
-                {/* </SessionProvider> */}
             </body>
         </html>
     );
