@@ -1,7 +1,14 @@
-'use client';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
-const Form = () => {
+// Action is the login api route
+export default function LoginForm() {
     return (
-        <h1>login form</h1>
+        <form action="/auth/login" method="post">
+            <label htmlFor="email">Email</label>
+            <input name="email" />
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" />
+            <button>Sign In</button>
+        </form>
     )
 }
