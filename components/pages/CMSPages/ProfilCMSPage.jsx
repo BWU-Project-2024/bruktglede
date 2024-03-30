@@ -1,24 +1,34 @@
-// import Link from "next/link";
-// import { cookies } from "next/headers";
+import { createClient } from '@/lib/supabase/supabaseServer';
+import { readUserSession } from '@/lib/supabase/actions';
+import { redirect } from 'next/navigation';
 
 export const ProfilCMSPage = async () => {
-    // const cookieStore = cookies();
-    // const supabase = createServerComponentClient({ cookies: () => cookieStore });
+    //Sign out functionalities
+    const { data: { session } } = await readUserSession();
 
-    // const { data: { user } } = await supabase.auth.getUser();
-    // console.log({ user });
+    if (!session) {
+        return redirect('/CMS/login');
+    }
 
-    // if (!user) {
-    //     return (
-    //         <main><Link href="/login">You are not logged inn....</Link></main>
+    const signOut = async () => {
+        'use server';
 
-    //     )
+        const supabase = createClient();
+        await supabase.auth.signOut();
+        return redirect('/');
+    };
 
-    // }
 
     return (
-        <main>
-            <h1>profil pageya</h1>
-        </main>
+        session && (
+            <div>
+                Hey, {session.user.email}!
+                <form action={signOut}>
+                    <button>
+                        Logout
+                    </button>
+                </form>
+            </div>
+        )
     )
 } 

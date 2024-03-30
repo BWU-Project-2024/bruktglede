@@ -4,24 +4,6 @@ export async function middleware(request) {
   return await updateSession(request);
 }
 
-
-// import { createBrowserClient } from '@supabase/ssr'
-// import { NextResponse } from "next/server";
-
-// // Makes it possible to talk back to cookie
-// // Will run before each route is accessed and rendered
-// export async function middleware(req) {
-//     const res = NextResponse.next();
-
-//     // Create a Supabase client configured to use cookies
-//     const supabase = createBrowserClient({ req, res });
-
-//     // Refresh session if expired - required for Server Components
-//     await supabase.auth.getUser();
-
-//     return res;
-// }
-// Ensure the middleware is only called for relevant paths.
 export const config = {
     matcher: [
       /*

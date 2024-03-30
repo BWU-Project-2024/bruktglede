@@ -1,14 +1,12 @@
 import Link from 'next/link';
 import { headers } from 'next/headers';
+import { readUserSession } from '@/lib/supabase/actions';
 import { createClient } from '@/lib/supabase/supabaseServer';
 import { redirect } from 'next/navigation';
 
-export default async function SignupPage({ searchParams }) {
-    const supabase = createClient();
+export const RegistrerPage = async ({ searchParams }) => {
 
-    const {
-        data: { session },
-    } = await supabase.auth.getSession();
+    const { data: { session } } = await readUserSession();
 
     if (session) {
         return redirect('/');
@@ -103,7 +101,7 @@ export default async function SignupPage({ searchParams }) {
                 </form>
 
                 <Link
-                    href="/signup"
+                    href="/CMS/signup"
                     className="rounded-md no-underline text-foreground text-sm"
                 >
                     Already have an account? Sign In
@@ -112,3 +110,5 @@ export default async function SignupPage({ searchParams }) {
         </div>
     );
 }
+
+export default RegistrerPage;
