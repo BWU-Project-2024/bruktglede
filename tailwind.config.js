@@ -37,6 +37,11 @@ module.exports = {
                     lighter: "#FCEDED",
                 },
             },
+
+            letterSpacing: {
+                wide: '0.010em',
+            },
+
             fontFamily: {
                 opensans: ["var(--font-opensans)"],
                 jomhuria: ["var(--font-jomhuria)"],

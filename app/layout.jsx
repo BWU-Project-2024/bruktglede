@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children, params: { session, ...params } }) {
     return (
         <html lang="en">
-            <body className={opensans.className}>
+            <body className={`${opensans.variable} ${jomhuria.variable}`}>
                 {children}
             </body>
         </html>
