@@ -1,10 +1,33 @@
+import { createClient } from '@/lib/supabase/supabaseServer';
+import { redirect } from 'next/navigation';
 
-export const HomePage = () => {
+export const HomePage = async () => {
+    //Sign out functionalities
+    const supabase = createClient();
+
+    const {
+        data: { session },
+    } = await supabase.auth.getSession();
+
+    const signOut = async () => {
+        'use server';
+
+        const supabase = createClient();
+        await supabase.auth.signOut();
+        return redirect('/');
+    };
+
+
     return (
-        <main>
-            <h1 className="text-3xl">
-                Home page
-            </h1>
-        </main>
+        session && (
+            <div>
+                Hey, {session.user.email}!
+                <form action={signOut}>
+                    <button>
+                        Logout
+                    </button>
+                </form>
+            </div>
+        )
     )
 }
