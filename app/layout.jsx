@@ -1,5 +1,6 @@
 import { Jomhuria, Open_Sans } from "next/font/google";
 import "./globals.css";
+// import { Session Provider } from "next-auth/react";
 
 const opensans = Open_Sans({ subsets: ["latin"], variable: "--font-opensans" });
 const jomhuria = Jomhuria({ subsets: ["latin"], variable: "--font-jomhuria", weight: ["400"] });
@@ -9,15 +10,12 @@ export const metadata = {
     description: "Utviklet av Lisa Mari Myrene, Alexandra Eloise Vanje & Anosh Chaudhry som bacheloropgave i Webutvikling NTNU Gjøvik.",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, params: { session, ...params } }) {
     return (
         <html lang="en">
-            <body className={`${opensans.variable} ${jomhuria.variable}`}>{children}
-            
-          
-             </body>
-
-            
+            <body className={`${opensans.variable} ${jomhuria.variable}`}>
+                {children}
+            </body>
         </html>
     );
 }
