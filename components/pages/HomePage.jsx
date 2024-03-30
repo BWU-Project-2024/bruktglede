@@ -2,16 +2,21 @@ import { Header } from "../Header"
 import { StoreTag } from "../StoreTag"
 import { CategoryTag } from "../CategoryTag"
 import { Footer } from "../Footer"
+import { LandingHeader } from "../LandingHeader"
+
 
 export const HomePage = () => {
     return (
       <div className="flex flex-col min-h-screen">
-         <Header title="Tittel her" description="Beskrivende tekst beskrivende tekst eskrivende tekst" />   
-         <main className="flex-1"> 
-             <StoreTag title="Fretex" />
-             <CategoryTag bgColor="" title="Klær" />
-         </main>
-         <Footer />
-      </div>
-   )
+         <LandingHeader />
+            
+        <main className="flex-1">
+           
+         
+           
+        </main>
+        <Footer />
+        </div>
+    )
 }
+
