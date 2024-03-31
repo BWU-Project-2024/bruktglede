@@ -145,13 +145,13 @@ export const Navbar = ({ session }) => {
                     <button onClick={handleNav}>
                         <FiPlus style={exitIconStyle} />
                     </button>
-                    <ul className="mt-10 pr-4 text-lg flex flex-col gap-6">
+                    <ul className="mt-10 pr-4 text-xl flex flex-col gap-7">
                         <li role="menuitem">
                             <Link href="/" className={`${pathname === "/" ? "font-medium" : ""}`}>
                                 Hjem
                             </Link>
                             {pathname === "/" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[115px] left-[80px] rounded-[1.5px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[115px] left-[85px] rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
                         <li role="menuitem">
@@ -159,7 +159,7 @@ export const Navbar = ({ session }) => {
                                 Butikker
                             </Link>
                             {pathname === "/butikker" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[163px] left-[105px] rounded-[1.5px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[171px] left-[112px] rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
                         <li role="menuitem">
@@ -167,7 +167,7 @@ export const Navbar = ({ session }) => {
                                 Arrangementer
                             </Link>
                             {pathname === "/arrangementer" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[211px] left-[160px] rounded-[1.5px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[228px] left-[175px] rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
                         <li role="menuitem">
@@ -175,7 +175,7 @@ export const Navbar = ({ session }) => {
                                 Innleveringsstasjoner
                             </Link>
                             {pathname === "/innleveringsstasjoner" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[259px] left-[210px] rounded-[1.5px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[283px] left-[230px] rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
                         <li role="menuitem">
@@ -183,7 +183,7 @@ export const Navbar = ({ session }) => {
                                 Ukens høydepunkt
                             </Link>
                             {pathname === "/ukenshoydepunkt" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[307px] left-[193px] rounded-[1.5px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[339px] left-[208px] rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
                         <li role="menuitem">
@@ -191,7 +191,7 @@ export const Navbar = ({ session }) => {
                                 Artikler
                             </Link>
                             {pathname === "/artikler" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[354px] left-[97px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[394px] left-[105px] rotate-45"></div>
                             )}
                         </li>
                         <li role="menuitem">
@@ -199,7 +199,7 @@ export const Navbar = ({ session }) => {
                                 Om oss
                             </Link>
                             {pathname === "/omoss" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[402px] left-[100px] rounded-[1.5px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[451px] left-[108px] rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
                         <li role="menuitem">
@@ -207,7 +207,7 @@ export const Navbar = ({ session }) => {
                                 Bli frivillig
                             </Link>
                             {pathname === "/blifrivillig" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[450px] left-[115px] rounded-[1.5px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[507px] left-[125px] rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
                         {session && (
@@ -216,7 +216,7 @@ export const Navbar = ({ session }) => {
                                     Min butikk
                                 </Link>
                                 {pathname === "/CMS/profil" && (
-                                    <div className="absolute w-2 h-2 bg-ivory-darker top-[498px] left-[122px] rounded-[1.5px] rotate-45"></div>
+                                    <div className="absolute w-2 h-2 bg-ivory-darker top-[562px] left-[133px] rounded-[1.5px] rotate-45"></div>
                                 )}
 
                             </li>
@@ -226,7 +226,7 @@ export const Navbar = ({ session }) => {
                                 <FiSearch style={searchIconStyle} />
                             </Link>
                             {pathname === "/sok" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[543px] left-[63px] rounded-[1.5px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[616px] left-[67px] rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
                     </ul>
