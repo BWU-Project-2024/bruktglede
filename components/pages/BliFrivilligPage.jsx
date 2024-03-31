@@ -1,5 +1,4 @@
 import { Header } from "../Header"
-import { Footer } from "../Footer"
 
 
 export const BliFrivilligPage = () => {
@@ -9,7 +8,6 @@ export const BliFrivilligPage = () => {
             <main className="flex-1">
 
             </main>
-            <Footer />
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import { Jomhuria, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { readUserSession } from "@/lib/supabase/actions";
 
 const opensans = Open_Sans({ subsets: ["latin"], variable: "--font-opensans" });
@@ -18,6 +19,7 @@ export default async function RootLayout({ children }) {
             <body className={`${opensans.variable} ${jomhuria.variable}`}>
                 <Navbar session={session} />
                 {children}
+                <Footer />
             </body>
         </html>
     );
