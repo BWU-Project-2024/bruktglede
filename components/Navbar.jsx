@@ -6,6 +6,9 @@ import BruktgledeLogoDesktop from "@/public/bruktglede-logo-desktop.svg"
 import { FiSearch } from "react-icons/fi";
 import { Dropdown } from "flowbite-react";
 import { usePathname } from 'next/navigation'
+import { FiMenu } from "react-icons/fi";
+import { FiPlus } from "react-icons/fi";
+
 
 export const Navbar = ({ session }) => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -17,6 +20,8 @@ export const Navbar = ({ session }) => {
     };
 
     const searchIconStyle = { fontSize: "1.3em" }
+    const menuIconStyle = { fontSize: "2.3em" }
+    const exitIconStyle = { fontSize: "3em", transform: "rotate(45deg)", marginLeft: "-10px" }
 
     return (
         <div className="w-full bg-ivory-default">
@@ -77,7 +82,7 @@ export const Navbar = ({ session }) => {
                     </li>
                     <li role="menuitem">
                         <Link href="/ukenshoydepunkt" className={`${pathname === "/ukenshoydepunkt" ? "font-medium" : "hover:font-medium"}`}>
-                            Ukens høydepunkter
+                            Ukens høydepunkt
                         </Link>
                         {pathname === "/ukenshoydepunkt" && (
                             <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-20 rounded-[1.5px] rotate-45"></div>
@@ -124,7 +129,9 @@ export const Navbar = ({ session }) => {
             {/* nav mobile */}
             {/* menu bar closed */}
             <div className="lg:hidden w-full flex items-center items-center px-6 pt-6">
-                <button onClick={handleNav}>menu</button>
+                <button onClick={handleNav}>
+                    <FiMenu style={menuIconStyle} />
+                </button>
             </div>
             {/* menu bar open */}
             <div
@@ -136,11 +143,11 @@ export const Navbar = ({ session }) => {
             >
                 <nav className="flex flex-col w-full items-start bg-forestgreen text-background">
                     <button onClick={handleNav}>
-                        close
+                        <FiPlus style={exitIconStyle} />
                     </button>
-                    <ul className="mt-16 pr-4 text-lg flex flex-col gap-5">
+                    <ul className="mt-10 pr-4 text-lg flex flex-col gap-6">
                         <li role="menuitem">
-                            <Link href="/" className="mb-4">
+                            <Link href="/" className={`${pathname === "/" ? "font-medium" : ""}`}>
                                 Hjem
                             </Link>
                             {pathname === "/" && (
@@ -148,7 +155,7 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/butikker" className="mb-8">
+                            <Link href="/butikker" className={`${pathname === "/butikker" ? "font-medium" : ""}`}>
                                 Butikker
                             </Link>
                             {pathname === "/butikker" && (
@@ -156,7 +163,7 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/arrangementer" className="mb-8">
+                            <Link href="/arrangementer" className={`${pathname === "/arrangementer" ? "font-medium" : ""}`}>
                                 Arrangementer
                             </Link>
                             {pathname === "/arrangementer" && (
@@ -164,7 +171,7 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/innleveringsstasjoner" className="mb-8">
+                            <Link href="/innleveringsstasjoner" className={`${pathname === "/innleveringsstasjoner" ? "font-medium" : ""}`}>
                                 Innleveringsstasjoner
                             </Link>
                             {pathname === "/innleveringsstasjoner" && (
@@ -172,23 +179,23 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/ukenshoydepunkt" className="mb-8">
-                                Ukens høydepunkter
+                            <Link href="/ukenshoydepunkt" className={`${pathname === "/ukenshoydepunkt" ? "font-medium" : ""}`}>
+                                Ukens høydepunkt
                             </Link>
                             {pathname === "/ukenshoydepunkt" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[307px] left-[206px] rounded-[1.5px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[307px] left-[193px] rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/artikler" className="mb-8">
+                            <Link href="/artikler" className={`${pathname === "/artikler" ? "font-medium" : ""}`}>
                                 Artikler
                             </Link>
                             {pathname === "/artikler" && (
-                                <div className="absolute w-2 h-2 bg-ivory-darker top-[354px] left-[96px] rotate-45"></div>
+                                <div className="absolute w-2 h-2 bg-ivory-darker top-[354px] left-[97px] rotate-45"></div>
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/omoss" className="mb-8">
+                            <Link href="/omoss" className={`${pathname === "/omoss" ? "font-medium" : ""}`}>
                                 Om oss
                             </Link>
                             {pathname === "/omoss" && (
@@ -196,7 +203,7 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/blifrivillig" className="mb-8">
+                            <Link href="/blifrivillig" className={`${pathname === "/blifrivillig" ? "font-medium" : ""}`}>
                                 Bli frivillig
                             </Link>
                             {pathname === "/blifrivillig" && (
@@ -205,7 +212,7 @@ export const Navbar = ({ session }) => {
                         </li>
                         {session && (
                             <li role="menuitem">
-                                <Link className="" href="/CMS/profil">
+                                <Link href="/CMS/profil" className={`${pathname === "/CMS/profil" ? "font-medium" : ""}`}>
                                     Min butikk
                                 </Link>
                                 {pathname === "/CMS/profil" && (
@@ -215,7 +222,7 @@ export const Navbar = ({ session }) => {
                             </li>
                         )}
                         <li role="menuitem">
-                            <Link href="/sok">
+                            <Link href="/sok" className="mt-4">
                                 <FiSearch style={searchIconStyle} />
                             </Link>
                             {pathname === "/sok" && (
