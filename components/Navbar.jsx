@@ -2,36 +2,34 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import BruktgledeLogoDesktop from "@/public/bruktglede-logo-desktop.svg"
+import BruktgledeLogo from "@/public/bruktglede-logo.svg"
 import { FiSearch } from "react-icons/fi";
 import { Dropdown } from "flowbite-react";
 import { usePathname } from 'next/navigation'
 import { FiMenu } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 
-
 export const Navbar = ({ session }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname()
-
 
     const handleNav = () => {
         setMenuOpen((menuOpen) => !menuOpen);
     };
 
     const searchIconStyle = { fontSize: "1.3em" }
-    const menuIconStyle = { fontSize: "2.3em" }
+    const searchIconStyleMobileNavbar = { fontSize: "1.9em" }
+    const menuIconStyle = { fontSize: "2.2em" }
     const exitIconStyle = { fontSize: "3em", transform: "rotate(45deg)", marginLeft: "-10px" }
 
     return (
         <div className="w-full bg-ivory-default">
-
-            {/* nav desktop */}
+            {/* Nav Desktop */}
             <nav className="hidden lg:flex w-full flex justify-between items-center bg-purple-dark text-purple-light px-10 py-3" role="navigation" aria-label="Bruktbyen navigasjon">
                 <Link href="/" className="flex justify-center items-center gap-3 pointer">
                     <Image
                         priority
-                        src={BruktgledeLogoDesktop}
+                        src={BruktgledeLogo}
                         alt="bruktglede logo desktop"
                         height={30}
                         width={30}
@@ -104,6 +102,7 @@ export const Navbar = ({ session }) => {
                             <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-6 rounded-[1.5px] rotate-45"></div>
                         )}
                     </li>
+                    {/* Check if user is logged in */}
                     {session && (
                         <li role="menuitem">
                             <Link href="/CMS/profil" className={`${pathname === "/CMS/profil" ? "font-medium" : "hover:font-medium"}`}>
@@ -112,7 +111,6 @@ export const Navbar = ({ session }) => {
                             {pathname === "/CMS/profil" && (
                                 <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-8 rounded-[1.5px] rotate-45"></div>
                             )}
-
                         </li>
                     )}
                     <li role="menuitem">
@@ -126,14 +124,29 @@ export const Navbar = ({ session }) => {
                 </ul>
             </nav>
 
-            {/* nav mobile */}
-            {/* menu bar closed */}
-            <div className="lg:hidden w-full flex items-center items-center px-6 pt-6">
+            {/* Nav Mobile */}
+            {/* Menu bar closed */}
+            <div className="lg:hidden w-full flex items-center items-center px-6 py-6 justify-between">
                 <button onClick={handleNav}>
                     <FiMenu style={menuIconStyle} />
                 </button>
+                <div className="flex gap-6">
+                    <Link href="/sok">
+                        <FiSearch style={searchIconStyleMobileNavbar} />
+                    </Link>
+                    <Link href="/" className="flex justify-center items-center gap-3 pointer">
+                        <Image
+                            priority
+                            src={BruktgledeLogo}
+                            alt="bruktglede logo mobil"
+                            height={25}
+                            width={25}
+                        >
+                        </Image>
+                    </Link>
+                </div>
             </div>
-            {/* menu bar open */}
+            {/* Menu bar open */}
             <div
                 className={
                     menuOpen
@@ -147,7 +160,7 @@ export const Navbar = ({ session }) => {
                     </button>
                     <ul className="mt-10 pr-4 text-xl flex flex-col gap-7">
                         <li role="menuitem">
-                            <Link href="/" className={`${pathname === "/" ? "font-medium" : ""}`}>
+                            <Link onClick={handleNav} href="/" className={`${pathname === "/" ? "font-medium" : ""}`}>
                                 Hjem
                             </Link>
                             {pathname === "/" && (
@@ -155,7 +168,7 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/butikker" className={`${pathname === "/butikker" ? "font-medium" : ""}`}>
+                            <Link onClick={handleNav} href="/butikker" className={`${pathname === "/butikker" ? "font-medium" : ""}`}>
                                 Butikker
                             </Link>
                             {pathname === "/butikker" && (
@@ -163,7 +176,7 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/arrangementer" className={`${pathname === "/arrangementer" ? "font-medium" : ""}`}>
+                            <Link onClick={handleNav} href="/arrangementer" className={`${pathname === "/arrangementer" ? "font-medium" : ""}`}>
                                 Arrangementer
                             </Link>
                             {pathname === "/arrangementer" && (
@@ -171,7 +184,7 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/innleveringsstasjoner" className={`${pathname === "/innleveringsstasjoner" ? "font-medium" : ""}`}>
+                            <Link onClick={handleNav} href="/innleveringsstasjoner" className={`${pathname === "/innleveringsstasjoner" ? "font-medium" : ""}`}>
                                 Innleveringsstasjoner
                             </Link>
                             {pathname === "/innleveringsstasjoner" && (
@@ -179,7 +192,7 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/ukenshoydepunkt" className={`${pathname === "/ukenshoydepunkt" ? "font-medium" : ""}`}>
+                            <Link onClick={handleNav} href="/ukenshoydepunkt" className={`${pathname === "/ukenshoydepunkt" ? "font-medium" : ""}`}>
                                 Ukens høydepunkt
                             </Link>
                             {pathname === "/ukenshoydepunkt" && (
@@ -187,7 +200,7 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/artikler" className={`${pathname === "/artikler" ? "font-medium" : ""}`}>
+                            <Link onClick={handleNav} href="/artikler" className={`${pathname === "/artikler" ? "font-medium" : ""}`}>
                                 Artikler
                             </Link>
                             {pathname === "/artikler" && (
@@ -195,7 +208,7 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/omoss" className={`${pathname === "/omoss" ? "font-medium" : ""}`}>
+                            <Link onClick={handleNav} href="/omoss" className={`${pathname === "/omoss" ? "font-medium" : ""}`}>
                                 Om oss
                             </Link>
                             {pathname === "/omoss" && (
@@ -203,26 +216,26 @@ export const Navbar = ({ session }) => {
                             )}
                         </li>
                         <li role="menuitem">
-                            <Link href="/blifrivillig" className={`${pathname === "/blifrivillig" ? "font-medium" : ""}`}>
+                            <Link onClick={handleNav} href="/blifrivillig" className={`${pathname === "/blifrivillig" ? "font-medium" : ""}`}>
                                 Bli frivillig
                             </Link>
                             {pathname === "/blifrivillig" && (
                                 <div className="absolute w-2 h-2 bg-ivory-darker top-[507px] left-[125px] rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
+                        {/* Check if user is logged in */}
                         {session && (
                             <li role="menuitem">
-                                <Link href="/CMS/profil" className={`${pathname === "/CMS/profil" ? "font-medium" : ""}`}>
+                                <Link onClick={handleNav} href="/CMS/profil" className={`${pathname === "/CMS/profil" ? "font-medium" : ""}`}>
                                     Min butikk
                                 </Link>
                                 {pathname === "/CMS/profil" && (
                                     <div className="absolute w-2 h-2 bg-ivory-darker top-[562px] left-[133px] rounded-[1.5px] rotate-45"></div>
                                 )}
-
                             </li>
                         )}
                         <li role="menuitem">
-                            <Link href="/sok" className="mt-4">
+                            <Link onClick={handleNav} href="/sok" className="mt-4">
                                 <FiSearch style={searchIconStyle} />
                             </Link>
                             {pathname === "/sok" && (

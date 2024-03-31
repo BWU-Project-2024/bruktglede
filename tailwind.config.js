@@ -39,6 +39,7 @@ module.exports = {
                     lighter: "#FCEDED",
                 },
             },
+            display: ["group-hover"],
 
             letterSpacing: {
                 wide: '0.010em',
