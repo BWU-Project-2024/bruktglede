@@ -1,10 +1,13 @@
+import { Header } from "../Header"
+
 
 export const SokPage = () => {
     return (
-        <main>
-            <h1>
-                Søk page
-            </h1>
-        </main>
+        <div className="flex flex-col min-h-screen">
+            <Header title="Søk" />
+            <main className="flex-1">
+
+            </main>
+        </div>
     )
 }

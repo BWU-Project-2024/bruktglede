@@ -12,14 +12,16 @@ module.exports = {
             colors: {
                 background: "#FEFFFC",
                 text: "37342F",
+                textLight: "#656565",
                 ivory: {
                     darker: "#D1E7C5",
                     default: "#F1F7EA",
+                    lighter: "#F6FAF2",
                 },
                 forestgreen: {
                     darker: "#04251C",
                     default: "#074634",
-                    lighter: "#0B6F53",
+                    lighter: "#2A5A4C",
                 },
                 peach: {
                     darker: "#FFCF99",
@@ -37,11 +39,19 @@ module.exports = {
                     lighter: "#FCEDED",
                 },
             },
+            display: ["group-hover"],
+
+            letterSpacing: {
+                wide: '0.010em',
+            },
+
             fontFamily: {
                 opensans: ["var(--font-opensans)"],
                 jomhuria: ["var(--font-jomhuria)"],
             },
         },
     },
-    plugins: [],
+    plugins: [
+        require("flowbite/plugin"),
+    ],
 };
