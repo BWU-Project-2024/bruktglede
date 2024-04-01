@@ -1,9 +1,10 @@
 import { Header } from "../Header"
 
-export const ArrangementerPage = () => {
+
+export const BliFrivilligPage = () => {
     return (
         <div className="flex flex-col min-h-screen">
-            <Header title="Arrangementer" description="Her finner du en oversikt over alle kommende arrangementer" />
+            <Header title="Vil du bli frivillig?" description="...." />
             <main className="flex-1">
 
             </main>

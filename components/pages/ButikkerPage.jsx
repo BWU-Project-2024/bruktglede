@@ -1,7 +1,6 @@
 
 import { getStores } from "@/app/butikker/actions"
 import { Header } from "../Header"
-import { Footer } from "../Footer"
 
 export async function ButikkerPage() {
     const { data: stores } = await getStores();
@@ -16,7 +15,6 @@ export async function ButikkerPage() {
                     ))}
                 </ul>
             </main>
-            <Footer />
         </div>
     )
 }

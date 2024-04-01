@@ -1,10 +1,9 @@
 import { readUserSession } from '@/lib/supabase/actions';
 import { createClient } from '@/lib/supabase/supabaseServer';
-import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 
 export const LoginPage = async ({ searchParams }) => {
-
     const { data: { session } } = await readUserSession();
 
     if (session) {
@@ -30,41 +29,46 @@ export const LoginPage = async ({ searchParams }) => {
         });
 
         if (error) {
-            return redirect('/login?message=Could not authenticate user');
+            return redirect('/CMS/login?message=Feil epost eller passord');
         }
 
-        return redirect('/');
+        return redirect('/CMS/profil');
     };
 
     return (
-        <div>
-            <Link href="/">Home</Link>
-
-            <div>
-                <form action={signIn}>
-                    <label htmlFor="email">Email</label>
+        <main className="flex flex-col items-center min-h-full">
+            <h1 className="font-jomhuria pt-10 pb-4">Bruktglede</h1>
+            <p className="text-center">Logg inn på din profil for å opprette og redigere innhold til din butikk.</p>
+            <div className="mt-14 w-full md:w-[20rem]">
+                <form action={signIn} className="flex flex-col" aria-label="Login form">
+                    <label htmlFor="email">Epost</label>
                     <input
                         name="email"
-                        placeholder="you@example.com"
+                        placeholder="test@brukbyen.no"
+                        className="py-2 px-2 mb-6 mt-2 border border-inherit rounded"
                         required
                     />
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Passord</label>
                     <input
                         type="password"
                         name="password"
-                        placeholder="••••••••"
+                        placeholder="••••••"
+                        className="py-2 px-2 mb-3 mt-2 border border-inherit rounded"
                         required
                     />
-                    <button>Sign In</button>
+
+                    <Link href="/" className="underline italic text-sm text-forestgreen-default mb-10 md:hover:font-medium">Glemt passord?</Link>
+
+                    <button className="w-full md:w-auto bg-forestgreen-default text-background px-24 rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200">Login</button>
 
                     {searchParams?.message && (
-                        <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
+                        <p className="mt-4 p-4 text-black bg-blue text-center">
                             {searchParams.message}
                         </p>
                     )}
                 </form>
             </div>
-        </div>
+        </main>
     );
 }
 
