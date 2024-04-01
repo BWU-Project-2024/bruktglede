@@ -61,29 +61,38 @@ export const Navbar = ({ session }) => {
                         <button id="dropdowns" data-dropdown-toggle="dropdown" className="text-black  rounded-lg px-5 py-2.5 text-center inline-flex items-center hover:font-medium" type="button">Butikker<svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
 </svg>
+
+{pathname === "/butikker" && (
+                            <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-7 rounded-[1.5px] rotate-45"></div>
+                        )}
+
 </button>
 
 
+
+
 <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
-    <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
-      <li>
-        <Link href="/butikker"className="block px-4 py-2 hover:bg-ivory-default  ">Alle butikker </Link>
-      </li>
-      <li>
-        <Link href="#" className="block px-4 py-2 hover:bg-ivory-default">Fretex</Link>
-      </li>
-      <li>
-        <Link href="#" className="block px-4 py-2 hover:bg-ivory-default  dark:hover:text-white">Ting og Tøy</Link>
-      </li>
-      <li>
-        <Link href="#" className="block px-4 py-2 hover:bg-ivory-default  ">Joikaboller</Link>
-      </li>
-    </ul>
+  <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
+    <li>
+      <div className="relative">
+        <Link href="/butikker" className="block px-4 py-2 hover:bg-ivory-default">
+          Alle butikker 
+         
+        </Link>
+      </div>
+    </li>
+    <li>
+      <Link href="#" className="block px-4 py-2 hover:bg-ivory-default">Fretex</Link>
+    </li>
+    <li>
+      <Link href="#" className="block px-4 py-2 hover:bg-ivory-default dark:hover:text-white">Ting og Tøy</Link>
+    </li>
+    <li>
+      <Link href="#" className="block px-4 py-2 hover:bg-ivory-default">Joikaboller</Link>
+    </li>
+  </ul>
 </div>
 
-
-
-                   
                 
                     </li>
                     <li role="menuitem">
