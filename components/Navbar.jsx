@@ -269,7 +269,7 @@ export const Navbar = ({ session }) => {
                     </ul>
                 </nav>
             </div>
-            <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+    
         </div>
     );
 }
