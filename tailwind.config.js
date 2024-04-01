@@ -12,9 +12,11 @@ module.exports = {
             colors: {
                 background: "#FEFFFC",
                 text: "37342F",
+                textLight: "#656565",
                 ivory: {
                     darker: "#D1E7C5",
                     default: "#F1F7EA",
+                    lighter: "#F6FAF2",
                 },
                 forestgreen: {
                     darker: "#04251C",
@@ -37,6 +39,7 @@ module.exports = {
                     lighter: "#FCEDED",
                 },
             },
+            display: ["group-hover"],
 
             letterSpacing: {
                 wide: '0.010em',
@@ -48,5 +51,7 @@ module.exports = {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        require("flowbite/plugin"),
+    ],
 };
