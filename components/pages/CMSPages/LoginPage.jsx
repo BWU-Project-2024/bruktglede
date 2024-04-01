@@ -37,11 +37,11 @@ export const LoginPage = async ({ searchParams }) => {
     };
 
     return (
-        <div>
-            <Link href="/">Home</Link>
-
-            <div>
-                <form action={signIn}>
+        <main className="flex flex-col items-center min-h-full">
+            <h1 className="font-jomhuria pt-10 pb-4">Bruktglede</h1>
+            <p className="text-center">Logg inn på din profil for å opprette og redigere innhold til din butikk.</p>
+            <div className='mt-16 w-full'>
+                <form action={signIn} className='flex flex-col'>
                     <label htmlFor="email">Email</label>
                     <input
                         name="email"
@@ -64,7 +64,7 @@ export const LoginPage = async ({ searchParams }) => {
                     )}
                 </form>
             </div>
-        </div>
+        </main>
     );
 }
 

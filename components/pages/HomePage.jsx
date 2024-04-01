@@ -1,11 +1,12 @@
 import { LandingHeader } from "../LandingHeader"
+import { Button } from "../Button"
 
 export const HomePage = () => {
     return (
         <div className="flex flex-col min-h-screen">
-             <LandingHeader />
+            <LandingHeader />
             <main className="flex-1">
-               
+                <Button title="Se alle arrangementer" link="/" />
             </main>
         </div>
     )
