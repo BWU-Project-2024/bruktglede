@@ -5,3 +5,6 @@
 
 # React Flowbite
 [Link](https://flowbite-react.com/)
+
+# Tutorial + script used for Dropdown in Navbar:
+[Link](https://dev.to/themesberg/building-a-tailwind-css-dropdown-component-ban)
