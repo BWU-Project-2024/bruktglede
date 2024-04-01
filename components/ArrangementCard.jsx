@@ -2,7 +2,7 @@ import { StoreTag } from "./StoreTag";
 import Image from "next/image";
 import test from "../app/assets/img/test.jpg";
 
-export const ArrangementCard = ({ type, title, description, store }) => {
+export const ArrangementCard = ({ type, title, store, description }) => {
     return (
         <main className="relative h-auto w-3/4 md:w-4/12 rounded-xl shadow-md py-5 px-4 mb-14 md:mx-2 ml-2">
             <div className="mb-3 relative">
