@@ -25,8 +25,7 @@ export const ArrangementCard = ({ type, title, description, store }) => {
                 <p className="pb-3 text-sm md:text-base flex-grow font-semibold">
                     {type}
                 </p>
-                <StoreTag>{store}</StoreTag>{" "}
-                {/* Pass the store name as a prop */}
+                <StoreTag>{store}</StoreTag>
             </div>
             <h3 className="font-bold text-base pb-3 underline">{title}</h3>
             <p>{description}</p>
