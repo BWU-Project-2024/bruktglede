@@ -20,6 +20,7 @@ export default async function RootLayout({ children }) {
                 <Navbar session={session} />
                 {children}
                 <Footer />
+                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
             </body>
         </html>
     );
