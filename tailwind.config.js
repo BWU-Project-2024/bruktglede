@@ -21,7 +21,7 @@ module.exports = {
                 forestgreen: {
                     darker: "#04251C",
                     default: "#074634",
-                    lighter: "#0B6F53",
+                    lighter: "#2A5A4C",
                 },
                 peach: {
                     darker: "#FFCF99",
