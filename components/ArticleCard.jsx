@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link"; // Import Link from Next.js
-
+import Link from "next/link";
 import test from "../app/assets/img/test.jpg";
 import { StoreTag } from "./StoreTag";
 
@@ -18,9 +17,7 @@ export const ArticleCard = ({ type, title, description, store }) => {
                             <StoreTag>{store}</StoreTag>
                         </div>
                         <h3 className="font-bold text-base pb-3 underline">
-                            <Link href="/">
-                                <a>{title}</a>
-                            </Link>
+                            <Link href="/">{title}</Link>
                         </h3>
                         <p>{description}</p>
                     </div>
