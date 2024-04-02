@@ -3,8 +3,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BruktgledeLogo from "@/public/bruktglede-logo.svg"
-import { FiSearch } from "react-icons/fi";
 import { usePathname } from 'next/navigation'
+import { FiSearch } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 
@@ -174,8 +174,8 @@ export const Navbar = ({ session }) => {
             <div
                 className={
                     menuOpen
-                        ? "z-10 fixed right-0 top-0 w-full h-screen lg:hidden bg-forestgreen-default ease-in px-6 py-4 duration-500"
-                        : "z-10 fixed right-[100%] w-full h-screen top-0 ease-in px-6 py-4 duration-500"
+                        ? "z-20 fixed right-0 top-0 w-full h-screen lg:hidden bg-forestgreen-default ease-in px-6 py-4 duration-500"
+                        : "z-20 fixed right-[100%] w-full h-screen top-0 ease-in px-6 py-4 duration-500"
                 }
             >
                 <nav className="flex flex-col w-full items-start bg-forestgreen text-background">

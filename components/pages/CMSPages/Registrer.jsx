@@ -46,7 +46,7 @@ export const RegistrerPage = async ({ searchParams }) => {
     };
 
     return (
-        <div>
+        <main className='flex flex-col min-h-screen'>
 
             <Link
                 href="/"
@@ -107,7 +107,7 @@ export const RegistrerPage = async ({ searchParams }) => {
                     Already have an account? Sign In
                 </Link>
             </div>
-        </div>
+        </main>
     );
 }
 
