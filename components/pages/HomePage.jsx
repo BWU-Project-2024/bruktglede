@@ -18,19 +18,6 @@ export const HomePage = () => {
                 />
             </main>
 
-            <main className="flex-1">
-                <ArrangementCard
-                    type="Arrangement"
-                    store="Fretex"
-                    title="Gratis middag for studenter"
-                    icons={[PiHouseLineLight, PiMapPinLineLight, PiTimer]}
-                    description={[
-                        "Fretex Gjøvik",
-                        "Lalala vegen 30",
-                        "16.00 - 20.00",
-                    ]}
-                />
-            </main>
             <Footer />
             <main className="flex-1">
                 <Button title="Se alle arrangementer" link="/" />
