@@ -12,23 +12,23 @@ import { FiPlus } from "react-icons/fi";
 export const Navbar = ({ session }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
-  
-  
+
+
 
     const handleNav = () => {
         setMenuOpen((menuOpen) => !menuOpen);
     };
 
 
-  
-      
+
+
 
     const searchIconStyle = { fontSize: "1.3em" }
     const searchIconStyleMobileNavbar = { fontSize: "1.9em" }
     const menuIconStyle = { fontSize: "2.2em" }
     const exitIconStyle = { fontSize: "3em", transform: "rotate(45deg)", marginLeft: "-10px" }
 
-  
+
 
 
     return (
@@ -57,43 +57,43 @@ export const Navbar = ({ session }) => {
                         )}
                     </li>
                     <li className="text-text" role="menuitem">
-                    
+
                         <button id="dropdowns" data-dropdown-toggle="dropdown" className="text-black  rounded-lg px-5 py-2.5 text-center inline-flex items-center hover:font-medium" type="button">Butikker<svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-</svg>
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokWidth="2" d="m1 1 4 4 4-4" />
+                        </svg>
 
-{pathname === "/butikker" && (
-                            <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-7 rounded-[1.5px] rotate-45"></div>
-                        )}
+                            {pathname === "/butikker" && (
+                                <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-7 rounded-[1.5px] rotate-45"></div>
+                            )}
 
-</button>
-
-
+                        </button>
 
 
-<div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
-  <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
-    <li>
-      <div className="relative">
-        <Link href="/butikker" className="block px-4 py-2 hover:bg-ivory-default">
-          Alle butikker 
-         
-        </Link>
-      </div>
-    </li>
-    <li>
-      <Link href="#" className="block px-4 py-2 hover:bg-ivory-default">Fretex</Link>
-    </li>
-    <li>
-      <Link href="#" className="block px-4 py-2 hover:bg-ivory-default dark:hover:text-white">Ting og Tøy</Link>
-    </li>
-    <li>
-      <Link href="#" className="block px-4 py-2 hover:bg-ivory-default">Joikaboller</Link>
-    </li>
-  </ul>
-</div>
 
-                
+
+                        <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+                            <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
+                                <li>
+                                    <div className="relative">
+                                        <Link href="/butikker" className="block px-4 py-2 hover:bg-ivory-default">
+                                            Alle butikker
+
+                                        </Link>
+                                    </div>
+                                </li>
+                                <li>
+                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-default">Fretex</Link>
+                                </li>
+                                <li>
+                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-default dark:hover:text-white">Ting og Tøy</Link>
+                                </li>
+                                <li>
+                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-default">Joikaboller</Link>
+                                </li>
+                            </ul>
+                        </div>
+
+
                     </li>
                     <li role="menuitem">
                         <Link href="/arrangementer" className={`${pathname === "/arrangementer" ? "font-medium" : "hover:font-medium"}`}>
@@ -160,7 +160,7 @@ export const Navbar = ({ session }) => {
             {/* Nav Mobile */}
             {/* Menu bar closed */}
             <div className="lg:hidden w-full flex items-center px-6 py-6 justify-between">
-                <button   onClick={handleNav}>
+                <button onClick={handleNav}>
                     <FiMenu style={menuIconStyle} />
                 </button>
                 <div className="flex gap-6">
@@ -188,7 +188,7 @@ export const Navbar = ({ session }) => {
                 }
             >
                 <nav className="flex flex-col w-full items-start bg-forestgreen text-background">
-                    <button  onClick={handleNav}>
+                    <button onClick={handleNav}>
                         <FiPlus style={exitIconStyle} />
                     </button>
                     <ul className="mt-10 pr-4 text-xl flex flex-col gap-7">
@@ -278,7 +278,7 @@ export const Navbar = ({ session }) => {
                     </ul>
                 </nav>
             </div>
-    
+
         </div>
     );
 }

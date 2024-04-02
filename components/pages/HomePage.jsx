@@ -2,7 +2,6 @@ import { Footer } from "../Footer";
 import { LandingHeader } from "../LandingHeader";
 import { ArticleCard } from "../ArticleCard";
 import { Button } from "../Button";
-import { EventCard } from "../EventCard";
 
 export const HomePage = () => {
     return (
