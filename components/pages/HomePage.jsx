@@ -1,6 +1,3 @@
-import { Header } from "../Header";
-import { StoreTag } from "../StoreTag";
-import { CategoryTag } from "../CategoryTag";
 import { Footer } from "../Footer";
 import { LandingHeader } from "../LandingHeader";
 import { ArticleCard } from "../ArticleCard";
@@ -19,7 +16,8 @@ export const HomePage = () => {
                     description="De siste månedene har vi jobbet med å gjøre butikken fin. Dette har vært..."
                 />
             </main>
-          
+
+            <Footer />
             <main className="flex-1">
                 <Button title="Se alle arrangementer" link="/" />
             </main>
