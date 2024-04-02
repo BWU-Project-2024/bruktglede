@@ -2,8 +2,7 @@ import { Footer } from "../Footer";
 import { LandingHeader } from "../LandingHeader";
 import { EventCard } from "../EventCard";
 import { Button } from "../Button";
-import { PiHouseLineLight, PiMapPinLineLight, PiTimer } from "react-icons/pi";
-import { Button } from "../Button"
+import { Button } from "../Button";
 
 export const HomePage = () => {
     return (
@@ -17,7 +16,6 @@ export const HomePage = () => {
                     description="De siste månedene har vi jobbet med å gjøre butikken fin. Dette har vært..."
                 />
             </main>
-
 
             <Footer />
             <main className="flex-1">
