@@ -1,56 +1,57 @@
 import { StoreTag } from "./StoreTag";
 import Link from "next/link";
 import Image from "next/image";
-import test from "../app/assets/img/test.jpg";
+import { FiHome, FiMapPin, FiClock } from "react-icons/fi";
 
-export const ArrangementCard = ({ type, title, store, description, icons }) => {
+export const ArrangementCard = ({ image, date, month, type, title, store, address, time }) => {
+    const iconStyle = { fontSize: "1.1em" }
+
     return (
-        <div>
-            <main className="pb-5">
-                <div className="pb-30 shadow-md rounded-xl">
-                    <Image
-                        src={test}
-                        alt="Test Image"
-                        width={500}
-                        height={300}
-                    />
-                    <div
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white flex flex-col items-center justify-center"
-                        style={{
-                            width: "110px",
-                            height: "110px",
-                            borderRadius: "50%",
-                        }}
-                    >
-                        <span className="text-6xl/6 font-bold font-jomhuria pt-2.5">
-                            24
-                        </span>
-                        <span className="text-2xl max-h-8">JUN</span>
+        <div className="shadow-md rounded-xl w-[80%] md:w-[20%]">
+            <div className="h-auto w-100 relative flex justify-center items-center">
+                <Image
+                    src={image}
+                    alt="Arrangement cover bilde"
+                    width={500}
+                    height={200}
+                    className="rounded-tr-lg rounded-tl-lg"
+                />
+                <div className="absolute w-[110px] aspect-square rounded-full bg-white flex justify-center items-center flex-col">
+                    <span className="text-6xl/6 font-bold font-jomhuria pt-2.5">
+                        {date}
+                    </span>
+                    <span className="text-2xl max-h-8">
+                        {month}
+                    </span>
+                </div>
+            </div>
+
+            <div className="p-5">
+                <div className="flex flex-row items-center justify-center">
+                    <p className="text-sm md:text-md flex-grow font-semibold uppercase">
+                        {type}
+                    </p>
+                    <StoreTag>{store}</StoreTag>
+                </div>
+                <h4 className="text-lg font-medium py-4 underline">
+                    <Link href="/">{title}</Link>
+                </h4>
+                <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-2">
+                        <FiHome style={iconStyle} />
+                        <p>{store}</p>
                     </div>
-                    <div className="p-5">
-                        <div className="flex flex-row items-center justify-center">
-                            <p className="pb-3 text-sm md:text-base flex-grow font-semibold uppercase">
-                                {type}
-                            </p>
-                            <StoreTag>{store}</StoreTag>
-                        </div>
-                        <h3 className="font-bold text-base pb-3 underline">
-                            <Link href="/">{title}</Link>
-                        </h3>
-                        <div className="flex flex-col">
-                            {icons.map((Icon, index) => (
-                                <div
-                                    className="flex items-center gap-3"
-                                    key={index}
-                                >
-                                    <Icon />
-                                    {description[index]}
-                                </div>
-                            ))}
-                        </div>
+                    <div className="flex items-center gap-2">
+                        <FiMapPin style={iconStyle} />
+                        <p>{address}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <FiClock style={iconStyle} />
+                        <p>{time}</p>
                     </div>
                 </div>
-            </main>
+
+            </div>
         </div>
     );
 };
