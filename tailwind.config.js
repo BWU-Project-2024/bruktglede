@@ -9,6 +9,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            maxWidth: {
+                'readable': '96ch',
+              },
             colors: {
                 background: "#FEFFFC",
                 text: "37342F",
