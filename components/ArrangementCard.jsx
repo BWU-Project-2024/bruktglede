@@ -15,7 +15,8 @@ export const ArrangementCard = ({ image, date, month, type, title, store, addres
                     width={500}
                     height={200}
                     className="rounded-tr-lg rounded-tl-lg"
-                />
+                >
+                </Image>
                 <div className="absolute w-[110px] aspect-square rounded-full bg-white flex justify-center items-center flex-col">
                     <span className="text-6xl/6 font-bold font-jomhuria pt-2.5">
                         {date}
