@@ -1,15 +1,15 @@
 import { Footer } from "../Footer";
 import { LandingHeader } from "../LandingHeader";
+import { ArticleCard } from "../ArticleCard";
+import { Button } from "../Button";
 import { EventCard } from "../EventCard";
-import { Button } from "../Button";
-import { Button } from "../Button";
 
 export const HomePage = () => {
     return (
         <div className="flex flex-col min-h-screen">
             <LandingHeader />
             <main className="flex-1">
-                <EventCard
+                <ArticleCard
                     type="Artikkel"
                     store="Fretex"
                     title="Vi har pusset opp butikken!"
