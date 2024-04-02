@@ -5,6 +5,7 @@ import { Footer } from "../Footer";
 import { LandingHeader } from "../LandingHeader";
 import { ArticleCard } from "../ArticleCard";
 import { Button } from "../Button";
+import { EventCard } from "../EventCard";
 
 export const HomePage = () => {
     return (
@@ -18,7 +19,7 @@ export const HomePage = () => {
                     description="De siste månedene har vi jobbet med å gjøre butikken fin. Dette har vært..."
                 />
             </main>
-            <Footer />
+          
             <main className="flex-1">
                 <Button title="Se alle arrangementer" link="/" />
             </main>
