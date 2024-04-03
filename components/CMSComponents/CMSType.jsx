@@ -33,13 +33,11 @@ export const CMSType = () => {
     return (
         <>
             {/* CMS type desktop */}
-            <div className="">
-                <div className="flex items-center justify-center md:py-3 md:px-6 gap-4 md:border-b md:border-[#DBDBDB]">
-                    {icon}
-                    <p className="mt-2 md:mt-0 text-lg font-medium md:text-xl md:font-normal">
-                        {title}
-                    </p>
-                </div>
+            <div className="flex items-center md:py-3 md:px-6 gap-4 md:border-b md:border-[#DBDBDB]">
+                {icon}
+                <p className="mt-2 md:mt-0 text-lg font-medium md:text-xl md:font-normal">
+                    {title}
+                </p>
             </div>
         </>
 

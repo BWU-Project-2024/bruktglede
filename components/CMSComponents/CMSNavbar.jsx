@@ -2,9 +2,10 @@
 import { useState } from "react"
 import Link from "next/link";
 import { usePathname } from 'next/navigation'
+import { Button } from "../Button";
 import { FiChevronLeft, FiChevronRight, FiHome, FiEdit, FiCalendar, FiStar, FiMapPin, FiUser } from "react-icons/fi";
 
-export const CMSNavbar = () => {
+export const CMSNavbar = ({ signOut }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
 
@@ -58,6 +59,11 @@ export const CMSNavbar = () => {
                         </Link>
                     </li>
                 </ul>
+                <form action={signOut} className="mx-auto mt-auto mb-10">
+                    <button className="w-full bg-forestgreen-default text-ivory-default px-24 rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200">
+                        Logg ut
+                    </button>
+                </form>
             </nav>
 
             {/* mobile menu closed */}
@@ -119,6 +125,11 @@ export const CMSNavbar = () => {
                         </li>
                     </ul>
                 </nav>
+                <form action={signOut} className="mt-[17vh]">
+                    <button className="w-full bg-forestgreen-default text-ivory-default px-24 rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200">
+                        Logg ut
+                    </button>
+                </form>
             </div>
         </>
     )

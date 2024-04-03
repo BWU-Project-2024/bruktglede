@@ -29,7 +29,7 @@ export const LoginPage = async ({ searchParams }) => {
         });
 
         if (error) {
-            return redirect('/CMS/login?message=Feil epost eller passord');
+            return redirect('/login?message=Feil epost eller passord');
         }
 
         return redirect('/CMS/profil');

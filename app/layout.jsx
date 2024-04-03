@@ -14,6 +14,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
     const { data: { session } } = await readUserSession();
+
     return (
         <html lang="en">
             <body className={`${opensans.variable} ${jomhuria.variable}`}>
