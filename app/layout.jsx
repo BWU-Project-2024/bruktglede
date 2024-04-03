@@ -1,5 +1,6 @@
 import { Jomhuria, Open_Sans } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { readUserSession } from "@/lib/supabase/actions";
@@ -21,7 +22,7 @@ export default async function RootLayout({ children }) {
                 <Navbar session={session} />
                 {children}
                 <Footer />
-                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+                <Script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></Script>
             </body>
         </html>
     );

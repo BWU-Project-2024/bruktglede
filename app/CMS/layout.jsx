@@ -2,7 +2,6 @@ import { CMSNavbar } from "@/components/CMSComponents/CMSNavbar";
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/supabaseServer';
 import { readUserSession } from '@/lib/supabase/actions';
-import { StoreDataProvider } from "@/providers/StoreDataProvider";
 
 export default async function Layout({ children }) {
 
@@ -23,11 +22,9 @@ export default async function Layout({ children }) {
     };
 
     return (
-        <StoreDataProvider>
-            <section className="flex flex-col sm:flex-row">
-                <CMSNavbar signOut={signOut} />
-                {children}
-            </section>
-        </StoreDataProvider>
+        <section className="flex flex-col sm:flex-row">
+            <CMSNavbar signOut={signOut} />
+            {children}
+        </section>
     );
 }

@@ -1,8 +1,8 @@
 import { CMSType } from '@/components/CMSComponents/CMSType';
-import { readStoreData } from '@/lib/supabase/actions';
+import { readStoreArticlesData } from '@/lib/supabase/actions';
 
 export const ProfilCMSPage = async () => {
-    readStoreData();
+    readStoreArticlesData();
 
     return (
         <main className='flex flex-col min-h-[90vh] md:w-80 md:border-r md:border-[#DBDBDB]'>
