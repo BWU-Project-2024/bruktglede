@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: 255, 254, 252;
+    --text: 55, 52, 47;
+}
+
+html,
+body,
+:root {
+    height: 100%;
+}
+
+body {
+    color: rgb(var(--text));
+    background: rgb(var(--background));
+    font-family: var(--opensans);
+}
+
+/* standard skjermstørrelse */
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 1.875rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+
+/* mobil skjermstørrelse */
+@media only screen and (max-width: 640px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    main {
+        padding: 0 1.5rem;
+    }
+}
+
+/* xl stor skjermstørrelse */
+@media only screen and (min-width: 1024px) {
+    h1 {
+        font-size: 4.5rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 1.875rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
