@@ -3,8 +3,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BruktgledeLogo from "@/public/bruktglede-logo.svg"
-import { FiSearch } from "react-icons/fi";
 import { usePathname } from 'next/navigation'
+import { FiSearch } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 
@@ -13,23 +13,14 @@ export const Navbar = ({ session }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
 
-
-
     const handleNav = () => {
         setMenuOpen((menuOpen) => !menuOpen);
     };
-
-
-
-
 
     const searchIconStyle = { fontSize: "1.3em" }
     const searchIconStyleMobileNavbar = { fontSize: "1.9em" }
     const menuIconStyle = { fontSize: "2.2em" }
     const exitIconStyle = { fontSize: "3em", transform: "rotate(45deg)", marginLeft: "-10px" }
-
-
-
 
     return (
         <div className="w-full bg-ivory-default">
@@ -59,7 +50,7 @@ export const Navbar = ({ session }) => {
                     <li className="text-text" role="menuitem">
 
                         <button id="dropdowns" data-dropdown-toggle="dropdown" className="text-black  rounded-lg px-5 py-2.5 text-center inline-flex items-center hover:font-medium" type="button">Butikker<svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokWidth="2" d="m1 1 4 4 4-4" />
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
                         </svg>
 
                             {pathname === "/butikker" && (
@@ -183,8 +174,8 @@ export const Navbar = ({ session }) => {
             <div
                 className={
                     menuOpen
-                        ? "z-10 fixed right-0 top-0 w-full h-screen lg:hidden bg-forestgreen-default ease-in px-6 py-4 duration-500"
-                        : "z-10 fixed right-[100%] w-full h-screen top-0 ease-in px-6 py-4 duration-500"
+                        ? "z-20 fixed right-0 top-0 w-full h-screen lg:hidden bg-forestgreen-default ease-in px-6 py-4 duration-500"
+                        : "z-20 fixed right-[100%] w-full h-screen top-0 ease-in px-6 py-4 duration-500"
                 }
             >
                 <nav className="flex flex-col w-full items-start bg-forestgreen text-background">

@@ -1,6 +1,6 @@
 export const ArrangementerCMSPage = () => {
     return (
-        <main>
+        <main className='flex flex-col min-h-screen'>
             <h1>
                 Arrangementer CMS page
             </h1>
