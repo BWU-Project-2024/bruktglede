@@ -1,6 +1,7 @@
 import { Footer } from "../Footer";
 import { LandingHeader } from "../LandingHeader";
 import { Button } from "../Button";
+import { EventCardLong } from "../EventCardLong";
 
 export const HomePage = () => {
     return (

@@ -13,14 +13,14 @@ export const EventCardLong = ({
     const iconStyle = { fontSize: "1.1em" };
 
     return (
-        <div className="flex flex-col rounded-xl shadow py-3 px-2 mb-14 w-1/2">
+        <div className="flex flex-col rounded-xl shadow py-3 px-2 w-2/5">
             {" "}
-            <div className="flex items-center gap-14">
+            <div className="flex items-center justify-between">
                 <div
                     className="bg-ivory-default flex flex-col items-center justify-center"
                     style={{
                         width: "110px",
-                        height: "110px",
+                        height: "100px",
                     }}
                 >
                     <span className="font-jomhuria text-6xl/3 mb-2 pt-4">
@@ -28,7 +28,7 @@ export const EventCardLong = ({
                     </span>
                     <span className="text-2xl">{month}</span>
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col flex-grow ml-5">
                     <h3 className="font-bold text-base pb-3 underline">
                         <Link href="/">{title}</Link>
                     </h3>
@@ -43,7 +43,7 @@ export const EventCardLong = ({
                     </div>
                 </div>
                 <div
-                    className=" transform bg-peach-default flex flex-col items-center justify-center"
+                    className=" transform bg-peach-default flex flex-col items-center justify-center ml-auto"
                     style={{
                         width: "110px",
                         height: "110px",
