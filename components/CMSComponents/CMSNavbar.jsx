@@ -21,7 +21,7 @@ export const CMSNavbar = ({ signOut }) => {
             {/* navbar desktop */}
             <nav className="hidden sm:flex flex-col items-start min-h-vh w-72 border-r border-[#DBDBDB]">
                 <p className="text-xl py-3 px-6 border-b border-[#DBDBDB] w-full">Type</p>
-                <ul className="mt-8 px-6 text-text flex flex-col gap-8 w-full">
+                <ul className="mt-3 px-6 text-text flex flex-col gap-6 w-full">
                     <li role="menuitem">
                         <Link onClick={handleNav} href="/CMS/butikkinfo" className="flex items-center gap-6">
                             <FiHome style={NavIcons} />

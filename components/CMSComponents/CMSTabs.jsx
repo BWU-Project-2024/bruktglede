@@ -13,10 +13,13 @@ export const CMSTabs = ({ path, type, data }) => {
     };
 
     return (
-        <ul className="flex flex-col w-full gap-2">
-            <Link href={`/CMS/${path}/ny${type}`} className="">
+        <ul className="flex flex-col w-full gap-2 sm:pl-6 sm:pt-1">
+            {/* static link */}
+            <Link href={`/CMS/${path}/${type}`} className="">
                 <li className={selectedTab === 'new' ? 'font-bold' : ''}>{type}</li>
             </Link>
+
+            {/* dynamic links */}
             {data.map(post => (
                 <Link key={post.id} href={`/CMS/${path}/${selectedTab}`}>
                     <li className={selectedTab === post.title ? 'font-bold' : ''}

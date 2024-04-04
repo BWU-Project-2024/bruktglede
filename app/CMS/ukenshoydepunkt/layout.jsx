@@ -16,7 +16,7 @@ export default async function Layout({ children }) {
 
     return (
         <section className="flex">
-            <div className="flex min-h-[90vh] flex-col md:w-80 md:border-r md:border-[#DBDBDB]">
+            <div className="flex min-h-[90vh] w-full ml-10 flex-col sm:w-80 sm:border-r sm:border-[#DBDBDB]">
                 <CMSType />
                 <CMSTabs path="arrangementer" type="Nytt arrangement" data={data} />
             </div>

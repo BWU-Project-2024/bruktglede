@@ -15,14 +15,16 @@ export default async function Layout({ children }) {
     const data = await readStoreArticlesData("Arrangement");
 
     return (
-        <section className="flex">
-            <div className="flex min-h-[90vh] flex-col md:w-80 md:border-r md:border-[#DBDBDB]">
-                <CMSType />
-                <CMSTabs path="arrangementer" type="Nytt arrangement" data={data} />
-            </div>
-            <div>
-                {children}
-            </div>
-        </section>
+        <>
+            {/* <section className="hidden sm:flex">
+                <div className="flex min-h-[90vh] flex-col pl-6 sm:pl-0 w-full sm:w-80 sm:border-r sm:border-[#DBDBDB]">
+                    <CMSType />
+                    <CMSTabs path="arrangementer" type="Nytt arrangement" data={data} />
+                </div>
+                <div>
+                    {children}
+                </div>
+            </section> */}
+        </>
     );
 }
