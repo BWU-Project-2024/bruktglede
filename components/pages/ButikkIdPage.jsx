@@ -10,7 +10,6 @@ export const ButikkIdPage = () => {
                 mail="hello@fretex.no"
                 categories={["Klær", "Møbler", "Sko"]}
             />
-
             <main className="flex-1"></main>
         </div>
     );
