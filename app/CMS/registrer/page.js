@@ -1,4 +1,4 @@
-import RegistrerPage from "@/components/pages/CMSPages/Registrer";
+import RegistrerPage from "@/components/pages/CMSIdPages/Registrer";
 
 export default function RegistrerRoute() {
     return (

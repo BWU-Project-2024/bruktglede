@@ -9,21 +9,21 @@ export const CMSType = () => {
 
     const getTitleAndIcon = (pathname) => {
         // Determine the title based on the pathname
-        switch (pathname) {
-            case "/CMS/butikkinfo":
+        switch (true) {
+            case pathname.startsWith("/CMS/butikkinfo"):
                 return { title: "Butikk informasjon", icon: <FiHome style={NavIcons} /> };
-            case "/CMS/artikler":
+            case pathname.startsWith("/CMS/artikler"):
                 return { title: "Artikler", icon: <FiEdit style={NavIcons} /> };
-            case "/CMS/arrangementer":
+            case pathname.startsWith("/CMS/arrangementer"):
                 return { title: "Arrrangementer", icon: <FiCalendar style={NavIcons} /> };
-            case "/CMS/ukenshoydepunkt":
+            case pathname.startsWith("/CMS/ukenshoydepunkt"):
                 return { title: "Ukens høydepunkter", icon: <FiStar style={NavIcons} /> };
-            case "/CMS/innleveringsstasjoner":
+            case pathname.startsWith("/CMS/innleveringsstasjoner"):
                 return { title: "Innleveringsstasjoner", icon: <FiMapPin style={NavIcons} /> };
-            case "/CMS/profil":
+            case pathname.startsWith("/CMS/profil"):
                 return { title: "Profil", icon: <FiUser style={NavIcons} /> };
             default:
-                return "Title";
+                return { title: "Title", icon: null };
         }
     };
 
