@@ -1,6 +1,17 @@
 import Link from "next/link";
+import { FiMapPin, FiClock } from "react-icons/fi";
 
-export const EventCardLong = ({ title, description, icons }) => {
+export const EventCardLong = ({
+    date,
+    month,
+    title,
+    address,
+    time,
+    store,
+    city,
+}) => {
+    const iconStyle = { fontSize: "1.1em" };
+
     return (
         <div className="flex flex-col rounded-xl shadow py-3 px-2 mb-14 w-1/2">
             {" "}
@@ -13,20 +24,23 @@ export const EventCardLong = ({ title, description, icons }) => {
                     }}
                 >
                     <span className="font-jomhuria text-6xl/3 mb-2 pt-4">
-                        24
+                        {date}
                     </span>
-                    <span className="text-2xl">JUN</span>
+                    <span className="text-2xl">{month}</span>
                 </div>
                 <div className="flex flex-col">
                     <h3 className="font-bold text-base pb-3 underline">
                         <Link href="/">{title}</Link>
                     </h3>
-                    {icons.map((Icon, index) => (
-                        <div className="flex items-center gap-3" key={index}>
-                            <Icon />
-                            {description[index]}
-                        </div>
-                    ))}
+
+                    <div className="flex items-center gap-2">
+                        <FiMapPin style={iconStyle} />
+                        <p>{address}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <FiClock style={iconStyle} />
+                        <p>{time}</p>
+                    </div>
                 </div>
                 <div
                     className=" transform bg-peach-default flex flex-col items-center justify-center"
@@ -37,10 +51,10 @@ export const EventCardLong = ({ title, description, icons }) => {
                     }}
                 >
                     <span className="text-4xl/3 font-jomhuria pt-2.5">
-                        Fretex
+                        {store}
                     </span>
                     <span className="text-4xl max-h-8 font-jomhuria">
-                        Gjøvik
+                        {city}
                     </span>
                 </div>
             </div>
