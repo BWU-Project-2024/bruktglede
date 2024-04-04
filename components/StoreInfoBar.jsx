@@ -3,7 +3,6 @@ import { CategoryTag } from "./CategoryTag";
 
 export const StoreInfoBar = ({ time, address, phone, mail, categories }) => {
     const iconStyle = { fontSize: "1.1em" };
-
     return (
         <div className="w-full py-4 bg-forestgreen-default">
             <div className="p-5">
