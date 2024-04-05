@@ -1,6 +1,25 @@
-export default function ButikkInfoCMSRoute() {
+import { CMSType } from "@/components/CMSComponents/CMSType";
+import { CMSTabs } from "@/components/CMSComponents/CMSTabs";
+import { readStoreArticlesData } from "@/lib/supabase/actions";
+import { CMSNavbar } from "@/components/CMSComponents/CMSNavbar";
+import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/supabaseServer';
+
+export default async function ArtiklerCMSRoute() {
+    const data = await readStoreArticlesData("Artikkel");
+
+    const signOut = async () => {
+        "use server";
+        const supabase = createClient();
+
+        await supabase.auth.signOut();
+        return redirect('/');
+    };
     return (
-        <>
-        </>
+        <div className="sm:hidden flex flex-col min-h-[90vh] w-full px-6">
+            <CMSNavbar signOut={signOut} />
+            <CMSType />
+            <CMSTabs path="artikler" type="Ny artikkel" data={data} />
+        </div>
     );
 }

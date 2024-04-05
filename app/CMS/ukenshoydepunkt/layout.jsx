@@ -12,17 +12,24 @@ export default async function Layout({ children }) {
         return redirect('/login');
     }
 
-    const data = await readStoreArticlesData("Arrangement");
+    const data = await readStoreArticlesData("Artikkel");
 
     return (
-        <section className="flex">
-            <div className="flex min-h-[90vh] w-full ml-10 flex-col sm:w-80 sm:border-r sm:border-[#DBDBDB]">
-                <CMSType />
-                <CMSTabs path="arrangementer" type="Nytt arrangement" data={data} />
-            </div>
-            <div>
+        <>
+            {/* desktop layout */}
+            <section className="hidden sm:flex">
+                <div className="flex min-h-[90vh] flex-col pl-6 sm:pl-0 w-full sm:w-80 sm:border-r sm:border-[#DBDBDB]">
+                    <CMSType />
+                    <CMSTabs path="artikler" type="Ny artikkel" data={data} />
+                </div>
+                <div className='hidden md:flex'>
+                    {children}
+                </div>
+            </section>
+            {/* mobil layout */}
+            <section className="flex sm:hidden w-full">
                 {children}
-            </div>
-        </section>
+            </section>
+        </>
     );
 }

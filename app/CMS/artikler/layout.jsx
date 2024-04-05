@@ -27,10 +27,8 @@ export default async function Layout({ children }) {
                 </div>
             </section>
             {/* mobil layout */}
-            <section className="flex sm:hidden">
-                <div className=''>
-                    {children}
-                </div>
+            <section className="flex sm:hidden w-full">
+                {children}
             </section>
         </>
     );

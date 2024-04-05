@@ -22,9 +22,16 @@ export default async function Layout({ children }) {
     };
 
     return (
-        <section className="flex flex-col sm:flex-row">
-            <CMSNavbar signOut={signOut} />
-            {children}
-        </section>
+        <>
+            {/* desktop layout */}
+            <section className="hidden sm:flex sm:flex-row">
+                <CMSNavbar signOut={signOut} />
+                {children}
+            </section>
+            {/* mobile desktop */}
+            <section className="sm:hidden flex flex-col w-full">
+                {children}
+            </section>
+        </>
     );
 }

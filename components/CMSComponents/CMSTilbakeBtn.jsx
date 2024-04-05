@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation"
 import { FiChevronLeft } from "react-icons/fi";
 
-export const ArtiklerIdCMSPage = async () => {
+export const CMSTilbakeBtn = async () => {
     const router = useRouter()
 
     return (

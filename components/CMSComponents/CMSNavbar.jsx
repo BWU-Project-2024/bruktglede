@@ -2,7 +2,6 @@
 import { useState } from "react"
 import Link from "next/link";
 import { usePathname } from 'next/navigation'
-import { Button } from "../Button";
 import { FiChevronLeft, FiChevronRight, FiHome, FiEdit, FiCalendar, FiStar, FiMapPin, FiUser } from "react-icons/fi";
 
 export const CMSNavbar = ({ signOut }) => {
@@ -67,7 +66,7 @@ export const CMSNavbar = ({ signOut }) => {
             </nav>
 
             {/* mobile menu closed */}
-            <div className="sm:hidden w-full flex items-center px-6 py-6 justify-between">
+            <div className="sm:hidden w-full flex items-center py-6 justify-between">
                 <button onClick={handleNav}
                     className="w-full bg-forestgreen-default text-ivory-default rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200 flex items-center justify-center gap-3">
                     <FiChevronLeft style={LeftRightArowStyles} /> Åpne oversiktsmeny
