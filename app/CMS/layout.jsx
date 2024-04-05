@@ -7,8 +7,6 @@ export default async function Layout({ children }) {
 
     const { data: { user } } = await readUserSession();
 
-    // console.log(user);
-
     if (!user) {
         return redirect('/login');
     }

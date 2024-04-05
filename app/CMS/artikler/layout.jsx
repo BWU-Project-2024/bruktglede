@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation';
 import { readUserSession } from '@/lib/supabase/actions';
 import { CMSType } from "@/components/CMSComponents/CMSType";
 import { CMSTabs } from "@/components/CMSComponents/CMSTabs";
-import { readStoreArticlesData } from "@/lib/supabase/actions";
+import { readStorePostsData } from "@/lib/supabase/actions";
 
 export default async function Layout({ children }) {
 
@@ -12,7 +12,7 @@ export default async function Layout({ children }) {
         return redirect('/login');
     }
 
-    const data = await readStoreArticlesData("Artikkel");
+    const data = await readStorePostsData("Artikkel");
 
     return (
         <>

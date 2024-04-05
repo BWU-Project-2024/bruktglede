@@ -34,7 +34,7 @@ export const CMSNavbar = ({ signOut }) => {
                         <li key={index} role="menuitem">
                             <Link onClick={handleNav} href={item.href} className="flex items-center gap-6">
                                 {item.icon}
-                                <p className={`${pathname === item.href ? "font-medium text-lg" : "text-lg"}`}>{item.text}</p>
+                                <p className={`${pathname.startsWith(item.href) ? "font-medium text-lg underline underline-offset-8 decoration-1 decoration-[#DBDBDB]" : "text-lg"}`}>{item.text}</p>
                             </Link>
                         </li>
                     ))}

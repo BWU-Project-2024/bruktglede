@@ -1,12 +1,12 @@
 import { CMSType } from "@/components/CMSComponents/CMSType";
 import { CMSTabs } from "@/components/CMSComponents/CMSTabs";
-import { readStoreArticlesData } from "@/lib/supabase/actions";
+import { readStorePostsData } from "@/lib/supabase/actions";
 import { CMSNavbar } from "@/components/CMSComponents/CMSNavbar";
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/supabaseServer';
 
 export default async function ArtiklerCMSRoute() {
-    const data = await readStoreArticlesData("Artikkel");
+    const data = await readStorePostsData("Artikkel");
 
     const signOut = async () => {
         "use server";

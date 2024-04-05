@@ -14,7 +14,7 @@ export const CMSType = () => {
             case pathname.startsWith("/CMS/artikler"):
                 return { title: "Artikler", icon: <FiEdit style={NavIcons} /> };
             case pathname.startsWith("/CMS/arrangementer"):
-                return { title: "Arrrangementer", icon: <FiCalendar style={NavIcons} /> };
+                return { title: "Arrangementer", icon: <FiCalendar style={NavIcons} /> };
             case pathname.startsWith("/CMS/ukenshoydepunkt"):
                 return { title: "Ukens høydepunkter", icon: <FiStar style={NavIcons} /> };
             case pathname.startsWith("/CMS/innleveringsstasjoner"):
@@ -33,7 +33,7 @@ export const CMSType = () => {
         <>
             <div className="mb-6 sm:mb-0 flex items-center sm:py-3 px-6 gap-4 sm:border-b sm:border-[#DBDBDB]">
                 {icon}
-                <p className="mt-2 sm:mt-0 text-lg font-medium sm:text-xl sm:font-normal">
+                <p className="text-lg font-medium sm:text-xl sm:font-normal">
                     {title}
                 </p>
             </div>

@@ -2,9 +2,11 @@
 import { FiEdit3 } from "react-icons/fi";
 import { useState } from "react";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
+1
 export const CMSTabs = ({ path, type, data }) => {
     const [selectedTab, setSelectedTab] = useState('');
+    const pathname = useRouter();
 
     const handleTabClick = (tab) => {
         setSelectedTab(tab);
