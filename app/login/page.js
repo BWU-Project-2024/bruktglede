@@ -1,4 +1,4 @@
-import LoginPage from "@/components/pages/CMSIdPages/LoginPage";
+import LoginPage from "@/components/pages/CMSPages/LoginPage";
 
 export default function LoginRoute() {
     return (

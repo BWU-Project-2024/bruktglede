@@ -18,6 +18,7 @@ export default async function RootLayout({ children }) {
 
     return (
         <html lang="en">
+            {/* Fjerne navbar fra mobil når er på [id] */}
             <body className={`${opensans.variable} ${jomhuria.variable}`}>
                 <Navbar session={session} />
                 {children}

@@ -1,4 +1,4 @@
-import { StasjonerIdCMSPage } from "@/components/pages/CMSIdPages/StasjonerIdCMSPage";
+import { StasjonerIdCMSPage } from "@/components/pages/CMSPages/StasjonerIdCMSPage";
 export default function StasjonerIdCMSRoute() {
     return (
         <>

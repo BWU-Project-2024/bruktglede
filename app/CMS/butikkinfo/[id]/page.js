@@ -1,4 +1,4 @@
-import { ButikkInfoIdCMSPage } from "@/components/pages/CMSIdPages/ButikkInfoIdCMSPage";
+import { ButikkInfoIdCMSPage } from "@/components/pages/CMSPages/ButikkInfoIdCMSPage";
 
 export default function ButikkInfoIdCMSRoute() {
     return (
