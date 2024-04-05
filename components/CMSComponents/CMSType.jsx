@@ -32,7 +32,7 @@ export const CMSType = () => {
 
     return (
         <>
-            <div className="mb-6 sm:mb-2 flex items-center sm:py-3 sm:px-6 gap-4 sm:border-b sm:border-[#DBDBDB]">
+            <div className="mb-6 sm:mb-0 flex items-center sm:py-3 px-6 gap-4 sm:border-b sm:border-[#DBDBDB]">
                 {icon}
                 <p className="mt-2 sm:mt-0 text-lg font-medium sm:text-xl sm:font-normal">
                     {title}

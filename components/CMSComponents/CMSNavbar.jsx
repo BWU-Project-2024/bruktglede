@@ -66,7 +66,7 @@ export const CMSNavbar = ({ signOut }) => {
             </nav>
 
             {/* mobile menu closed */}
-            <div className="sm:hidden w-full flex items-center py-6 justify-between">
+            <div className="sm:hidden w-full flex items-center py-6 justify-between px-6">
                 <button onClick={handleNav}
                     className="w-full bg-forestgreen-default text-ivory-default rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200 flex items-center justify-center gap-3">
                     <FiChevronLeft style={LeftRightArowStyles} /> Åpne oversiktsmeny
@@ -76,7 +76,7 @@ export const CMSNavbar = ({ signOut }) => {
             <div
                 className={
                     menuOpen
-                        ? "z-10 fixed right-0 top-20 mt-1 w-full h-screen lg:hidden bg-background ease-in px-6 py-4 duration-300"
+                        ? "z-10 fixed right-0 top-20 mt-1 w-full h-screen sm:hidden bg-background ease-in px-6 py-4 duration-300"
                         : "z-10 fixed right-[100%] w-full h-screen top-20 mt-1 ease-in px-6 py-4 duration-300"
                 }
             >

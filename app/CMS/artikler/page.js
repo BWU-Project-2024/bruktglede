@@ -16,7 +16,7 @@ export default async function ArtiklerCMSRoute() {
         return redirect('/');
     };
     return (
-        <div className="sm:hidden flex flex-col min-h-[90vh] w-full px-6">
+        <div className="sm:hidden flex flex-col min-h-[90vh] w-full">
             <CMSNavbar signOut={signOut} />
             <CMSType />
             <CMSTabs path="artikler" type="Ny artikkel" data={data} />

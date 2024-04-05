@@ -6,7 +6,7 @@ export const CMSTilbakeBtn = async () => {
     const router = useRouter()
 
     return (
-        <main className="flex flex-col min-h-[90vh] my-6 gap-8">
+        <main className="flex flex-col min-h-[90vh] my-8 gap-8">
             <button
                 type="button"
                 onClick={() => router.back()}
