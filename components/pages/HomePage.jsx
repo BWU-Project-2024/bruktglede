@@ -1,7 +1,7 @@
 import { LandingHeader } from "../LandingHeader";
 import { Button } from "../Button";
 
-export const HomePage = () => {
+export const HomePage = async () => {
     return (
         <div className="flex flex-col min-h-screen">
             <LandingHeader />

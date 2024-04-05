@@ -16,7 +16,7 @@ The user is store in the session. Inside your page function, insert this to get 
 
 And lastly, if there is no session (meaning the user is not logged in), insert this right after:
 
-`if (!session) { return redirect('/CMS/login'); }`
+`if (!session) { return redirect('/login'); }`
 
 The user will then be redirected to the login page. Remember to import `import { redirect } from 'next/navigation';`. **It automatically imports as 'next/router' but that is old. Use 'next/navigation'**. 
 
