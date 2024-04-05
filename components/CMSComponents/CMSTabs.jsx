@@ -1,10 +1,8 @@
 "use client"
-
 import { FiEdit3 } from "react-icons/fi";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
-// gjøre om til en slider på mobil slik som i navbaren?
 export const CMSTabs = ({ path, type, data }) => {
     const [selectedTab, setSelectedTab] = useState('');
 

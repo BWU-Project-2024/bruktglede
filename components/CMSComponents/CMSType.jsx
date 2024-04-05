@@ -1,5 +1,4 @@
 "use client"
-
 import { FiHome, FiEdit, FiCalendar, FiStar, FiMapPin, FiUser } from "react-icons/fi";
 import { usePathname } from 'next/navigation'
 
