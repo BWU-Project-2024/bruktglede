@@ -27,7 +27,7 @@ export const CMSTabs = ({ path, type, data }) => {
             {data && data.length > 0 && data.map(post => (
                 <Link
                     key={post.id}
-                    href={`/CMS/${path}/${post.title}`}
+                    href={`/CMS/${path}/${post.id}`}
                     className="border-b border-[#DBDBDB] px-6 pb-2">
                     <li onClick={() => handleTabClick(post.title)}
                         className={selectedTab === post.title ? 'font-medium' : ''}
