@@ -1,11 +1,13 @@
 import { CMSTilbakeBtn } from "@/components/CMSComponents/CMSTilbakeBtn";
-import { readStorePostsDataId } from "@/lib/supabase/actions";
-
+import { readStorePostsDataId, readAllTags } from "@/lib/supabase/actions";
 
 export const ArtiklerIdCMSPage = async ({ params }) => {
 
     const postIdData = await readStorePostsDataId(params);
     const data = postIdData[0]
+
+    const tagOptions = await readAllTags();
+    console.log(tagOptions);
 
     // Sign up
     const newArticle = async (formData) => {
@@ -75,12 +77,17 @@ export const ArtiklerIdCMSPage = async ({ params }) => {
                 <label className="text-md mb-2" htmlFor="tagger">
                     Tagger
                 </label>
-                <select name="tagger">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
-                </select>
+                {tagOptions.map((tag) => (
+                    <div key={tag.id} className="flex">
+                        <input
+                            type="checkbox"
+                            id={tag.id}
+                            name="tags"
+                            value={tag.id}
+                        />
+                        <label htmlFor={tag.id}>{tag.name}</label>
+                    </div>
+                ))}
                 <label className="text-md mb-2" htmlFor="bilde">
                     Header bilde
                 </label>
