@@ -6,12 +6,6 @@ import { readStorePostsData } from "@/lib/supabase/actions";
 
 export default async function Layout({ children }) {
 
-    const { data: { user } } = await readUserSession();
-
-    if (!user) {
-        return redirect('/login');
-    }
-
     const data = await readStorePostsData("Arrangement");
 
     return (

@@ -4,12 +4,6 @@ import { CMSType } from "@/components/CMSComponents/CMSType";
 
 export default async function Layout({ children }) {
 
-    const { data: { user } } = await readUserSession();
-
-    if (!user) {
-        return redirect('/login');
-    }
-
     return (
         <>
             {/* desktop layout */}

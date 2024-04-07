@@ -24,7 +24,7 @@ export const CMSTabs = ({ path, type, data }) => {
             </Link>
 
             {/* dynamic links */}
-            {data.map(post => (
+            {data && data.length > 0 && data.map(post => (
                 <Link
                     key={post.id}
                     href={`/CMS/${path}/${post.title}`}

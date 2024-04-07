@@ -1,5 +1,5 @@
 import { Jomhuria, Open_Sans } from "next/font/google";
-import "./globals.css";
+import "./globals.css"
 import Script from "next/script";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -15,6 +15,8 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
     const { data: { session } } = await readUserSession();
+
+    console.log("layout session", session);
 
     return (
         <html lang="en">

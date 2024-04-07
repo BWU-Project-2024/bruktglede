@@ -5,12 +5,6 @@ import { CMSTabs } from "@/components/CMSComponents/CMSTabs";
 
 export default async function Layout({ children }) {
 
-    const { data: { user } } = await readUserSession();
-
-    if (!user) {
-        return redirect('/login');
-    }
-
     const data = await readStoreStationsData();
 
     return (
