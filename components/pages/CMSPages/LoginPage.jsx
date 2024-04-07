@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/supabaseServer';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 
+
 export const LoginPage = async ({ searchParams }) => {
     const { data: { session } } = await readUserSession();
 
