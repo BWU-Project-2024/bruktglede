@@ -1,152 +1,91 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import { CategoryTag } from "./CategoryTag";
-import { createClient } from "@/lib/supabase/supabaseServer";
-import { StoreTag } from "./StoreTag";
+import {
+    fetchStoreInfo,
+    fetchStationsData,
+    fetchTagsData,
+} from "@/lib/supabase/actions";
 
-export const StationInfo = async () => {
-    const supabase = createClient();
+export const StationInfo = () => {
+    const [storesWithStations, setStoresWithStations] = useState([]);
 
-    try {
-        // Fetch data from the 'Store' table
-        const { data: storeinfo } = await supabase.from("Store").select("*");
-
-        // Check for errors in fetching store data
-        if (!storeinfo) {
-            throw new Error("Error fetching store data: ");
-        }
-
-        // Log fetched store data
-        console.log("Store Data:", storeinfo);
-
-        // Fetch stations for each store
-        const stationsData = await Promise.all(
-            storeinfo.map(async (store) => {
-                // Fetch stations for the current store
-                const { data: stationData, error: stationError } =
-                    await supabase
-                        .from("Station")
-                        .select("*")
-                        .eq("store_id", store.id);
-
-                // Check for errors in fetching station data
-                if (stationError) {
-                    throw new Error(
-                        "Error fetching station data for store " +
-                            store.id +
-                            ": " +
-                            stationError.message
-                    );
-                }
-
-                // Log fetched station data for the current store
-                console.log(
-                    "Station Data for store",
-                    store.id,
-                    ":",
-                    stationData
-                );
-
-                // Fetch tags for each station
-                const tagsData = await Promise.all(
-                    stationData.map(async (station) => {
-                        // Fetch tag IDs for the current station from Station_Tags table
-                        const { data: stationTagData, error: stationTagError } =
-                            await supabase
-                                .from("Station_Tags")
-                                .select("tag_id")
-                                .eq("station_id", station.id);
-
-                        // Check for errors in fetching tag IDs
-                        if (stationTagError) {
-                            throw new Error(
-                                "Error fetching tag IDs for station " +
-                                    station.id +
-                                    ": " +
-                                    stationTagError.message
-                            );
-                        }
-
-                        // Get tag IDs from stationTagData
-                        const tagIds = stationTagData.map(
-                            ({ tag_id }) => tag_id
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const storeinfo = await fetchStoreInfo();
+                const stationsData = await Promise.all(
+                    storeinfo.map(async (store) => {
+                        const stationData = await fetchStationsData(store.id);
+                        const tagsData = await Promise.all(
+                            stationData.map(
+                                async (station) =>
+                                    await fetchTagsData(station.id)
+                            )
                         );
-
-                        // Fetch tag names for the extracted tag IDs from Tags table
-                        const { data: tagNamesData, error: tagNamesError } =
-                            await supabase
-                                .from("Tags")
-                                .select("name")
-                                .in("id", tagIds);
-
-                        // Check for errors in fetching tag names
-                        if (tagNamesError) {
-                            throw new Error(
-                                "Error fetching tag names for station " +
-                                    station.id +
-                                    ": " +
-                                    tagNamesError.message
-                            );
-                        }
-
-                        // Return the fetched tag names
-                        return tagNamesData.map(({ name }) => name);
+                        const stationsWithTag = stationData.map(
+                            (station, index) => ({
+                                ...station,
+                                tags: tagsData[index] || [], // Using tag names or an empty array if no tags found
+                            })
+                        );
+                        return stationsWithTag;
                     })
                 );
 
-                // Merge tag data into station objects
-                const stationsWithTag = stationData.map((station, index) => ({
-                    ...station,
-                    tags: tagsData[index] || [], // Using tag names or an empty array if no tags found
-                }));
+                const storesWithStations = storeinfo
+                    .map((store, index) => ({
+                        ...store,
+                        stations: stationsData[index],
+                    }))
+                    .filter((store) => store.stations.length > 0);
 
-                // Return the stations with tags
-                return stationsWithTag;
-            })
-        );
+                setStoresWithStations(storesWithStations);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fetchData();
+    }, []);
 
 
-        //Filters out stores without stations
-        const storesWithStations = storeinfo.filter((_, index) => stationsData[index].length > 0);
-       
-
-        return (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10">
-                {storesWithStations.map((store, index) => (
-                    <div key={store.id}>
-                        <h2 className="text-xl lg:text-2xl font-semibold font-opensans mb-1 mt-10">
-                            {store.name}
-                        </h2>
-                        <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-                        <div>
-                            {stationsData[index].map((station) => (
-                                <div key={station.id}>
-                                    <h3 className="font-opensans text-base md:text-lg font-semibold text-color-jet mb-3 -mt-1">
-                                        {station.title}
-                                    </h3>
-                                    <p className="text-base md:text-lg underline text-color-jet mb-2  font-opensans lg:text-lg">
-                                        {station.address}
-                                    </p>
-                                    <div>
-                                        <div className="mt-3 mb-10">
-                                            <h4 className="uppercase font-opensans text-sm font-medium md:mb-2">
-                                                Dette tas imot
-                                            </h4>
-                                            {station.tags.map((tagName) => (
-                                                <CategoryTag
-                                                    key={tagName}
-                                                    title={tagName}
-                                                />
-                                            ))}
-                                        </div>
+    
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10">
+            {storesWithStations.map((store) => (
+                <div key={store.id}>
+                    <h2 className="text-xl lg:text-2xl font-semibold font-opensans mb-1 mt-10">
+                        {store.name}
+                    </h2>
+                    <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                    <div>
+                        {store.stations.map((station) => (
+                            <div key={station.id}>
+                                <h3 className="font-opensans text-base md:text-lg font-semibold text-color-jet mb-3 -mt-1">
+                                    {station.title}
+                                </h3>
+                                <p className="text-base md:text-lg underline text-color-jet mb-2  font-opensans lg:text-lg">
+                                    {station.address}
+                                </p>
+                                <div>
+                                    <div className="mt-3 mb-10">
+                                        <h4 className="uppercase font-opensans text-sm font-medium md:mb-2">
+                                            Dette tas imot
+                                        </h4>
+                                        {station.tags.map((tagName) => (
+                                            <CategoryTag
+                                                key={tagName}
+                                                title={tagName}
+                                            />
+                                        ))}
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-        );
-    } catch (error) {
-        console.error(error);
-        return null;
-    }
+                </div>
+            ))}
+        </div>
+    );
 };
