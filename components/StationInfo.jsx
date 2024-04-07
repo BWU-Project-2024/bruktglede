@@ -3,7 +3,6 @@ import { createClient } from "@/lib/supabase/supabaseServer";
 import { StoreTag } from "./StoreTag";
 
 export const StationInfo = async () => {
-    // Create Supabase client instance
     const supabase = createClient();
 
     try {
@@ -66,7 +65,7 @@ export const StationInfo = async () => {
                             );
                         }
 
-                        // Extract tag IDs from stationTagData
+                        // Get tag IDs from stationTagData
                         const tagIds = stationTagData.map(
                             ({ tag_id }) => tag_id
                         );
@@ -104,34 +103,44 @@ export const StationInfo = async () => {
             })
         );
 
-        // Render component
+
+        //Filters out stores without stations
+        const storesWithStations = storeinfo.filter((_, index) => stationsData[index].length > 0);
+       
+
         return (
-            <div>
-                {storeinfo.map((store, index) => (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10">
+                {storesWithStations.map((store, index) => (
                     <div key={store.id}>
-                        <h2 className=" text-xl lg:text-2xl font-semibold font-opensans mb-1 mt-10">{store.name}</h2> <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-
-                      
-
-                        {stationsData[index].map((station) => (
-                            <div key={station.id}>
-                             
-                                <h3 className="font-opensans text-base font-semibold text-color-jet mb-3">{station.title}</h3>
-                                <p className="text-base underline text-color-jet mb-2 font-opensans lg:text-lg">{station.address}</p>
-                                <div>
-                             
-                             <div className="mt-3 mb-10">
-                             <h4 className="uppercase font-opensans text-sm font-medium">Dette tas imot</h4>
-                                    {station.tags.map((tagName) => (
-                                        <CategoryTag
-                                            key={tagName}
-                                            title={tagName}
-                                        />
-                                    ))}
-                               </div>
+                        <h2 className="text-xl lg:text-2xl font-semibold font-opensans mb-1 mt-10">
+                            {store.name}
+                        </h2>
+                        <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                        <div>
+                            {stationsData[index].map((station) => (
+                                <div key={station.id}>
+                                    <h3 className="font-opensans text-base md:text-lg font-semibold text-color-jet mb-3 -mt-1">
+                                        {station.title}
+                                    </h3>
+                                    <p className="text-base md:text-lg underline text-color-jet mb-2  font-opensans lg:text-lg">
+                                        {station.address}
+                                    </p>
+                                    <div>
+                                        <div className="mt-3 mb-10">
+                                            <h4 className="uppercase font-opensans text-sm font-medium md:mb-2">
+                                                Dette tas imot
+                                            </h4>
+                                            {station.tags.map((tagName) => (
+                                                <CategoryTag
+                                                    key={tagName}
+                                                    title={tagName}
+                                                />
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 ))}
             </div>
