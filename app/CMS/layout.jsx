@@ -5,9 +5,9 @@ import { readUserSession } from '@/lib/supabase/actions';
 
 export default async function Layout({ children }) {
 
-    const { data: { user } } = await readUserSession();
+    const { data: { session } } = await readUserSession();
 
-    if (!user) {
+    if (!session) {
         return redirect('/login');
     }
 

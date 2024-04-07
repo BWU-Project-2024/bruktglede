@@ -6,15 +6,12 @@ import Link from 'next/link';
 export const LoginPage = async ({ searchParams }) => {
     const { data: { session } } = await readUserSession();
 
-    if (session) {
-        return redirect('/');
-    };
+    // if logged in, redirect to homepage
+    // if (session) {
+    //     return redirect('/');
+    // };
 
-    console.log(session);
-
-    if (session) {
-        return redirect('/');
-    }
+    // console.log("Login session", session);
 
     const signIn = async (formData) => {
         'use server';
