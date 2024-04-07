@@ -7,9 +7,9 @@ export const LoginPage = async ({ searchParams }) => {
     const { data: { session } } = await readUserSession();
 
     // if logged in, redirect to homepage
-    // if (session) {
-    //     return redirect('/');
-    // };
+    if (session) {
+        return redirect('/CMS/profil');
+    };
 
     // console.log("Login session", session);
 
