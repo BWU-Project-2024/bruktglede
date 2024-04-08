@@ -8,6 +8,13 @@ export const HomePage = () => {
         <div className="flex flex-col min-h-screen">
             <LandingHeader />
 
+            <UkensHoydepunkt
+                image={tekopp}
+                text="Antikk kopp"
+                store="Fretex"
+                description="Denne uken er ukens høydepunkt en antikk kopp, som skinner i sin eldgamle prakt..."
+            />
+
             <main className="flex-1">
                 <Button title="Se alle arrangementer" link="/" />
             </main>
