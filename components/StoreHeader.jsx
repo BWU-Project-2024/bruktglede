@@ -40,24 +40,3 @@ export const StoreHeader = ({ image, store, description, vision, text }) => {
         </div>
     );
 };
-
-/* export const StoreHeader = ({ image, store, description, vision }) => {
-    return (
-        <div className="relative">
-            <div className="relative">
-                <Image src={image} alt="Image of the store" />
-            </div>
-            <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 bg-white w-[110px] h-[110px] aspect-square rounded-full flex justify-center items-center font-jomhuria text-5xl">
-                {store}
-            </div>
-            <div className="absolute inset-x-0 top-24 bg-ivory-default text-center px-7 py-5">
-                <p>{description}</p>
-                <div className="flex justify-center pt-5">
-                    <div className="w-48 bg-ivory-lighter text-forestgreen-default rounded py-1 font-medium drop-shadow hover:bg-forestgreen-default hover:text-ivory-default transition duration-200 text-center">
-                        {vision}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}; */
