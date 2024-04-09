@@ -1,9 +1,25 @@
-import { ArtiklerCMSPage } from "@/components/pages/CMSPages/ArtiklerCMSPage";
+import { CMSType } from "@/components/CMSComponents/CMSType";
+import { CMSTabs } from "@/components/CMSComponents/CMSTabs";
+import { readStorePostsData } from "@/lib/supabase/actions";
+import { CMSNavbar } from "@/components/CMSComponents/CMSNavbar";
+import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/supabaseServer';
 
-export default function ArtiklerCMSRoute() {
+export default async function ArtiklerCMSRoute() {
+    const data = await readStorePostsData("Artikkel");
+
+    const signOut = async () => {
+        "use server";
+        const supabase = createClient();
+
+        await supabase.auth.signOut();
+        return redirect('/');
+    };
     return (
-        <>
-            <ArtiklerCMSPage />
-        </>
+        <div className="sm:hidden flex flex-col min-h-[90vh] w-full">
+            <CMSNavbar signOut={signOut} />
+            <CMSType />
+            <CMSTabs path="artikler" type="Ny artikkel" data={data} />
+        </div>
     );
 }
