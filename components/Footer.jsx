@@ -17,7 +17,7 @@ export const Footer = ({ title, description }) => {
                             <Link href="#" className="hover:underline me-4 md:me-6">Privacy Policy</Link>
                         </li>
                         <li>
-                            <Link href="/CMS/login" className="hover:underline">Login</Link>
+                            <Link href="/login" className="hover:underline">Login</Link>
                         </li>
                     </ul>
                 </div>

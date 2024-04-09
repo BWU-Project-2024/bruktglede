@@ -5,7 +5,7 @@ import { prisma } from "@/lib/db";
 
 export const checkIfAdmin = async () => {
     const supabase = createServerComponentClient({ cookies });
-    const { data } = await supabase.auth.getSession();
+    const { data } = await supabase.auth.getUser();
 
     const profile = await prisma.user.findUnique({
         where: { id: data.session.user.id },

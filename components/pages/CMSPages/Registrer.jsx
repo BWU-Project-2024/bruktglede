@@ -9,7 +9,7 @@ export const RegistrerPage = async ({ searchParams }) => {
     const { data: { session } } = await readUserSession();
 
     if (session) {
-        return redirect('/');
+        return redirect('/CMS/profil');
     }
 
     // Sign up
