@@ -37,7 +37,7 @@ module.exports = {
                     lighter: "#E7F4E2",
                 },
                 error: {
-                    darker: "#F1A7A7",
+                    darker: "#E89A9A",
                     default: "#F7CBCB",
                     lighter: "#FCEDED",
                 },
