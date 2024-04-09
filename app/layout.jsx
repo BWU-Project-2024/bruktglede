@@ -4,7 +4,6 @@ import Script from "next/script";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { readUserSession } from "@/lib/supabase/actions";
-import Script from "next/script";
 
 const opensans = Open_Sans({ subsets: ["latin"], variable: "--font-opensans" });
 const jomhuria = Jomhuria({
