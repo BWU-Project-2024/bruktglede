@@ -3,18 +3,16 @@ import { createClient } from '@/lib/supabase/supabaseServer';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 
+
 export const LoginPage = async ({ searchParams }) => {
     const { data: { session } } = await readUserSession();
 
+    // if logged in, redirect to homepage
     if (session) {
-        return redirect('/');
+        return redirect('/CMS/profil');
     };
 
-    console.log(session);
-
-    if (session) {
-        return redirect('/');
-    }
+    // console.log("Login session", session);
 
     const signIn = async (formData) => {
         'use server';
@@ -29,7 +27,7 @@ export const LoginPage = async ({ searchParams }) => {
         });
 
         if (error) {
-            return redirect('/CMS/login?message=Feil epost eller passord');
+            return redirect('/login?message=Feil epost eller passord');
         }
 
         return redirect('/CMS/profil');

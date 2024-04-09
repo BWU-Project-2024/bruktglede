@@ -3,7 +3,7 @@ import { Button } from "../Button";
 import tekopp from "@/public/tekopp.jpg";
 import { UkensHoydepunkt } from "../UkensHoydepunkt";
 
-export const HomePage = () => {
+export const HomePage = async () => {
     return (
         <div className="flex flex-col min-h-screen">
             <LandingHeader />
