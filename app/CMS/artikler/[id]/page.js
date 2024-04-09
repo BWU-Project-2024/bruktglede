@@ -1,9 +1,11 @@
-import { ArtiklerIdCMSPage } from "@/components/pages/CMSPages/ArtiklerIdCMSPage"
+import { ArtiklerIdCMSPage } from "@/components/pages/CMSPages/Artikler/ArtiklerIdCMSPage"
 
-export default function ArtiklerIdCMSRoute() {
+export default function ArtiklerIdCMSRoute({ params }) {
+    const paramsId = params.id
+    console.log("paramss", paramsId);
     return (
         <>
-            <ArtiklerIdCMSPage />
+            <ArtiklerIdCMSPage params={paramsId} />
         </>
     );
 }

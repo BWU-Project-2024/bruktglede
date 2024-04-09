@@ -6,16 +6,22 @@ import { Footer } from "@/components/Footer";
 import { readUserSession } from "@/lib/supabase/actions";
 
 const opensans = Open_Sans({ subsets: ["latin"], variable: "--font-opensans" });
-const jomhuria = Jomhuria({ subsets: ["latin"], variable: "--font-jomhuria", weight: ["400"] });
+const jomhuria = Jomhuria({
+    subsets: ["latin"],
+    variable: "--font-jomhuria",
+    weight: ["400"],
+});
 
 export const metadata = {
     title: "Bruktglede",
-    description: "Utviklet av Lisa Mari Myrene, Alexandra Eloise Vanje & Anosh Chaudhry som bacheloropgave i Webutvikling NTNU Gjøvik.",
+    description:
+        "Utviklet av Lisa Mari Myrene, Alexandra Eloise Vanje & Anosh Chaudhry som bacheloropgave i Webutvikling NTNU Gjøvik.",
 };
 
 export default async function RootLayout({ children }) {
-    const { data: { session } } = await readUserSession();
-
+    const {
+        data: { session },
+    } = await readUserSession();
     // console.log("layout session", session);
 
     return (
