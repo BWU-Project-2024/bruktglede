@@ -6,6 +6,7 @@ import { useState } from "react";
 export const Accordion = ({question, answer}) => {
     const [accordionOpen, setAccordionOpen] = useState(false);
     return (
+       
         <div className="mt-1.5">
             <div className="bg-ivory-default py-1 my-1">
                 <button onClick={() => setAccordionOpen(!accordionOpen)} className="flex justify-between w-full py-2 px-2 md:py-3 md:px-5">
@@ -17,5 +18,6 @@ export const Accordion = ({question, answer}) => {
                 </div>
             </div>
         </div>
+       
     );
 }

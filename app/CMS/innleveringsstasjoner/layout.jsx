@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { readStoreStationsData, readUserSession } from '@/lib/supabase/actionsAuth';
+import { readStoreStationsData, readUserSession } from '@/lib/supabase/actions';
 import { CMSType } from "@/components/CMSComponents/CMSType";
 import { CMSTabs } from "@/components/CMSComponents/CMSTabs";
 

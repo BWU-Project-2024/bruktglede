@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation';
-import { readUserSession } from '@/lib/supabase/actionsAuth';
+import { readUserSession } from '@/lib/supabase/actions';
 import { CMSType } from "@/components/CMSComponents/CMSType";
 import { CMSTabs } from "@/components/CMSComponents/CMSTabs";
-import { readStorePostsData } from "@/lib/supabase/actionsAuth";
+import { readStorePostsData } from "@/lib/supabase/actions";
 
 export default async function Layout({ children }) {
 

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { headers } from 'next/headers';
-import { readUserSession } from '@/lib/supabase/actionsAuth';
+import { readUserSession } from '@/lib/supabase/actions';
 import { createClient } from '@/lib/supabase/supabaseServer';
 import { redirect } from 'next/navigation';
 
