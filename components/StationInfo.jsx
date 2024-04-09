@@ -1,8 +1,6 @@
 // import React, { useEffect, useState } from "react";
 import { CategoryTag } from "./CategoryTag";
-import {
-    fetchAllStationsSortedByStore,
-} from "@/lib/supabase/actions";
+import { fetchAllStationsSortedByStore } from "@/lib/supabase/actionsPublic";
 
 
 export const StationInfo = async () => {

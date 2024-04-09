@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { readUserSession } from '@/lib/supabase/actions';
+import { readUserSession } from '@/lib/supabase/actionsAuth';
 import { CMSType } from "@/components/CMSComponents/CMSType";
 
 export default async function Layout({ children }) {

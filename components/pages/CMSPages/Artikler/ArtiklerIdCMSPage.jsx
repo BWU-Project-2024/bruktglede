@@ -1,6 +1,7 @@
 "use server"
 import { CMSTilbakeBtn } from "@/components/CMSComponents/CMSTilbakeBtn";
-import { readStorePostsDataId, readAllTags } from "@/lib/supabase/actions";
+import { readStorePostsDataId } from "@/lib/supabase/actionsAuth";
+import { readAllTags } from "@/lib/supabase/actionsPublic";
 import { ArticleForm } from "@/components/CMSComponents/ArticleForm";
 
 export const ArtiklerIdCMSPage = async ({ params }) => {

@@ -3,7 +3,7 @@ import "./globals.css"
 import Script from "next/script";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { readUserSession } from "@/lib/supabase/actions";
+import { readUserSession } from "@/lib/supabase/actionsAuth";
 
 const opensans = Open_Sans({ subsets: ["latin"], variable: "--font-opensans" });
 const jomhuria = Jomhuria({
