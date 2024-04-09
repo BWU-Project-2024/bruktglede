@@ -4,6 +4,7 @@ import {
     fetchAllStationsSortedByStore,
 } from "@/lib/supabase/actions";
 
+
 export const StationInfo = async () => {
     const storeInfo = await fetchAllStationsSortedByStore();
 

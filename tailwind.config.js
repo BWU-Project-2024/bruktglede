@@ -12,6 +12,9 @@ module.exports = {
             maxWidth: {
                 'readable': '96ch',
               },
+              outlineWidth: {
+                1.5: '1.5px',
+              },
             colors: {
                 background: "#FEFFFC",
                 text: "37342F",
