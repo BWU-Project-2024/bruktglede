@@ -2,9 +2,9 @@
 import { CMSTilbakeBtn } from "@/components/CMSComponents/CMSTilbakeBtn";
 import { readStorePostsDataId } from "@/lib/supabase/actionsAuth";
 import { readAllTags } from "@/lib/supabase/actionsPublic";
-import { ArticleForm } from "@/components/CMSComponents/Forms/ArticleForm";
+import { EventForm } from "@/components/CMSComponents/Forms/EventForm";
 
-export const ArtiklerIdCMSPage = async ({ params }) => {
+export const ArrangementerIdCMSPage = async ({ params }) => {
 
     const postData = await readStorePostsDataId(params);
 
@@ -14,10 +14,10 @@ export const ArtiklerIdCMSPage = async ({ params }) => {
         <main className="flex flex-col min-h-[90vh] w-full gap-3 mt-6 mb-16 sm:mb-8 sm:mt-2 px-6">
             <CMSTilbakeBtn />
             <div className="flex flex-col my-2">
-                <p>Artikler /</p>
+                <p>Arrangementer /</p>
                 <h1 className="text-lg font-bold">{postData && postData.postIdData[0]?.title}</h1>
             </div>
-            <ArticleForm
+            <EventForm
                 tagOptions={tagOptions}
                 existingArticle={postData ? postData.postIdData[0] : null}
                 existingTags={postData ? postData.postTagsData : null}

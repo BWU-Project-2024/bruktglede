@@ -48,38 +48,41 @@ export const Navbar = ({ session }) => {
                         )}
                     </li>
                     <li className="text-text" role="menuitem">
-
-                        <button id="dropdowns" data-dropdown-toggle="dropdown" className="text-black  rounded-lg px-5 py-2.5 text-center inline-flex items-center hover:font-medium" type="button">Butikker<svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
-                        </svg>
-
+                        <button id="dropdowns" data-dropdown-toggle="dropdown" className="text-black rounded-lg py-2.5 text-center inline-flex items-center hover:font-medium"
+                            type="button">
+                            Butikker
+                            <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
+                            </svg>
                             {pathname === "/butikker" && (
                                 <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-7 rounded-[1.5px] rotate-45"></div>
                             )}
-
                         </button>
-
-
-
-
-                        <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
-                            <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
-                                <li>
-                                    <div className="relative">
-                                        <Link href="/butikker" className="block px-4 py-2 hover:bg-ivory-default">
-                                            Alle butikker
-
-                                        </Link>
-                                    </div>
+                        <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                            <ul className="text-base text-gray-700" aria-labelledby="dropdownDefaultButton">
+                                <li className="relative">
+                                    <Link href="/butikker" className="rounded-t-lg block hover:bg-ivory-lighter">
+                                        <p className="mx-4 pt-2">Alle butikker</p>
+                                        <hr className="mt-2"></hr>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-default">Fretex</Link>
+                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-lighter">Fretex</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-default dark:hover:text-white">Ting og Tøy</Link>
+                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-lighter dark:hover:text-white">Ting og Tøy</Link>
                                 </li>
                                 <li>
-                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-default">Joikaboller</Link>
+                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-lighter dark:hover:text-white">Ting og Tøy</Link>
+                                </li>
+                                <li>
+                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-lighter dark:hover:text-white">Ting og Tøy</Link>
+                                </li>
+                                <li className="relative">
+                                    <Link href="/blifrivillig" className="block rounded-b-lg hover:bg-ivory-lighter">
+                                        <hr className="mb-2"></hr>
+                                        <p className="mx-4 pb-2">Bli frivillig</p>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -129,10 +132,10 @@ export const Navbar = ({ session }) => {
                     {/* Check if user is logged in */}
                     {session && (
                         <li role="menuitem">
-                            <Link href="/CMS/profil" className={`${pathname === "/CMS/profil" ? "font-medium" : "hover:font-medium"}`}>
+                            <Link href="/CMS/profil" className={`${pathname.startsWith("/CMS/") ? "font-medium" : "hover:font-medium"}`}>
                                 Min butikk
                             </Link>
-                            {pathname === "/CMS/profil" && (
+                            {pathname.startsWith("/CMS/") && (
                                 <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-8 rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>

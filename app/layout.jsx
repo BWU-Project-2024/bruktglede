@@ -31,7 +31,8 @@ export default async function RootLayout({ children }) {
                 <Navbar session={session} />
                 {children}
                 <Footer />
-                <Script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></Script>
+                <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+                <script src="../path/to/flowbite/dist/datepicker.js"></script>
             </body>
         </html>
     );

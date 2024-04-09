@@ -10,13 +10,29 @@ export const CMSTabs = ({ path, type, data }) => {
         setSelectedTab(tab);
     };
 
+    const getLabel = (url) => {
+        switch (true) {
+            case url.startsWith('artikler'):
+                return 'nyArtikkel';
+            case url.startsWith('arrangementer'):
+                return 'nyttArrangement';
+            case url.startsWith('ukenshoydepunkt'):
+                return 'nyttUkensHoydepunkt';
+            case url.startsWith('innleveringsstasjoner'):
+                return 'nyInnleveringsstasjon';
+            default:
+                return 'defaultLabel';
+        }
+    };
+    const url = getLabel(path)
+
     const iconStyles = { color: "#656565" }
 
     return (
         <ul className="flex flex-col w-full gap-2">
             {/* static link */}
             <Link
-                href={`/CMS/${path}/${type}`}
+                href={`/CMS/${path}/${url}`}
                 className="border-b border-[#DBDBDB] px-6 py-2 bg-success-lighter">
                 <li onClick={() => handleTabClick(type)} className={selectedTab === type ? 'font-medium flex justify-between items-center' : 'flex justify-between items-center'}>
                     {type} <FiEdit style={iconStyles} />

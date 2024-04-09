@@ -23,7 +23,6 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
     const onSubmit = async (formData) => {
         if (existingArticle) {
             // Update existing article
-            // Adjust the updateArticle function according to your Supabase logic
             await updateArticle(formData, existingArticle.id);
         } else {
             // Create new article
@@ -34,7 +33,6 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col" aria-label="CMS form" encType="multipart/form-data">
-
             <label className="text-md mb-2 font-medium" htmlFor="tittel">
                 Tittel
             </label>
@@ -125,7 +123,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             <p className="mb-6 italic text-error-darker">{errors.fileInput?.message}</p>
             {/* Vil gjerne forhåndsvise bildet som personen laster opp her: */}
             {/* <img src="bilde som blir lastet opp av bruker" alt="Bilde" /> */}
-            <button type="submit" className="w-full bg-success-lighter hover:bg-success-default py-2 rounded mt-12 font-medium">Lagre endringer</button>
+            <button type="submit" className="w-full bg-success-lighter hover:bg-success-default py-2 rounded mt-6 font-medium">Lagre endringer</button>
         </form>
     )
 }

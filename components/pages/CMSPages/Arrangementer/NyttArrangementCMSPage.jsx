@@ -1,9 +1,9 @@
 "use server"
 import { CMSTilbakeBtn } from "@/components/CMSComponents/CMSTilbakeBtn";
 import { readAllTags } from "@/lib/supabase/actionsPublic";
-import { ArticleForm } from "@/components/CMSComponents/Forms/ArticleForm";
+import { EventForm } from "@/components/CMSComponents/Forms/EventForm";
 
-export const NyArtikkelCMSPage = async () => {
+export const NyttArrangementCMSPage = async () => {
 
     const tagOptions = await readAllTags();
 
@@ -12,10 +12,10 @@ export const NyArtikkelCMSPage = async () => {
         <main className="flex flex-col min-h-[90vh] w-full gap-6 mt-6 mb-16 sm:mb-8 sm:mt-2 px-6">
             <CMSTilbakeBtn />
             <div className="flex flex-col mt-2">
-                <p>Artikler /</p>
-                <p className="text-lg font-bold">Ny artikkel</p>
+                <p>Arrangementer /</p>
+                <p className="text-lg font-bold">Nytt arrangement</p>
             </div>
-            <ArticleForm tagOptions={tagOptions} />
+            <EventForm tagOptions={tagOptions} />
         </main>
     )
 }

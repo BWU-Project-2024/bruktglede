@@ -16,6 +16,7 @@ export default async function ArtiklerCMSRoute() {
         return redirect('/');
     };
     return (
+        // mobile
         <div className="sm:hidden flex flex-col min-h-[90vh] w-full">
             <CMSNavbar signOut={signOut} />
             <CMSType />
