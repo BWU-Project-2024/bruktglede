@@ -1,6 +1,6 @@
 import { CMSType } from "@/components/CMSComponents/CMSType";
 import { CMSTabs } from "@/components/CMSComponents/CMSTabs";
-import { readStorePostsData } from "@/lib/supabase/actions";
+import { readStorePostsData } from "@/lib/supabase/actionsAuth";
 import { CMSNavbar } from "@/components/CMSComponents/CMSNavbar";
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/supabaseServer';

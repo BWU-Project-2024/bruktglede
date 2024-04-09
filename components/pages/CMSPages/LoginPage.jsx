@@ -1,4 +1,4 @@
-import { readUserSession } from '@/lib/supabase/actions';
+import { readUserSession } from '@/lib/supabase/actionsAuth';
 import { createClient } from '@/lib/supabase/supabaseServer';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
