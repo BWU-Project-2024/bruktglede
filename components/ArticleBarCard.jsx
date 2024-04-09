@@ -20,9 +20,14 @@ export const ArticleBarCard = async () => {
                     </Link>
                     <p className="text-xs mb-1">{formatDate(articleData.created_at)}</p>
                     <p className="text-base line-clamp-2">{articleData.ingress}</p>
-                    <div className="mt-2">
-                        <StoreTag children="Fretex" className="mr-1" />
-                        <CategoryTag title="Klær" />
+                    <div className="mt-2 mb-5">
+                 
+                        <StoreTag children={articleData.store_name} className="mr-1" />
+                        {articleData.tags.map((tag) => (
+                                        <CategoryTag key={tag} title={tag} />
+                                    ))}
+                     
+                        <hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     </div>
                 </div>
             ))}
