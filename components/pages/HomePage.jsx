@@ -8,6 +8,7 @@ export const HomePage = async () => {
         <div className="flex flex-col min-h-screen">
             <LandingHeader />
 
+
             <UkensHoydepunkt
                 image={tekopp}
                 text="Antikk kopp"
