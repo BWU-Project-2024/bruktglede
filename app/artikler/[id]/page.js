@@ -2,9 +2,8 @@
 
 import { ArtikkelIdPage } from "@/components/pages/ArtikkelIdPage";
 
-
 export default function ArtikkelIdRoute({ params }) {
-    const paramsId = params.id
+    const paramsId = params
     console.log("params", paramsId);
     
     return (
