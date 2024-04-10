@@ -17,7 +17,7 @@ export const CMSTabs = ({ path, type, data }) => {
             case url.startsWith('arrangementer'):
                 return 'nyttArrangement';
             case url.startsWith('ukenshoydepunkt'):
-                return 'nyttUkensHoydepunkt';
+                return 'nyttUkenshoydepunkt';
             case url.startsWith('innleveringsstasjoner'):
                 return 'nyInnleveringsstasjon';
             default:
