@@ -33,7 +33,7 @@ export const CMSTabs = ({ path, type, data }) => {
             {/* static link */}
             <Link
                 href={`/CMS/${path}/${url}`}
-                className="border-b border-[#DBDBDB] px-6 py-2 bg-success-lighter">
+                className="border-b border-t sm:border-t-0 border-[#DBDBDB] px-6 py-2 bg-success-lighter">
                 <li onClick={() => handleTabClick(type)} className={selectedTab === type ? 'font-medium flex justify-between items-center' : 'flex justify-between items-center'}>
                     {type} <FiEdit style={iconStyles} />
                 </li>
