@@ -15,7 +15,7 @@ const jomhuria = Jomhuria({
 export const metadata = {
     title: "Bruktglede",
     description:
-        "Utviklet av Lisa Mari Myrene, Alexandra Eloise Vanje & Anosh Chaudhry som bacheloropgave i Webutvikling NTNU Gjøvik.",
+        "Utviklet av Lisa Mari Myrene, Alexandra Eloise Vanje & Anosh Chaudhry.",
 };
 
 export default async function RootLayout({ children }) {

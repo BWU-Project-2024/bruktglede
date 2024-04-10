@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
-import { useForm } from "react-hook-form"
-import 'flowbite';
+import { Controller, useForm } from "react-hook-form"
+import DatePicker from 'react-datepicker'
 import { newEvent, updateEvent } from "@/lib/supabase/actionsCMSForms";
 
 export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
@@ -9,6 +9,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
 
     // Create react-hook-form
     const {
+        control,
         register,
         handleSubmit,
         formState: { errors },
@@ -61,38 +62,36 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
             />
             <p className="mb-6 italic text-error-darker">{errors.tittel?.message}</p>
 
-            <label className="text-md mb-2 font-medium" htmlFor="addresse">
+            <label className="text-md mb-2 font-medium" htmlFor="adresse">
                 Adresse
             </label>
             <input
                 className="rounded-md px-3 py-2 bg-inherit border mb-1"
-                id="addresse"
-                name="addresse"
+                id="adresse"
+                name="adresse"
                 placeholder="Eksempel: Adressevegen 15, 2815 Gjøvik"
-                {...register("addresse", {
+                {...register("adresse", {
                     required: "Vennligst skriv inn en adresse",
                 })}
             />
-            <p className="mb-6 italic text-error-darker">{errors.addresse?.message}</p>
+            <p className="mb-6 italic text-error-darker">{errors.adresse?.message}</p>
 
             <label className="text-md mb-2 font-medium" htmlFor="dato">
                 Dato
             </label>
-            <div className="relative max-w-sm mb-6">
-                <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                    <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                    </svg>
-                </div>
-                <input
-                    datepicker
-                    id="dato"
-                    name="dato"
-                    type="text"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Velg dato">
-                </input>
-            </div>
+            <Controller
+                control={control}
+                id="dato"
+                name="dato"
+                render={({ field }) => (
+                    <DatePicker
+                        placeholderText='Velg dato'
+                        onChange={(date) => field.onChange(date)}
+                        selected={field.value}
+                        format='yyyy-MM-dd'
+                    />
+                )}
+            />
 
             <label className="text-md mb-2 font-medium" htmlFor="klokkeslett">
                 Klokkeslett
