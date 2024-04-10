@@ -132,7 +132,7 @@ export const Navbar = ({ session }) => {
                     {/* Check if user is logged in */}
                     {session && (
                         <li role="menuitem">
-                            <Link href="/CMS/profil" className={`${pathname.startsWith("/CMS/") ? "font-medium" : "hover:font-medium"}`}>
+                            <Link href="/CMS/butikkinfo" className={`${pathname.startsWith("/CMS/") ? "font-medium" : "hover:font-medium"}`}>
                                 Min butikk
                             </Link>
                             {pathname.startsWith("/CMS/") && (
@@ -253,10 +253,10 @@ export const Navbar = ({ session }) => {
                         {/* Check if user is logged in */}
                         {session && (
                             <li role="menuitem">
-                                <Link onClick={handleNav} href="/CMS/profil" className={`${pathname === "/CMS/profil" ? "font-medium" : ""}`}>
+                                <Link onClick={handleNav} href="/CMS/butikkinfo" className={`${pathname === "/CMS/butikkinfo" ? "font-medium" : ""}`}>
                                     Min butikk
                                 </Link>
-                                {pathname === "/CMS/profil" && (
+                                {pathname === "/CMS/butikkinfo" && (
                                     <div className="absolute w-2 h-2 bg-ivory-darker top-[562px] left-[133px] rounded-[1.5px] rotate-45"></div>
                                 )}
                             </li>
