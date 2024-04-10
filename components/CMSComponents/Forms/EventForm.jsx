@@ -1,7 +1,7 @@
 "use client"
 import { useForm } from "react-hook-form"
 import 'flowbite';
-// import { newArticle, updateArticle } from "@/lib/supabase/actionsCMSForms";
+import { newEvent, updateEvent } from "@/lib/supabase/actionsCMSForms";
 
 export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
     // Create react-hook-form
@@ -27,10 +27,10 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
     const onSubmit = async (formData) => {
         if (existingArticle) {
             // Update existing event
-            // await updateArticle(formData, existingArticle.id);
+            await updateEvent(formData, existingEvent.id);
         } else {
             // Create new event
-            // await newArticle(formData);
+            await newEvent(formData);
         }
         reset();
     };
@@ -160,7 +160,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 name="fileInput"
                 id="fileInput"
                 accept="image/png, image/jpeg, image/jpg, image/webp, image/*"
-                // må finne ut hvordan style file button (tailwind sier å bruke form: forran men funker ikke)
+                // må finne ut hvordan style file button (tailwind sier å bruke file: forran men funker ikke)
                 className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
                 {...register("fileInput")}
             // Når vi får bildeopplasting på plass, gjør at bilde et required:

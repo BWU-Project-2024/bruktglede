@@ -108,7 +108,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 name="fileInput"
                 id="fileInput"
                 accept="image/png, image/jpeg, image/jpg, image/webp, image/*"
-                // må finne ut hvordan style file button (tailwind sier å bruke form: forran men funker ikke)
+                // må finne ut hvordan style file button (tailwind sier å bruke file: forran men funker ikke)
                 className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
                 {...register("fileInput")}
             // Når vi får bildeopplasting på plass, gjør at bilde et required:

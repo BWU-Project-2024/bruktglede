@@ -19,7 +19,7 @@ export const ArrangementerIdCMSPage = async ({ params }) => {
             </div>
             <EventForm
                 tagOptions={tagOptions}
-                existingArticle={postData ? postData.postIdData[0] : null}
+                existingEvent={postData ? postData.postIdData[0] : null}
                 existingTags={postData ? postData.postTagsData : null}
             />
             <button className="w-full bg-error-default hover:bg-error-darker py-2 rounded font-medium">Slett artikkel</button>

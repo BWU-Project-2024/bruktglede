@@ -1,8 +1,9 @@
 import { ArrangementerIdCMSPage } from "@/components/pages/CMSPages/Arrangementer/ArrangementerIdCMSPage";
-export default function ArrangementerIdCMSRoute() {
+export default function ArrangementerIdCMSRoute({ params }) {
+    const paramsId = params.id
     return (
         <>
-            <ArrangementerIdCMSPage />
+            <ArrangementerIdCMSPage params={paramsId} />
         </>
     );
 }
