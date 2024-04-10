@@ -10,7 +10,7 @@ export const HoydepunktIdCMSPage = async ({ params }) => {
         <main className="flex flex-col min-h-[90vh] w-full gap-3 mt-6 mb-16 sm:mb-8 sm:mt-2 px-6">
             <CMSTilbakeBtn />
             <div className="flex flex-col my-2">
-                <p>Ukens høydepunkt /</p>
+                <p>Ukens høydepunkter /</p>
                 <h1 className="text-lg font-bold">{postData && postData.postIdData[0]?.title}</h1>
             </div>
             <HoydepunktForm

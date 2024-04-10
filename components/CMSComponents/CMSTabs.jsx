@@ -19,7 +19,7 @@ export const CMSTabs = ({ path, type, data }) => {
             case url.startsWith('ukenshoydepunkt'):
                 return 'nyttUkenshoydepunkt';
             case url.startsWith('innleveringsstasjoner'):
-                return 'nyInnleveringsstasjon';
+                return 'nyStasjon';
             default:
                 return 'defaultLabel';
         }

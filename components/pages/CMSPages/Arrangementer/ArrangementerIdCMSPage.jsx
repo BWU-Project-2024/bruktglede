@@ -22,7 +22,7 @@ export const ArrangementerIdCMSPage = async ({ params }) => {
                 existingEvent={postData ? postData.postIdData[0] : null}
                 existingTags={postData ? postData.postTagsData : null}
             />
-            <button className="w-full bg-error-default hover:bg-error-darker py-2 rounded font-medium">Slett artikkel</button>
+            <button className="w-full bg-error-default hover:bg-error-darker py-2 rounded font-medium">Slett arrangement</button>
         </main>
     )
 }
