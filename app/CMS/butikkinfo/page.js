@@ -4,7 +4,7 @@ import { CMSNavbar } from "@/components/CMSComponents/CMSNavbar";
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/supabaseServer';
 
-export default async function ArtiklerCMSRoute() {
+export default async function ButikkInfoCMSRoute() {
 
     const signOut = async () => {
         "use server";

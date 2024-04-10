@@ -1,4 +1,4 @@
-export const ProfilIdCMSPage = async () => {
+export const ProfilEndrePassordCMSPage = async () => {
 
     return (
         <main className='flex flex-col min-h-[90vh]'>
