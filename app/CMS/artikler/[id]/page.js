@@ -2,7 +2,6 @@ import { ArtiklerIdCMSPage } from "@/components/pages/CMSPages/Artikler/Artikler
 
 export default function ArtiklerIdCMSRoute({ params }) {
     const paramsId = params.id
-    console.log("paramss", paramsId);
     return (
         <>
             <ArtiklerIdCMSPage params={paramsId} />

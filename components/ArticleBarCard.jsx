@@ -26,9 +26,7 @@ export const ArticleBarCard = async () => {
                     <p className="text-xs mb-1">{formatDate(articleData.created_at)}</p>
                     <p className="text-base line-clamp-2">{articleData.ingress}</p>
                     <div className="mt-2 mb-5">
-
-
-                      
+                    
                         <StoreTag storename={articleData.store_name} className="mr-1" />
                         {articleData.tags.map((tag) => (
                                         <CategoryTag key={tag} title={tag} />

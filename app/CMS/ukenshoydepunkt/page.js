@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/supabaseServer';
 
 export default async function ArtiklerCMSRoute() {
-    const data = await readStorePostsData("Artikkel");
+    const data = await readStorePostsData("Ukens høydepunkt");
 
     const signOut = async () => {
         "use server";
@@ -19,7 +19,7 @@ export default async function ArtiklerCMSRoute() {
         <div className="sm:hidden flex flex-col min-h-[90vh] w-full">
             <CMSNavbar signOut={signOut} />
             <CMSType />
-            <CMSTabs path="artikler" type="Ny artikkel" data={data} />
+            <CMSTabs path="ukenshoydepunkt" type="Nytt ukens høydepunkt" data={data} />
         </div>
     );
 }
