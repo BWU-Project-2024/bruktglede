@@ -7,11 +7,11 @@ import { getArticles } from "@/lib/supabase/actions";
 export const ArticleBarCard = async () => {
     const articleInfo = await getArticles();
 
+    //Get the date from the timestamp
     const formatDate = (timestamp) => {
         const date = new Date(timestamp);
-        return date.toLocaleDateString('en-GB'); //
+        return date.toLocaleDateString('nb-NO'); 
     };
-
 
 
     return (
