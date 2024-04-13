@@ -1,9 +1,10 @@
-import { HoydepunktIdCMSPage } from "@/components/pages/CMSPages/HoydepunktIdCMSPage";
+import { HoydepunktIdCMSPage } from "@/components/pages/CMSPages/Hoydepunkt/HoydepunktIdCMSPage";
 
-export default function HoydepunktIdCMSRoute() {
+export default function HoydepunktIdCMSRoute({params}) {
+    const paramsId = params.id
     return (
         <>
-            <HoydepunktIdCMSPage/>
+            <HoydepunktIdCMSPage params={paramsId} />
         </>
     );
 }
