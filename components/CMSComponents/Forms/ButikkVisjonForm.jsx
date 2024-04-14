@@ -1,44 +1,31 @@
 "use client"
 import { useState } from "react";
-import { Controller, useForm } from "react-hook-form"
-import DatePicker from 'react-datepicker'
-import { newEvent, updateEvent } from "@/lib/supabase/actionsCMSForms";
+import { useForm } from "react-hook-form"
+import { insertStoreVisionData } from "@/lib/supabase/actionsCMSForms";
 
-export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
+export const ButikkVisjonForm = ({ existingData }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
     // Create react-hook-form
     const {
-        control,
         register,
         handleSubmit,
         formState: { errors },
-        reset
     } = useForm({
-        defaultValues: existingEvent ? {
-            tittel: existingEvent.title,
-            adresse: existingEvent.address,
-            dato: existingEvent.date,
-            klokkeslett: existingEvent.time,
-            ingress: existingEvent.ingress,
-            brodtekst: existingEvent.bodyText,
-            tagger: existingTags.tagger
-            // Set other fields' default values here
+        defaultValues: existingData ? {
+            tittel: existingData.title,
+            ingress: existingData.ingress,
+            subtittel: existingData.subtitle,
+            brodtekst: existingData.bodyText,
+            fileInput: existingData.img
+            // Set other fields' default values here (img)
         } : {},
     });
 
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
-        if (existingEvent) {
-            // Update existing event
-            await updateEvent(formData, existingEvent.id);
-            setShowSuccessAlert(true);
-        } else {
-            // Create new event
-            await newEvent(formData);
-            setShowSuccessAlert(true);
-        }
-        reset();
+        await insertStoreVisionData(formData);
+        setShowSuccessAlert(true);
     };
 
     const onCloseAlert = () => {
@@ -46,7 +33,6 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
     }
 
     return (
-
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col" aria-label="CMS form" encType="multipart/form-data">
             <label className="text-md mb-2 font-medium" htmlFor="tittel">
                 Tittel
@@ -61,51 +47,6 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 })}
             />
             <p className="mb-6 italic text-error-darker">{errors.tittel?.message}</p>
-
-            <label className="text-md mb-2 font-medium" htmlFor="adresse">
-                Adresse
-            </label>
-            <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
-                id="adresse"
-                name="adresse"
-                placeholder="Eksempel: Adressevegen 15, 2815 Gjøvik"
-                {...register("adresse", {
-                    required: "Vennligst skriv inn en adresse",
-                })}
-            />
-            <p className="mb-6 italic text-error-darker">{errors.adresse?.message}</p>
-
-            <label className="text-md mb-2 font-medium" htmlFor="dato">
-                Dato
-            </label>
-            <Controller
-                control={control}
-                id="dato"
-                name="dato"
-                render={({ field }) => (
-                    <DatePicker
-                        placeholderText='Velg dato'
-                        onChange={(date) => field.onChange(date)}
-                        selected={field.value}
-                        format='yyyy-MM-dd'
-                    />
-                )}
-            />
-
-            <label className="text-md mb-2 font-medium" htmlFor="klokkeslett">
-                Klokkeslett
-            </label>
-            <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
-                id="klokkeslett"
-                name="klokkeslett"
-                placeholder="Eksempel: 12:00-15:00"
-                {...register("klokkeslett", {
-                    required: "Vennligst skriv inn ett klokkeslett",
-                })}
-            />
-            <p className="mb-6 italic text-error-darker">{errors.dato?.message}</p>
 
             <label className="text-md font-medium mb-2" htmlFor="ingress">
                 Ingress
@@ -122,11 +63,22 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
             />
             <p className="mb-6 italic text-error-darker">{errors.ingress?.message}</p>
 
+            <label className="text-md mb-2 font-medium" htmlFor="subtittel">
+                Underoverskrift
+            </label>
+            <input
+                className="rounded-md px-3 py-2 bg-inherit border mb-6"
+                id="subtittel"
+                name="subtittel"
+                placeholder=""
+                {...register("subtittel")}
+            />
+
             <label className="text-md font-medium mb-2" htmlFor="brodtekst">
                 Brødtekst
             </label>
             <textarea
-                className="rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="brodtekst"
                 name="brodtekst"
                 placeholder=""
@@ -137,31 +89,8 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
             />
             <p className="mb-6 italic text-error-darker">{errors.brodtekst?.message}</p>
 
-            <label className="text-md font-medium mb-3" htmlFor="tagger">
-                Tagger
-            </label>
-            <div className="flex flex-wrap gap-3 mb-4">
-                {tagOptions.map((tag) => (
-                    <div key={tag.id} className="flex justify-center items-center gap-2 bg-[#F5F5F5] rounded py-1 px-2">
-                        <input
-                            type="checkbox"
-                            id={tag.id}
-                            name="tagger"
-                            value={tag.id}
-                            className="rounded-sm border border-[#D9D9D9]"
-                            {...register("tagger", {
-                                required: "Vennligst velg minst én tagg",
-                            })}
-                            defaultChecked={existingTags && existingTags.some(existingTag => existingTag.tag_id === tag.id)}
-                        />
-                        <label htmlFor={tag.id}>{tag.name}</label>
-                    </div>
-                ))}
-            </div>
-            <p className="mb-6 italic text-error-darker">{errors.tagger?.message}</p>
-
             <label className="text-md font-medium mb-3 mt-3" htmlFor="fileInput">
-                Header bilde
+                Bilde
             </label>
             <input
                 type="file"
@@ -187,7 +116,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                     </svg>
                     <span className="sr-only">Info</span>
                     <div className="ms-3 text-sm">
-                        <span className="font-medium">Suksess!</span> Arrangement ble vellykket laget eller oppdatert.
+                        <span className="font-medium">Suksess!</span> Butikkens visjon ble vellykket oppdatert.
                     </div>
                     <button onClick={onCloseAlert} type="button" className="ms-auto -mx-1.5 -my-1.5 bg-gray-50 text-gray-500 rounded-lg focus:ring-2 focus:ring-gray-400 p-1.5 hover:bg-gray-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white" data-dismiss-target="#alert-1" aria-label="Close">
                         <span className="sr-only">Close</span>
