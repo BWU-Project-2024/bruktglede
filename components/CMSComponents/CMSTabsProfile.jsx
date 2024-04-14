@@ -1,5 +1,5 @@
 "use client"
-import { FiEdit } from "react-icons/fi";
+import { FiInfo, FiEdit } from "react-icons/fi";
 import { useState } from "react";
 import Link from "next/link";
 1
@@ -18,7 +18,7 @@ export const CMSTabsProfile = () => {
                 href={`/CMS/profil/minBruker`}
                 className="border-b border-t sm:border-t-0 border-[#DBDBDB] px-6 py-2">
                 <li onClick={() => handleTabClick("minbruker")} className={selectedTab === "minbruker" ? 'font-medium flex justify-between items-center' : 'flex justify-between items-center'}>
-                    Min bruker <FiEdit style={iconStyles} />
+                    Min bruker <FiInfo style={iconStyles} />
                 </li>
             </Link>
             <Link
