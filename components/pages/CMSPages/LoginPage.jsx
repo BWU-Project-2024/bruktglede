@@ -42,7 +42,7 @@ export const LoginPage = async ({ searchParams }) => {
                     <label htmlFor="email">Epost</label>
                     <input
                         name="email"
-                        placeholder="test@brukbyen.no"
+                        placeholder="epost@bruktglede.no"
                         className="py-2 px-2 mb-6 mt-2 border border-inherit rounded"
                         required
                     />
@@ -55,7 +55,7 @@ export const LoginPage = async ({ searchParams }) => {
                         required
                     />
 
-                    <Link href="/" className="underline italic text-sm text-forestgreen-default mb-10 md:hover:font-medium">Glemt passord?</Link>
+                    <Link href="/glemtpassord" className="underline italic text-sm text-forestgreen-default mb-10 md:hover:font-medium">Glemt passord?</Link>
 
                     <button className="w-full md:w-auto bg-forestgreen-default text-background px-24 rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200">Login</button>
 
