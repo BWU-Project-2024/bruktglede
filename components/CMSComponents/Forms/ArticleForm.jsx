@@ -7,11 +7,13 @@ import { useRouter } from 'next/navigation';
 
 export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [image, setImage] = useState([]);
     const router = useRouter();
+
+    // console.log("image", image);
 
     // Create react-hook-form
     const {
-        control,
         register,
         handleSubmit,
         formState: { errors },
@@ -21,34 +23,37 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             tittel: existingArticle.title,
             ingress: existingArticle.ingress,
             brodtekst: existingArticle.bodyText,
-            // fileInput: existingArticle.fileInput,
+            fileInput: existingArticle.fileInput,
             tagger: existingTags.tagger,
             // Set other fields' default values here
         } : {},
     });
 
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        console.log(selectedFile);
+        setImage(selectedFile)
+    };
+
+
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
-
-        const selectedFile = formData.fileInput[0];
-        const name = selectedFile.name
-
-        console.log("selected file", name);
+        const selectedFile = formData.fileInput;
+        console.log("selected file", image);
 
         if (existingArticle) {
             // Update existing article
             await updateArticle(formData, existingArticle.id);
-            router.refresh();
-            setShowSuccessAlert(true);
         } else {
             // Create new article
-            console.log('before new article')
-            console.log('formDat', formData)
-            await newArticle({ ...formData, fileInput: name });
-            console.log('after new article')
-            setShowSuccessAlert(true);
+            console.log('before new article');
+            console.log('formDat', formData);
+            await newArticle(formData, image)
+
+            console.log('after new article');
+
         }
-        reset();
+
     };
 
 
@@ -128,9 +133,18 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             <label className="text-md font-medium mb-3 mt-3" htmlFor="fileInput">
                 Header bilde
             </label>
-            <Controller
+            <input
+                type="file"
+                id="fileInput"
+                name="fileInput"
+                accept="image/png, image/jpeg, image/jpg, image/webp"
+                className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
+                onChange={handleFileChange}
+            />
+            {/* <Controller
                 control={control}
                 name="fileInput"
+                defaultValue=""
                 render={({ field }) => (
                     <input
                         type="file"
@@ -138,10 +152,11 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                         name="fileInput"
                         accept="image/png, image/jpeg, image/jpg, image/webp, image/*"
                         className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
-                        onChange={(e) => field.onChange(e.target.files)}
+                        onChange={handleFileChange}
+                        multiple
                     />
                 )}
-            />
+            /> */}
             <div>
                 <p className="italic mb-2">Ingen filer er valg for opplasting.</p>
             </div>
