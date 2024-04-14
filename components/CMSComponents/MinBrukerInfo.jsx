@@ -2,14 +2,18 @@ import { readAccountDataId } from "@/lib/supabase/actionsAuth";
 
 export const MinBrukerInfo = async () => {
     const data = await readAccountDataId();
-
     const dateTimeString = data.storeIdData[0].created_at;
-    const dateTime = new Date(dateTimeString);
-    const formattedDate = dateTime.toLocaleDateString('en-GB');
 
-    const hours = dateTime.getHours().toString().padStart(2, '0');
-    const minutes = dateTime.getMinutes().toString().padStart(2, '0');
-    const formattedTime = `${hours}:${minutes}`;
+    const formatDate = (datestamp) => {
+        const date = new Date(datestamp);
+        return date.toLocaleDateString('en-GB');
+    };
+
+    const formatTime = (timestamp) => {
+        const date = new Date(timestamp);
+        return date.toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit' });
+    };
+
 
     return (
         <section className="flex flex-col gap-7 mt-4 sm:w-[365px]">
@@ -31,7 +35,7 @@ export const MinBrukerInfo = async () => {
             <div>
                 <h2 className="text-base font-medium mb-1">Opprettet</h2>
                 <hr className="mb-2" />
-                <p>Den {formattedDate}, klokken {formattedTime}</p>
+                <p>Den {formatDate(dateTimeString)}, klokken {formatTime(dateTimeString)}</p>
             </div>
         </section>
     )
