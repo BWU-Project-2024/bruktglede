@@ -69,7 +69,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
             />
             <p className="mb-6 italic text-error-darker">{errors.ingress?.message}</p>
 
-            <label className="text-md font-medium mb-3 mt-3" htmlFor="fileIn put">
+            <label className="text-md font-medium mb-3 mt-3" htmlFor="fileInput">
                 Bilde av produkt
             </label>
             <input
@@ -86,9 +86,6 @@ export const HoydepunktForm = ({ existingHighlight }) => {
             // })}
             >
             </input>
-            <div>
-                <p className="italic mb-2">Ingen filer er valg for opplasting.</p>
-            </div>
             <p className="mb-6 italic text-error-darker">{errors.fileInput?.message}</p>
             {/* Vil gjerne forhåndsvise bildet som personen laster opp her: */}
             {/* <img src="bilde som blir lastet opp av bruker" alt="Bilde" /> */}
