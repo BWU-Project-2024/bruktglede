@@ -153,6 +153,9 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                     />
                 )}
             /> */}
+            {/* {...register("fileInput", {
+                 required: "Vennligst last opp ett bilde",
+            } */}
             <div>
                 <p className="italic mb-2">Ingen filer er valg for opplasting.</p>
             </div>
