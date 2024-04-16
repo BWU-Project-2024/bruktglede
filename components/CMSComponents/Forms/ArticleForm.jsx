@@ -35,7 +35,6 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
         setImage(selectedFile)
     };
 
-
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
         const selectedFile = formData.fileInput;
@@ -51,11 +50,8 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             await newArticle(formData, image)
 
             console.log('after new article');
-
         }
-
     };
-
 
     const onCloseAlert = () => {
         setShowSuccessAlert(false)
@@ -67,7 +63,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 Tittel
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="tittel"
                 name="tittel"
                 placeholder=""
@@ -81,7 +77,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 Ingress
             </label>
             <textarea
-                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="ingress"
                 name="ingress"
                 placeholder=""
@@ -96,7 +92,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 Brødtekst
             </label>
             <textarea
-                className="rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="brodtekst"
                 name="brodtekst"
                 placeholder=""

@@ -53,7 +53,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 Tittel
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="tittel"
                 name="tittel"
                 placeholder=""
@@ -67,7 +67,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 Adresse
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="adresse"
                 name="adresse"
                 placeholder="Eksempel: Adressevegen 15, 2815 Gjøvik"
@@ -86,7 +86,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 name="dato"
                 render={({ field }) => (
                     <DatePicker
-                        className="w-full rounded border border-[#DBDBDB] mb-2"
+                        className="bg-white w-full rounded border border-[#DBDBDB] mb-2"
                         placeholderText="Velg dato"
                         onChange={(date) => field.onChange(date)}
                         selected={field.value}
@@ -102,7 +102,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 Klokkeslett
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="klokkeslett"
                 name="klokkeslett"
                 placeholder="Eksempel: 12:00-15:00"
@@ -116,7 +116,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 Ingress
             </label>
             <textarea
-                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="ingress"
                 name="ingress"
                 placeholder=""
@@ -131,7 +131,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 Brødtekst
             </label>
             <textarea
-                className="rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="brodtekst"
                 name="brodtekst"
                 placeholder=""

@@ -44,7 +44,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
                 Tittel
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="tittel"
                 name="tittel"
                 placeholder=""
@@ -58,7 +58,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
                 Beskrivelse
             </label>
             <textarea
-                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="ingress"
                 name="ingress"
                 placeholder=""

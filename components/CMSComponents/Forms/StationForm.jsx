@@ -45,7 +45,7 @@ export const StationForm = ({ tagOptions, existingStation, existingTags }) => {
                 Tittel
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="tittel"
                 name="tittel"
                 placeholder=""
@@ -59,7 +59,7 @@ export const StationForm = ({ tagOptions, existingStation, existingTags }) => {
                 Addresse
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="addresse"
                 name="addresse"
                 placeholder=""
