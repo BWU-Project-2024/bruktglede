@@ -1,9 +1,9 @@
 "use client"
 import { useState } from "react";
 import { useForm } from "react-hook-form"
-import { newHighlight, updateHighlight } from "@/lib/supabase/actionsCMSForms";
+import { insertStoreVisionData } from "@/lib/supabase/actionsCMSForms";
 
-export const HoydepunktForm = ({ existingHighlight }) => {
+export const ButikkVisjonForm = ({ existingData }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
     // Create react-hook-form
@@ -11,27 +11,21 @@ export const HoydepunktForm = ({ existingHighlight }) => {
         register,
         handleSubmit,
         formState: { errors },
-        reset
     } = useForm({
-        defaultValues: existingHighlight ? {
-            tittel: existingHighlight.title,
-            ingress: existingHighlight.ingress,
+        defaultValues: existingData ? {
+            tittel: existingData.title,
+            ingress: existingData.ingress,
+            subtittel: existingData.subtitle,
+            brodtekst: existingData.bodyText,
+            fileInput: existingData.img
             // Set other fields' default values here (img)
         } : {},
     });
 
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
-        if (existingHighlight) {
-            // Update existing article
-            await updateHighlight(formData, existingHighlight.id);
-            setShowSuccessAlert(true);
-        } else {
-            // Create new article
-            await newHighlight(formData);
-            setShowSuccessAlert(true);
-        }
-        reset();
+        await insertStoreVisionData(formData);
+        setShowSuccessAlert(true);
     };
 
     const onCloseAlert = () => {
@@ -44,7 +38,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
                 Tittel
             </label>
             <input
-                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="tittel"
                 name="tittel"
                 placeholder=""
@@ -55,10 +49,10 @@ export const HoydepunktForm = ({ existingHighlight }) => {
             <p className="mb-6 italic text-error-darker">{errors.tittel?.message}</p>
 
             <label className="text-md font-medium mb-2" htmlFor="ingress">
-                Beskrivelse
+                Ingress
             </label>
             <textarea
-                className="bg-white rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="ingress"
                 name="ingress"
                 placeholder=""
@@ -69,8 +63,34 @@ export const HoydepunktForm = ({ existingHighlight }) => {
             />
             <p className="mb-6 italic text-error-darker">{errors.ingress?.message}</p>
 
+            <label className="text-md mb-2 font-medium" htmlFor="subtittel">
+                Underoverskrift
+            </label>
+            <input
+                className="rounded-md px-3 py-2 bg-inherit border mb-6"
+                id="subtittel"
+                name="subtittel"
+                placeholder=""
+                {...register("subtittel")}
+            />
+
+            <label className="text-md font-medium mb-2" htmlFor="brodtekst">
+                Brødtekst
+            </label>
+            <textarea
+                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                id="brodtekst"
+                name="brodtekst"
+                placeholder=""
+                rows="3"
+                {...register("brodtekst", {
+                    required: "Vennligst skriv inn brødtekst",
+                })}
+            />
+            <p className="mb-6 italic text-error-darker">{errors.brodtekst?.message}</p>
+
             <label className="text-md font-medium mb-3 mt-3" htmlFor="fileInput">
-                Bilde av produkt
+                Bilde
             </label>
             <input
                 type="file"
@@ -96,7 +116,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
                     </svg>
                     <span className="sr-only">Info</span>
                     <div className="ms-3 text-sm">
-                        <span className="font-medium">Suksess!</span> Høydepunktet ble vellykket laget eller oppdatert.
+                        <span className="font-medium">Suksess!</span> Butikkens visjon ble vellykket oppdatert.
                     </div>
                     <button onClick={onCloseAlert} type="button" className="ms-auto -mx-1.5 -my-1.5 bg-gray-50 text-gray-500 rounded-lg focus:ring-2 focus:ring-gray-400 p-1.5 hover:bg-gray-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white" data-dismiss-target="#alert-1" aria-label="Close">
                         <span className="sr-only">Close</span>
