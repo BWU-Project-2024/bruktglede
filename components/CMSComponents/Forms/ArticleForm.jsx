@@ -1,12 +1,16 @@
 "use client"
 import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form"
+import Image from "next/image";
+import { useForm, Controller } from "react-hook-form"
 import { newArticle, updateArticle } from "@/lib/supabase/actionsCMSForms";
 import { useRouter } from 'next/navigation';
 
 export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [image, setImage] = useState([]);
     const router = useRouter();
+
+    // console.log("image", image);
 
     // Create react-hook-form
     const {
@@ -19,24 +23,34 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             tittel: existingArticle.title,
             ingress: existingArticle.ingress,
             brodtekst: existingArticle.bodyText,
-            tagger: existingTags.tagger
+            fileInput: existingArticle.fileInput,
+            tagger: existingTags.tagger,
             // Set other fields' default values here
         } : {},
     });
 
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        console.log(selectedFile);
+        setImage(selectedFile)
+    };
+
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
+        const selectedFile = formData.fileInput;
+        console.log("selected file", image);
+
         if (existingArticle) {
             // Update existing article
             await updateArticle(formData, existingArticle.id);
-            router.refresh();
-            setShowSuccessAlert(true);
         } else {
             // Create new article
-            await newArticle(formData);
-            setShowSuccessAlert(true);
+            console.log('before new article');
+            console.log('formDat', formData);
+            await newArticle(formData, image)
+
+            console.log('after new article');
         }
-        reset();
     };
 
     const onCloseAlert = () => {
@@ -49,7 +63,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 Tittel
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="tittel"
                 name="tittel"
                 placeholder=""
@@ -63,7 +77,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 Ingress
             </label>
             <textarea
-                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="ingress"
                 name="ingress"
                 placeholder=""
@@ -78,7 +92,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 Brødtekst
             </label>
             <textarea
-                className="rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="brodtekst"
                 name="brodtekst"
                 placeholder=""
@@ -117,21 +131,36 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             </label>
             <input
                 type="file"
-                name="fileInput"
                 id="fileInput"
-                accept="image/png, image/jpeg, image/jpg, image/webp, image/*"
-                // må finne ut hvordan style file button (tailwind sier å bruke file: forran men funker ikke)
+                name="fileInput"
+                accept="image/png, image/jpeg, image/jpg, image/webp"
                 className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
-                {...register("fileInput")}
-            // Når vi får bildeopplasting på plass, gjør at bilde et required:
-            // {...register("fileInput", {
-            //     required: "Vennligst last opp ett bilde",
-            // })}
-            >
-            </input>
+                onChange={handleFileChange}
+            />
+            {/* <Controller
+                control={control}
+                name="fileInput"
+                defaultValue=""
+                render={({ field }) => (
+                    <input
+                        type="file"
+                        id="fileInput"
+                        name="fileInput"
+                        accept="image/png, image/jpeg, image/jpg, image/webp, image/*"
+                        className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
+                        onChange={handleFileChange}
+                        multiple
+                    />
+                )}
+            /> */}
+            {/* {...register("fileInput", {
+                 required: "Vennligst last opp ett bilde",
+            } */}
+            <div>
+                <p className="italic mb-2">Ingen filer er valg for opplasting.</p>
+            </div>
             <p className="mb-6 italic text-error-darker">{errors.fileInput?.message}</p>
-            {/* Vil gjerne forhåndsvise bildet som personen laster opp her: */}
-            {/* <img src="bilde som blir lastet opp av bruker" alt="Bilde" /> */}
+
             {showSuccessAlert && (
                 <div id="alert-1" className="flex items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600" role="alert">
                     <svg className="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -139,7 +168,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                     </svg>
                     <span className="sr-only">Info</span>
                     <div className="ms-3 text-sm">
-                        <span className="font-medium">Suksess!</span> Arrangement ble vellykket laget eller oppdatert.
+                        <span className="font-medium">Suksess!</span> Artikkelen ble vellykket laget eller oppdatert.
                     </div>
                     <button onClick={onCloseAlert} type="button" className="ms-auto -mx-1.5 -my-1.5 bg-gray-50 text-gray-500 rounded-lg focus:ring-2 focus:ring-gray-400 p-1.5 hover:bg-gray-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white" data-dismiss-target="#alert-1" aria-label="Close">
                         <span className="sr-only">Close</span>

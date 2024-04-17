@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form"
 import DatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css";
 import { newEvent, updateEvent } from "@/lib/supabase/actionsCMSForms";
 
 export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
@@ -52,7 +53,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 Tittel
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="tittel"
                 name="tittel"
                 placeholder=""
@@ -66,7 +67,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 Adresse
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="adresse"
                 name="adresse"
                 placeholder="Eksempel: Adressevegen 15, 2815 Gjøvik"
@@ -85,19 +86,23 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 name="dato"
                 render={({ field }) => (
                     <DatePicker
-                        placeholderText='Velg dato'
+                        className="bg-white w-full rounded border border-[#DBDBDB] mb-2"
+                        placeholderText="Velg dato"
                         onChange={(date) => field.onChange(date)}
                         selected={field.value}
-                        format='yyyy-MM-dd'
+                        dateFormat="dd/MM/yyyy"
                     />
                 )}
+                {...register("dato", {
+                    required: "Vennligst velg en dato",
+                })}
             />
-
-            <label className="text-md mb-2 font-medium" htmlFor="klokkeslett">
+            <p className="mb-6 italic text-error-darker">{errors.dato?.message}</p>
+            <label className="text-md  mb-2 font-medium" htmlFor="klokkeslett">
                 Klokkeslett
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="klokkeslett"
                 name="klokkeslett"
                 placeholder="Eksempel: 12:00-15:00"
@@ -105,13 +110,13 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                     required: "Vennligst skriv inn ett klokkeslett",
                 })}
             />
-            <p className="mb-6 italic text-error-darker">{errors.dato?.message}</p>
+            <p className="mb-6 italic text-error-darker">{errors.klokkeslett?.message}</p>
 
             <label className="text-md font-medium mb-2" htmlFor="ingress">
                 Ingress
             </label>
             <textarea
-                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="ingress"
                 name="ingress"
                 placeholder=""
@@ -126,7 +131,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 Brødtekst
             </label>
             <textarea
-                className="rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="brodtekst"
                 name="brodtekst"
                 placeholder=""
@@ -187,7 +192,7 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                     </svg>
                     <span className="sr-only">Info</span>
                     <div className="ms-3 text-sm">
-                        <span className="font-medium">Suksess!</span> Arrangement ble vellykket laget eller oppdatert.
+                        <span className="font-medium">Suksess!</span> Arrangementet ble vellykket laget eller oppdatert.
                     </div>
                     <button onClick={onCloseAlert} type="button" className="ms-auto -mx-1.5 -my-1.5 bg-gray-50 text-gray-500 rounded-lg focus:ring-2 focus:ring-gray-400 p-1.5 hover:bg-gray-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white" data-dismiss-target="#alert-1" aria-label="Close">
                         <span className="sr-only">Close</span>

@@ -44,7 +44,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
                 Tittel
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="tittel"
                 name="tittel"
                 placeholder=""
@@ -58,7 +58,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
                 Beskrivelse
             </label>
             <textarea
-                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="ingress"
                 name="ingress"
                 placeholder=""
@@ -96,7 +96,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
                     </svg>
                     <span className="sr-only">Info</span>
                     <div className="ms-3 text-sm">
-                        <span className="font-medium">Suksess!</span> Høydepunkt ble vellykket laget eller oppdatert.
+                        <span className="font-medium">Suksess!</span> Høydepunktet ble vellykket laget eller oppdatert.
                     </div>
                     <button onClick={onCloseAlert} type="button" className="ms-auto -mx-1.5 -my-1.5 bg-gray-50 text-gray-500 rounded-lg focus:ring-2 focus:ring-gray-400 p-1.5 hover:bg-gray-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white" data-dismiss-target="#alert-1" aria-label="Close">
                         <span className="sr-only">Close</span>
