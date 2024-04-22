@@ -9,6 +9,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     const [image, setImage] = useState();
     const [imageError, setImageError] = useState('');
+    const [existingImage, setExistingImage] = useState(existingArticle ? existingArticle.img : '');
 
     // Create react-hook-form
     const {
@@ -21,8 +22,8 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             tittel: existingArticle.title,
             ingress: existingArticle.ingress,
             brodtekst: existingArticle.bodyText,
-            fileInput: existingArticle.img,
             tagger: existingTags.tagger,
+            // fileInput: existingImage,
         } : {},
     });
 
@@ -41,19 +42,25 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
     useEffect(() => {
     }, [image]);
 
-    const onSubmit = async (formData) => {
-        if (!image) {
-            setImageError('Vennligst last opp ett bilde');
-            return; // Exit the function early if image is not selected
+    useEffect(() => {
+        if (existingArticle) {
+            setExistingImage(existingArticle.img);
         }
-        const imageUrl = await uploadImageToCloudinary(image);
+    }, [existingArticle]);
+
+    const onSubmit = async (formData) => {
 
         if (existingArticle) {
             // Update existing article
-            await updateArticle(formData, existingArticle.id);
+            await updateArticle(formData, existingArticle.id, existingImage);
             setShowSuccessAlert(true);
         } else {
             // Create new article
+            if (!image) {
+                setImageError('Vennligst last opp ett bilde');
+                return; // Exit the function early if image is not selected
+            }
+            const imageUrl = await uploadImageToCloudinary(image);
             await newArticle(formData, imageUrl)
             setShowSuccessAlert(true);
         }
@@ -146,13 +153,23 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             />
             {imageError && <p className="mb-6 italic text-error-darker">{imageError}</p>}
             <div className="bg-[#F5F5F5] p-4 rounded">
-                <Image
-                    src={image}
-                    height={200}
-                    width={600}
-                    alt="Uploaded image"
-                >
-                </Image>
+                {existingImage ? (
+                    <Image
+                        src={existingImage}
+                        width={700}
+                        height={0}
+                        alt="Uploaded image"
+                    />
+                ) : (
+                    image && (
+                        <Image
+                            src={image}
+                            width={700}
+                            height={0}
+                            alt="Uploaded image"
+                        />
+                    )
+                )}
             </div>
 
             {showSuccessAlert && (
