@@ -9,7 +9,8 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     const [image, setImage] = useState();
     const [imageError, setImageError] = useState('');
-    const [existingImage, setExistingImage] = useState(existingArticle ? existingArticle.img : '');
+    const [existingImage, setExistingImage] = useState(existingArticle ? existingArticle.img : null);
+    const [updateImage, setUpdateImage] = useState(false);
 
     // Create react-hook-form
     const {
@@ -23,10 +24,11 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             ingress: existingArticle.ingress,
             brodtekst: existingArticle.bodyText,
             tagger: existingTags.tagger,
-            // fileInput: existingImage,
         } : {},
     });
 
+
+    // Read file selected
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
 
@@ -35,10 +37,13 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             const fileContent = reader.result;
             setImage(fileContent);
             setImageError('');
+            setExistingImage(null)
+            setUpdateImage(true);
         };
         reader.readAsDataURL(selectedFile);
     };
 
+    // Listen on image changes
     useEffect(() => {
     }, [image]);
 
@@ -48,12 +53,17 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
         }
     }, [existingArticle]);
 
+    // Submit form 
     const onSubmit = async (formData) => {
-
+        let imageUrl = existingImage;
         if (existingArticle) {
             // Update existing article
-            await updateArticle(formData, existingArticle.id, existingImage);
+            if (updateImage && image) {
+                imageUrl = await uploadImageToCloudinary(image);
+            }
+            await updateArticle(formData, existingArticle.id, imageUrl);
             setShowSuccessAlert(true);
+
         } else {
             // Create new article
             if (!image) {
@@ -65,8 +75,10 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             setShowSuccessAlert(true);
         }
         reset();
+        setImage(null)
     };
 
+    // Hide success alert if user closes
     const onCloseAlert = () => {
         setShowSuccessAlert(false)
     }
