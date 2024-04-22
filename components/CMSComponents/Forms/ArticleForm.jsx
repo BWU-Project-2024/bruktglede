@@ -7,7 +7,8 @@ import { useRouter } from 'next/navigation';
 
 export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-    const [image, setImage] = useState([]);
+    const [image, setImage] = useState();
+    const [file, setFile] = useState("")
     const router = useRouter();
 
     // console.log("image", image);
@@ -25,20 +26,33 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             brodtekst: existingArticle.bodyText,
             fileInput: existingArticle.fileInput,
             tagger: existingTags.tagger,
+            file: existingArticle.img,
             // Set other fields' default values here
         } : {},
     });
 
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
-        console.log(selectedFile);
-        setImage(selectedFile)
+        console.log("selectedFile", selectedFile);
+        setImage(selectedFile);
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            setFile(reader.result)
+            console.log("file", reader.result);
+        }
+        reader.readAsDataURL(selectedFile)
     };
+
+    useEffect(() => {
+        console.log("file", file);
+    }, [file]);
+
 
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
-        const selectedFile = formData.fileInput;
-        console.log("selected file", image);
+        // const selectedFile = formData.fileInput;
+        // console.log("selected file", image);
 
         if (existingArticle) {
             // Update existing article
@@ -47,7 +61,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             // Create new article
             console.log('before new article');
             console.log('formDat', formData);
-            await newArticle(formData, image)
+            await newArticle(formData, file)
 
             console.log('after new article');
         }
