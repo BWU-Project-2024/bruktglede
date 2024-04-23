@@ -1,16 +1,16 @@
 "use client"
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useForm, Controller } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { newArticle, updateArticle } from "@/lib/supabase/actionsCMSForms";
-import { useRouter } from 'next/navigation';
+import { uploadImageToCloudinary } from "@/lib/cloudinary";
 
 export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-    const [image, setImage] = useState([]);
-    const router = useRouter();
-
-    // console.log("image", image);
+    const [image, setImage] = useState();
+    const [imageError, setImageError] = useState('');
+    const [existingImage, setExistingImage] = useState(existingArticle ? existingArticle.img : null);
+    const [updateImage, setUpdateImage] = useState(false);
 
     // Create react-hook-form
     const {
@@ -23,36 +23,62 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             tittel: existingArticle.title,
             ingress: existingArticle.ingress,
             brodtekst: existingArticle.bodyText,
-            fileInput: existingArticle.fileInput,
             tagger: existingTags.tagger,
-            // Set other fields' default values here
         } : {},
     });
 
+
+    // Read file selected
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
-        console.log(selectedFile);
-        setImage(selectedFile)
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            const fileContent = reader.result;
+            setImage(fileContent);
+            setImageError('');
+            setExistingImage(null)
+            setUpdateImage(true);
+        };
+        reader.readAsDataURL(selectedFile);
     };
 
-    // On submit async function and passing in formData from the form into the supabase function.
-    const onSubmit = async (formData) => {
-        const selectedFile = formData.fileInput;
-        console.log("selected file", image);
+    // Listen on image changes
+    useEffect(() => {
+    }, [image]);
 
+    useEffect(() => {
+        if (existingArticle) {
+            setExistingImage(existingArticle.img);
+        }
+    }, [existingArticle]);
+
+    // Submit form 
+    const onSubmit = async (formData) => {
+        let imageUrl = existingImage;
         if (existingArticle) {
             // Update existing article
-            await updateArticle(formData, existingArticle.id);
+            if (updateImage && image) {
+                imageUrl = await uploadImageToCloudinary(image);
+            }
+            await updateArticle(formData, existingArticle.id, imageUrl);
+            setShowSuccessAlert(true);
+
         } else {
             // Create new article
-            console.log('before new article');
-            console.log('formDat', formData);
-            await newArticle(formData, image)
-
-            console.log('after new article');
+            if (!image) {
+                setImageError('Vennligst last opp ett bilde');
+                return;
+            }
+            const imageUrl = await uploadImageToCloudinary(image);
+            await newArticle(formData, imageUrl)
+            setShowSuccessAlert(true);
         }
+        reset();
+        setImage(null)
     };
 
+    // Hide success alert if user closes
     const onCloseAlert = () => {
         setShowSuccessAlert(false)
     }
@@ -133,33 +159,30 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 type="file"
                 id="fileInput"
                 name="fileInput"
-                accept="image/png, image/jpeg, image/jpg, image/webp"
+                accept="image/*"
                 className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
                 onChange={handleFileChange}
             />
-            {/* <Controller
-                control={control}
-                name="fileInput"
-                defaultValue=""
-                render={({ field }) => (
-                    <input
-                        type="file"
-                        id="fileInput"
-                        name="fileInput"
-                        accept="image/png, image/jpeg, image/jpg, image/webp, image/*"
-                        className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
-                        onChange={handleFileChange}
-                        multiple
+            {imageError && <p className="mb-6 italic text-error-darker">{imageError}</p>}
+            <div className="mb-4 bg-[#F5F5F5] p-4 rounded">
+                {existingImage ? (
+                    <Image
+                        src={existingImage}
+                        width={700}
+                        height={0}
+                        alt="Uploaded image"
                     />
+                ) : (
+                    image && (
+                        <Image
+                            src={image}
+                            width={700}
+                            height={0}
+                            alt="Uploaded image"
+                        />
+                    )
                 )}
-            /> */}
-            {/* {...register("fileInput", {
-                 required: "Vennligst last opp ett bilde",
-            } */}
-            <div>
-                <p className="italic mb-2">Ingen filer er valg for opplasting.</p>
             </div>
-            <p className="mb-6 italic text-error-darker">{errors.fileInput?.message}</p>
 
             {showSuccessAlert && (
                 <div id="alert-1" className="flex items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600" role="alert">

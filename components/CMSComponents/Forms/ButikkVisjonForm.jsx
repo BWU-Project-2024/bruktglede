@@ -1,10 +1,16 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form"
 import { insertStoreVisionData } from "@/lib/supabase/actionsCMSForms";
+import Image from "next/image";
+import { uploadImageToCloudinary } from "@/lib/cloudinary";
 
 export const ButikkVisjonForm = ({ existingData }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [image, setImage] = useState();
+    const [imageError, setImageError] = useState('');
+    const [existingImage, setExistingImage] = useState(existingData ? existingData.img : null);
+    const [updateImage, setUpdateImage] = useState(false);
 
     // Create react-hook-form
     const {
@@ -17,14 +23,52 @@ export const ButikkVisjonForm = ({ existingData }) => {
             ingress: existingData.ingress,
             subtittel: existingData.subtitle,
             brodtekst: existingData.bodyText,
-            fileInput: existingData.img
-            // Set other fields' default values here (img)
         } : {},
     });
 
+    // Read file selected
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+            const fileContent = reader.result;
+            setImage(fileContent);
+            setImageError('');
+            setExistingImage(null)
+            setUpdateImage(true);
+        };
+        reader.readAsDataURL(selectedFile);
+    };
+
+    // Listen on image changes
+    useEffect(() => {
+    }, [image]);
+
+    useEffect(() => {
+        if (existingData) {
+            setExistingImage(existingData.img);
+        }
+    }, [existingData]);
+
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
-        await insertStoreVisionData(formData);
+
+        let imageUrl = existingImage;
+        if (existingData) {
+            // Update existing data
+            if (updateImage && image) {
+                imageUrl = await uploadImageToCloudinary(image);
+            }
+            await insertStoreVisionData(formData, imageUrl);
+        } else {
+            // Insert data
+            if (!image) {
+                setImageError('Vennligst last opp ett bilde');
+                return;
+            }
+            const imageUrl = await uploadImageToCloudinary(image);
+            await insertStoreVisionData(formData, imageUrl);
+        }
         setShowSuccessAlert(true);
     };
 
@@ -94,21 +138,32 @@ export const ButikkVisjonForm = ({ existingData }) => {
             </label>
             <input
                 type="file"
-                name="fileInput"
                 id="fileInput"
-                accept="image/png, image/jpeg, image/jpg, image/webp, image/*"
-                // må finne ut hvordan style file button (tailwind sier å bruke file: forran men funker ikke)
+                name="fileInput"
+                accept="image/*"
                 className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
-                {...register("fileInput")}
-            // Når vi får bildeopplasting på plass, gjør at bilde et required:
-            // {...register("fileInput", {
-            //     required: "Vennligst last opp ett bilde",
-            // })}
-            >
-            </input>
-            <p className="mb-6 italic text-error-darker">{errors.fileInput?.message}</p>
-            {/* Vil gjerne forhåndsvise bildet som personen laster opp her: */}
-            {/* <img src="bilde som blir lastet opp av bruker" alt="Bilde" /> */}
+                onChange={handleFileChange}
+            />
+            {imageError && <p className="mb-6 italic text-error-darker">{imageError}</p>}
+            <div className="mb-4 bg-[#F5F5F5] p-4 rounded">
+                {existingData && existingImage ? (
+                    <Image
+                        src={existingImage}
+                        width={700}
+                        height={0}
+                        alt="Uploaded image"
+                    />
+                ) : (
+                    image && (
+                        <Image
+                            src={image}
+                            width={700}
+                            height={0}
+                            alt="Uploaded image"
+                        />
+                    )
+                )}
+            </div>
             {showSuccessAlert && (
                 <div id="alert-1" className="flex items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600" role="alert">
                     <svg className="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
