@@ -1,6 +1,7 @@
 import { Jomhuria, Open_Sans } from "next/font/google";
 import "./globals.css"
 import Script from "next/script";
+import Head from "next/head";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { readUserSession } from "@/lib/supabase/actionsAuth";
@@ -27,12 +28,15 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="en">
             {/* Fjerne navbar fra mobil når er på [id] */}
+            <Head>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+            </Head>
             <body className={`${opensans.variable} ${jomhuria.variable}`}>
                 <Navbar session={session} />
                 {children}
                 <Footer />
-                {/* <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script> */}
-                {/* <script src="../path/to/flowbite/dist/datepicker.js"></script> */}
+                <Script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></Script>
+                <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></Script>
             </body>
         </html>
     );
