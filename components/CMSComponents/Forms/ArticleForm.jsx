@@ -68,7 +68,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             // Create new article
             if (!image) {
                 setImageError('Vennligst last opp ett bilde');
-                return; // Exit the function early if image is not selected
+                return;
             }
             const imageUrl = await uploadImageToCloudinary(image);
             await newArticle(formData, imageUrl)
@@ -160,11 +160,11 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 id="fileInput"
                 name="fileInput"
                 accept="image/*"
-                className="mb-6 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
+                className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
                 onChange={handleFileChange}
             />
             {imageError && <p className="mb-6 italic text-error-darker">{imageError}</p>}
-            <div className="bg-[#F5F5F5] p-4 rounded">
+            <div className="mb-4 bg-[#F5F5F5] p-4 rounded">
                 {existingImage ? (
                     <Image
                         src={existingImage}

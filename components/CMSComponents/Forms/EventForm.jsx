@@ -1,12 +1,18 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Controller, useForm } from "react-hook-form"
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import { newEvent, updateEvent } from "@/lib/supabase/actionsCMSForms";
+import { uploadImageToCloudinary } from "@/lib/cloudinary";
 
 export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [image, setImage] = useState();
+    const [imageError, setImageError] = useState('');
+    const [existingImage, setExistingImage] = useState(existingEvent ? existingEvent.img : null);
+    const [updateImage, setUpdateImage] = useState(false);
 
     // Create react-hook-form
     const {
@@ -20,26 +26,61 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
             tittel: existingEvent.title,
             adresse: existingEvent.address,
             dato: existingEvent.date,
-            klokkeslett: existingEvent.time,
+            startTid: existingEvent.startTime,
+            sluttTid: existingEvent.endTime,
             ingress: existingEvent.ingress,
             brodtekst: existingEvent.bodyText,
             tagger: existingTags.tagger
-            // Set other fields' default values here
         } : {},
     });
 
+    // Read file selected
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            const fileContent = reader.result;
+            setImage(fileContent);
+            setImageError('');
+            setExistingImage(null)
+            setUpdateImage(true);
+        };
+        reader.readAsDataURL(selectedFile);
+    };
+
+    // Listen on image changes
+    useEffect(() => {
+    }, [image]);
+
+    useEffect(() => {
+        if (existingEvent) {
+            setExistingImage(existingEvent.img);
+        }
+    }, [existingEvent]);
+
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
+        let imageUrl = existingImage;
         if (existingEvent) {
             // Update existing event
-            await updateEvent(formData, existingEvent.id);
+            if (updateImage && image) {
+                imageUrl = await uploadImageToCloudinary(image);
+            }
+            await updateEvent(formData, existingEvent.id, imageUrl);
             setShowSuccessAlert(true);
         } else {
             // Create new event
-            await newEvent(formData);
+            if (!image) {
+                setImageError('Vennligst last opp ett bilde');
+                return;
+            }
+            const imageUrl = await uploadImageToCloudinary(image);
+            await newEvent(formData, imageUrl);
             setShowSuccessAlert(true);
         }
         reset();
+        setImage(null);
     };
 
     const onCloseAlert = () => {
@@ -98,19 +139,32 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
                 })}
             />
             <p className="mb-6 italic text-error-darker">{errors.dato?.message}</p>
-            <label className="text-md  mb-2 font-medium" htmlFor="klokkeslett">
-                Klokkeslett
+            <label className="text-md  mb-4 font-medium" htmlFor="klokkeslett">
+                Start og slutt tid for arrangement
             </label>
-            <input
-                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
-                id="klokkeslett"
-                name="klokkeslett"
-                placeholder="Eksempel: 12:00-15:00"
-                {...register("klokkeslett", {
-                    required: "Vennligst skriv inn ett klokkeslett",
-                })}
-            />
-            <p className="mb-6 italic text-error-darker">{errors.klokkeslett?.message}</p>
+            <div className="flex items-center">
+                <input
+                    type="time"
+                    id="startTid"
+                    name="startTid"
+                    className="rounded-md bg-white py-1 bg-inherit border border-[#D9D9D9]"
+                    {...register("startTid", {
+                        required: "Vennligst velg en start tid",
+                    })}
+                />
+                <p className="mx-1">-</p>
+                <input
+                    type="time"
+                    id="sluttTid"
+                    name="sluttTid"
+                    className="rounded-md bg-white py-1 bg-inherit border border-[#D9D9D9]"
+                    {...register("sluttTid", {
+                        required: "Vennligst velg en slutt tid",
+                    })}
+                />
+            </div>
+            <p className="mt-2 italic text-error-darker">{errors.startTid?.message}</p>
+            <p className="mb-6 italic text-error-darker">{errors.sluttTid?.message}</p>
 
             <label className="text-md font-medium mb-2" htmlFor="ingress">
                 Ingress
@@ -170,21 +224,32 @@ export const EventForm = ({ tagOptions, existingEvent, existingTags }) => {
             </label>
             <input
                 type="file"
-                name="fileInput"
                 id="fileInput"
-                accept="image/png, image/jpeg, image/jpg, image/webp, image/*"
-                // må finne ut hvordan style file button (tailwind sier å bruke file: forran men funker ikke)
+                name="fileInput"
+                accept="image/*"
                 className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
-                {...register("fileInput")}
-            // Når vi får bildeopplasting på plass, gjør at bilde et required:
-            // {...register("fileInput", {
-            //     required: "Vennligst last opp ett bilde",
-            // })}
-            >
-            </input>
-            <p className="mb-6 italic text-error-darker">{errors.fileInput?.message}</p>
-            {/* Vil gjerne forhåndsvise bildet som personen laster opp her: */}
-            {/* <img src="bilde som blir lastet opp av bruker" alt="Bilde" /> */}
+                onChange={handleFileChange}
+            />
+            {imageError && <p className="mb-6 italic text-error-darker">{imageError}</p>}
+            <div className="mb-4 bg-[#F5F5F5] p-4 rounded">
+                {existingImage ? (
+                    <Image
+                        src={existingImage}
+                        width={700}
+                        height={0}
+                        alt="Uploaded image"
+                    />
+                ) : (
+                    image && (
+                        <Image
+                            src={image}
+                            width={700}
+                            height={0}
+                            alt="Uploaded image"
+                        />
+                    )
+                )}
+            </div>
             {showSuccessAlert && (
                 <div id="alert-1" className="flex items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600" role="alert">
                     <svg className="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
