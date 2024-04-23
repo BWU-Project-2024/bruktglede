@@ -38,7 +38,6 @@ export default async function Layout({ children }) {
 
             {session && role === 'admin' && (
                 <div>
-                    <p>hello admin</p>
                     {children}
                 </div>
             )}

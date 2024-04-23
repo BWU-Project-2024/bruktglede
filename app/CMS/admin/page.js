@@ -1,7 +1,9 @@
-export default async function admin() {
+import { AdminPage } from "@/components/pages/CMSPages/AdminPage";
+
+export default function AdminRoute() {
     return (
-        <div className="sm:hidden flex flex-col min-h-[90vh] w-full">
-            <p>hello admin</p>
-        </div>
+        <>
+            <AdminPage />
+        </>
     );
 }
