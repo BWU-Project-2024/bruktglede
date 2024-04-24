@@ -1,12 +1,16 @@
 "use client"
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useForm } from "react-hook-form"
 import { newArticle, updateArticle } from "@/lib/supabase/actionsCMSForms";
-import { useRouter } from 'next/navigation';
+import { uploadImageToCloudinary } from "@/lib/cloudinary";
 
 export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-    const router = useRouter();
+    const [image, setImage] = useState();
+    const [imageError, setImageError] = useState('');
+    const [existingImage, setExistingImage] = useState(existingArticle ? existingArticle.img : null);
+    const [updateImage, setUpdateImage] = useState(false);
 
     // Create react-hook-form
     const {
@@ -19,26 +23,62 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             tittel: existingArticle.title,
             ingress: existingArticle.ingress,
             brodtekst: existingArticle.bodyText,
-            tagger: existingTags.tagger
-            // Set other fields' default values here
+            tagger: existingTags.tagger,
         } : {},
     });
 
-    // On submit async function and passing in formData from the form into the supabase function.
+
+    // Read file selected
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            const fileContent = reader.result;
+            setImage(fileContent);
+            setImageError('');
+            setExistingImage(null)
+            setUpdateImage(true);
+        };
+        reader.readAsDataURL(selectedFile);
+    };
+
+    // Listen on image changes
+    useEffect(() => {
+    }, [image]);
+
+    useEffect(() => {
+        if (existingArticle) {
+            setExistingImage(existingArticle.img);
+        }
+    }, [existingArticle]);
+
+    // Submit form 
     const onSubmit = async (formData) => {
+        let imageUrl = existingImage;
         if (existingArticle) {
             // Update existing article
-            await updateArticle(formData, existingArticle.id);
-            router.refresh();
+            if (updateImage && image) {
+                imageUrl = await uploadImageToCloudinary(image);
+            }
+            await updateArticle(formData, existingArticle.id, imageUrl);
             setShowSuccessAlert(true);
+
         } else {
             // Create new article
-            await newArticle(formData);
+            if (!image) {
+                setImageError('Vennligst last opp ett bilde');
+                return;
+            }
+            const imageUrl = await uploadImageToCloudinary(image);
+            await newArticle(formData, imageUrl)
             setShowSuccessAlert(true);
         }
         reset();
+        setImage(null)
     };
 
+    // Hide success alert if user closes
     const onCloseAlert = () => {
         setShowSuccessAlert(false)
     }
@@ -49,7 +89,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 Tittel
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="tittel"
                 name="tittel"
                 placeholder=""
@@ -63,7 +103,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 Ingress
             </label>
             <textarea
-                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="ingress"
                 name="ingress"
                 placeholder=""
@@ -78,7 +118,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                 Brødtekst
             </label>
             <textarea
-                className="rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-32 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="brodtekst"
                 name="brodtekst"
                 placeholder=""
@@ -112,29 +152,38 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
             </div>
             <p className="mb-6 italic text-error-darker">{errors.tagger?.message}</p>
 
-            <label className="text-md font-medium mb-3 mt-3" htmlFor="fileIn put">
+            <label className="text-md font-medium mb-3 mt-3" htmlFor="fileInput">
                 Header bilde
             </label>
             <input
                 type="file"
-                name="fileInput"
                 id="fileInput"
-                accept="image/png, image/jpeg, image/jpg, image/webp, image/*"
-                // må finne ut hvordan style file button (tailwind sier å bruke file: forran men funker ikke)
+                name="fileInput"
+                accept="image/*"
                 className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
-                {...register("fileInput")}
-            // Når vi får bildeopplasting på plass, gjør at bilde et required:
-            // {...register("fileInput", {
-            //     required: "Vennligst last opp ett bilde",
-            // })}
-            >
-            </input>
-            <div>
-                <p className="italic mb-2">Ingen filer er valg for opplasting.</p>
+                onChange={handleFileChange}
+            />
+            {imageError && <p className="mb-6 italic text-error-darker">{imageError}</p>}
+            <div className="mb-4 bg-[#F5F5F5] p-4 rounded">
+                {existingImage ? (
+                    <Image
+                        src={existingImage}
+                        width={700}
+                        height={0}
+                        alt="Uploaded image"
+                    />
+                ) : (
+                    image && (
+                        <Image
+                            src={image}
+                            width={700}
+                            height={0}
+                            alt="Uploaded image"
+                        />
+                    )
+                )}
             </div>
-            <p className="mb-6 italic text-error-darker">{errors.fileInput?.message}</p>
-            {/* Vil gjerne forhåndsvise bildet som personen laster opp her: */}
-            {/* <img src="bilde som blir lastet opp av bruker" alt="Bilde" /> */}
+
             {showSuccessAlert && (
                 <div id="alert-1" className="flex items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600" role="alert">
                     <svg className="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -142,7 +191,7 @@ export const ArticleForm = ({ tagOptions, existingArticle, existingTags }) => {
                     </svg>
                     <span className="sr-only">Info</span>
                     <div className="ms-3 text-sm">
-                        <span className="font-medium">Suksess!</span> Arrangement ble vellykket laget eller oppdatert.
+                        <span className="font-medium">Suksess!</span> Artikkelen ble vellykket laget eller oppdatert.
                     </div>
                     <button onClick={onCloseAlert} type="button" className="ms-auto -mx-1.5 -my-1.5 bg-gray-50 text-gray-500 rounded-lg focus:ring-2 focus:ring-gray-400 p-1.5 hover:bg-gray-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white" data-dismiss-target="#alert-1" aria-label="Close">
                         <span className="sr-only">Close</span>

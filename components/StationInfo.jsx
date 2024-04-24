@@ -8,13 +8,13 @@ export const StationInfo = async () => {
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10">
-            {storeInfo.map((storeData) => (
+            {storeInfo && storeInfo.map((storeData) => (
                 <div key={storeData.store.id}>
                     <h2 className="text-xl lg:text-2xl font-semibold font-opensans mb-1 mt-10">
                         {storeData.store.name}
                     </h2>
                     <hr className="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-                    {storeData.stations.map((station) => (
+                    {storeData?.stations.map((station) => (
                         <div key={station.id} className="flex flex-col gap-3">
                             <h3 className="font-opensans text-base md:text-lg font-semibold text-color-jet">
                                 {station.title}
