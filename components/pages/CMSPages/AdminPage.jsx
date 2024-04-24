@@ -1,18 +1,26 @@
 import { NewUserForm } from "@/components/CMSComponents/Forms/NewUserForm";
 import { AllSuperUsers } from "@/components/CMSComponents/AllSuperUsers";
 import { RequestCard } from "@/components/CMSComponents/RequestCard";
+import { createClient } from '@/lib/supabase/supabaseServer';
+import { redirect } from 'next/navigation';
 
-export const AdminPage = () => {
+export const AdminPage = async () => {
     const signOut = async () => {
         "use server";
         const supabase = createClient();
-
         await supabase.auth.signOut();
         return redirect('/');
     };
+
+
     return (
-        <>
-            <div className="flex flex-col md:flex-row items-center md:justify-between w-full md:px-[10rem] mt-16 min-h-screen">
+        <div className="w-full md:px-[10rem] mt-10 min-h-screen">
+            <form action={signOut} className="w-full flex justify-end mb-10">
+                <button className=" w-30 bg-forestgreen-default text-ivory-default px-24 rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200">
+                    Logg ut
+                </button>
+            </form>
+            <div className="flex flex-col md:flex-row items-center md:justify-between ">
                 <div className="w-[95%] md:w-[45%] mb-16 md:mb-0">
                     <div className="mb-16">
                         <h1 className="text-xl">Opprett ny butikk</h1>
@@ -26,23 +34,12 @@ export const AdminPage = () => {
                 </div>
                 <div className="w-[95%] md:w-[45%]">
                     <h1 className="text-xl mb-4">Alle forespørsler</h1>
-                    <div className="h-[840px] overflow-scroll gap-3 flex flex-wrap pb-3">
-                        <RequestCard />
-                        <RequestCard />
-                        <RequestCard />
-                        <RequestCard />
-                        <RequestCard />
-                        <RequestCard />
+                    <div className="h-[400px] md:h-[840px] overflow-scroll gap-3 flex flex-wrap pb-3">
                         <RequestCard />
                     </div>
                 </div>
             </div>
-            <form action={signOut} className="w-full flex justify-center mt-14 mb-20">
-                <button className=" w-30 bg-forestgreen-default text-ivory-default px-24 rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200">
-                    Logg ut
-                </button>
-            </form>
-        </>
+        </div>
     )
 
 }

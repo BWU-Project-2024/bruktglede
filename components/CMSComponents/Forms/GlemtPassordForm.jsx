@@ -1,20 +1,24 @@
 "use client"
 import { useState } from "react";
 import { useForm } from "react-hook-form"
-import { newStoreUser } from "@/lib/supabase/actionsCMSForms";
+import { glemtPassword } from "@/lib/supabase/actionsCMSForms";
 
-export const NewUserForm = () => {
+export const GlemtPassordForm = () => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+
     // Create react-hook-form
     const {
         register,
         handleSubmit,
         formState: { errors },
         reset
-    } = useForm({});
+    } = useForm();
 
+
+    // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
-        await newStoreUser(formData);
+
+        await glemtPassword(formData);
         setShowSuccessAlert(true);
         reset();
     };
@@ -25,47 +29,21 @@ export const NewUserForm = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col" aria-label="CMS form" encType="multipart/form-data">
-            <label className="text-md mb-2 font-medium" htmlFor="brukernavn">
-                Brukernavn
+            <label className="text-md mb-2 font-medium" htmlFor="epost">
+                Eksisterende epost:
             </label>
             <input
-                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
-                id="brukernavn"
-                name="brukernavn"
-                placeholder=""
-                {...register("brukernavn", {
-                    required: "Vennligst skriv inn ett brukernavn",
-                })}
-            />
-            <p className="mb-2 italic text-error-darker">{errors.brukernavn?.message}</p>
-
-            <label className="text-md font-medium mb-2" htmlFor="butikknavn">
-                Butikknavn
-            </label>
-            <input
-                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
-                id="butikknavn"
-                name="butikknavn"
-                placeholder=""
-                {...register("butikknavn", {
-                    required: "Vennligst skriv inn ett butikknavn",
-                })}
-            />
-            <p className="mb-2 italic text-error-darker">{errors.butikknavn?.message}</p>
-
-            <label className="text-md font-medium mb-2" htmlFor="epost">
-                Epost
-            </label>
-            <input
-                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
+                type="text"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1 border-[#D9D9D9]"
                 id="epost"
                 name="epost"
                 placeholder=""
                 {...register("epost", {
-                    required: "Vennligst skriv inn butikkens epost",
+                    required: "Vennligst skriv inn epostadressen din",
+
                 })}
             />
-            <p className="mb-2 italic text-error-darker">{errors.epost?.message}</p>
+            <p className="mb-6 italic text-error-darker">{errors.epost?.message}</p>
 
             {showSuccessAlert && (
                 <div id="alert-1" className="flex items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600" role="alert">
@@ -74,7 +52,7 @@ export const NewUserForm = () => {
                     </svg>
                     <span className="sr-only">Info</span>
                     <div className="ms-3 text-sm">
-                        <span className="font-medium">Suksess!</span> Ny butikk ble opprettet.
+                        <span className="font-medium">Suksess!</span> Passordet ble oppdatert.
                     </div>
                     <button onClick={onCloseAlert} type="button" className="ms-auto -mx-1.5 -my-1.5 bg-gray-50 text-gray-500 rounded-lg focus:ring-2 focus:ring-gray-400 p-1.5 hover:bg-gray-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white" data-dismiss-target="#alert-1" aria-label="Close">
                         <span className="sr-only">Close</span>
@@ -84,7 +62,8 @@ export const NewUserForm = () => {
                     </button>
                 </div>
             )}
-            <button type="submit" className="w-full bg-success-lighter hover:bg-success-default py-2 rounded mt-6 font-medium">Opprett ny butikk</button>
+
+            <button type="submit" className="w-full bg-success-lighter hover:bg-success-default py-2 rounded mt-6 font-medium">Opprett nytt passord</button>
         </form>
     )
 }

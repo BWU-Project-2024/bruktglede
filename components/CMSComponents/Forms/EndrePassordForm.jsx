@@ -43,7 +43,7 @@ export const EndrePassordForm = () => {
             </label>
             <input
                 type="password"
-                className="rounded-md px-3 py-2 bg-inherit border mb-1 border-[#D9D9D9]"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1 border-[#D9D9D9]"
                 id="passord"
                 name="passord"
                 placeholder=""
@@ -62,7 +62,7 @@ export const EndrePassordForm = () => {
             </label>
             <input
                 type="password"
-                className="rounded-md px-3 py-2 bg-inherit border mb-1 border-[#D9D9D9]"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1 border-[#D9D9D9]"
                 id="bekreftPassord"
                 name="bekreftPassord"
                 placeholder=""
