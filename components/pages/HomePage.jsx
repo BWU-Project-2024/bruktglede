@@ -2,6 +2,8 @@ import { LandingHeader } from "../LandingHeader";
 import { Button } from "../Button";
 import tekopp from "@/public/tekopp.jpg";
 import { UkensHoydepunkt } from "../UkensHoydepunkt";
+import { BliFrivilligCard } from "../BliFrivilligCard";
+
 
 export const HomePage = async () => {
     return (
@@ -27,3 +29,4 @@ export const HomePage = async () => {
         </div>
     );
 };
+
