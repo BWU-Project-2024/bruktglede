@@ -1,10 +1,16 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form"
+import Image from "next/image";
 import { newHighlight, updateHighlight } from "@/lib/supabase/actionsCMSForms";
+import { uploadImageToCloudinary } from "@/lib/cloudinary";
 
 export const HoydepunktForm = ({ existingHighlight }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [image, setImage] = useState();
+    const [imageError, setImageError] = useState('');
+    const [existingImage, setExistingImage] = useState(existingHighlight ? existingHighlight.img : null);
+    const [updateImage, setUpdateImage] = useState(false);
 
     // Create react-hook-form
     const {
@@ -16,22 +22,56 @@ export const HoydepunktForm = ({ existingHighlight }) => {
         defaultValues: existingHighlight ? {
             tittel: existingHighlight.title,
             ingress: existingHighlight.ingress,
-            // Set other fields' default values here (img)
         } : {},
     });
 
+    // Read file selected
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            const fileContent = reader.result;
+            setImage(fileContent);
+            setImageError('');
+            setExistingImage(null)
+            setUpdateImage(true);
+        };
+        reader.readAsDataURL(selectedFile);
+    };
+
+    // Listen on image changes
+    useEffect(() => {
+    }, [image]);
+
+    useEffect(() => {
+        if (existingHighlight) {
+            setExistingImage(existingHighlight.img);
+        }
+    }, [existingHighlight]);
+
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
+        let imageUrl = existingImage;
         if (existingHighlight) {
-            // Update existing article
-            await updateHighlight(formData, existingHighlight.id);
+            // Update existing highlight
+            if (updateImage && image) {
+                imageUrl = await uploadImageToCloudinary(image);
+            }
+            await updateHighlight(formData, existingHighlight.id, imageUrl);
             setShowSuccessAlert(true);
         } else {
-            // Create new article
-            await newHighlight(formData);
+            // Create new highlight
+            if (!image) {
+                setImageError('Vennligst last opp ett bilde');
+                return;
+            }
+            const imageUrl = await uploadImageToCloudinary(image);
+            await newHighlight(formData, imageUrl);
             setShowSuccessAlert(true);
         }
         reset();
+        setImage(null);
     };
 
     const onCloseAlert = () => {
@@ -44,7 +84,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
                 Tittel
             </label>
             <input
-                className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                className="bg-white rounded-md px-3 py-2 bg-inherit border mb-1"
                 id="tittel"
                 name="tittel"
                 placeholder=""
@@ -58,7 +98,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
                 Beskrivelse
             </label>
             <textarea
-                className="rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
+                className="bg-white rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB] mb-1"
                 id="ingress"
                 name="ingress"
                 placeholder=""
@@ -69,29 +109,37 @@ export const HoydepunktForm = ({ existingHighlight }) => {
             />
             <p className="mb-6 italic text-error-darker">{errors.ingress?.message}</p>
 
-            <label className="text-md font-medium mb-3 mt-3" htmlFor="fileIn put">
+            <label className="text-md font-medium mb-3 mt-3" htmlFor="fileInput">
                 Bilde av produkt
             </label>
             <input
                 type="file"
-                name="fileInput"
                 id="fileInput"
-                accept="image/png, image/jpeg, image/jpg, image/webp, image/*"
-                // må finne ut hvordan style file button (tailwind sier å bruke file: forran men funker ikke)
+                name="fileInput"
+                accept="image/*"
                 className="mb-4 rounded bg-[#F5F5F5] file:bg-[#F5F5F5] file:text-base"
-                {...register("fileInput")}
-            // Når vi får bildeopplasting på plass, gjør at bilde et required:
-            // {...register("fileInput", {
-            //     required: "Vennligst last opp ett bilde",
-            // })}
-            >
-            </input>
-            <div>
-                <p className="italic mb-2">Ingen filer er valg for opplasting.</p>
+                onChange={handleFileChange}
+            />
+            {imageError && <p className="mb-6 italic text-error-darker">{imageError}</p>}
+            <div className="mb-4 bg-[#F5F5F5] p-4 rounded">
+                {existingImage ? (
+                    <Image
+                        src={existingImage}
+                        width={700}
+                        height={0}
+                        alt="Uploaded image"
+                    />
+                ) : (
+                    image && (
+                        <Image
+                            src={image}
+                            width={700}
+                            height={0}
+                            alt="Uploaded image"
+                        />
+                    )
+                )}
             </div>
-            <p className="mb-6 italic text-error-darker">{errors.fileInput?.message}</p>
-            {/* Vil gjerne forhåndsvise bildet som personen laster opp her: */}
-            {/* <img src="bilde som blir lastet opp av bruker" alt="Bilde" /> */}
             {showSuccessAlert && (
                 <div id="alert-1" className="flex items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600" role="alert">
                     <svg className="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -99,7 +147,7 @@ export const HoydepunktForm = ({ existingHighlight }) => {
                     </svg>
                     <span className="sr-only">Info</span>
                     <div className="ms-3 text-sm">
-                        <span className="font-medium">Suksess!</span> Høydepunkt ble vellykket laget eller oppdatert.
+                        <span className="font-medium">Suksess!</span> Høydepunktet ble vellykket laget eller oppdatert.
                     </div>
                     <button onClick={onCloseAlert} type="button" className="ms-auto -mx-1.5 -my-1.5 bg-gray-50 text-gray-500 rounded-lg focus:ring-2 focus:ring-gray-400 p-1.5 hover:bg-gray-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white" data-dismiss-target="#alert-1" aria-label="Close">
                         <span className="sr-only">Close</span>
