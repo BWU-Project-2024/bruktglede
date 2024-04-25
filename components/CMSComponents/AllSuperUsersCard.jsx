@@ -33,7 +33,7 @@ export const AllSuperUsersCard = ({ superUserData }) => {
                 <p className="py-2 flex justify-center">Ingen superbrukere i databasen</p>
             ) : (
                 allSuperUsersData.map((users, index) => (
-                    <div key={index} className="flex items-center py-2">
+                    <div key={index} className="flex items-center py-3">
                         <button onClick={() => handleDeleteStoreUser(users.accountData.store_id)}><FiXCircle style={delIconStyle} /></button>
                         <p className="w-[30%] font-medium text-sm">{users.storeData}</p>
                         <p className="w-[30%] text-sm">{users.accountData?.username}</p>

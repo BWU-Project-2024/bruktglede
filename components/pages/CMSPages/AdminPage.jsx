@@ -18,7 +18,7 @@ export const AdminPage = async () => {
 
     return (
         <div className="w-full md:px-[10rem] mt-10 min-h-screen">
-            <form action={signOut} className="w-full flex justify-end mb-10">
+            <form action={signOut} className="w-full flex justify-center md:justify-end mb-10">
                 <button className=" w-30 bg-forestgreen-default text-ivory-default px-24 rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200">
                     Logg ut
                 </button>

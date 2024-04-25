@@ -1,7 +1,9 @@
 "use client"
 import { deleteRequest } from "@/lib/supabase/actionsAuth";
+import { useRouter } from 'next/navigation';
 
 export const RequestCard = ({ requestData }) => {
+    const router = useRouter()
 
     const handleDeleteRequest = async (requestId) => {
         const confirms = confirm("Er du sikker på at du vil slette forespørsel?");
