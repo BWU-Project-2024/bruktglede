@@ -16,7 +16,6 @@ export const EndrePassordForm = () => {
         reset
     } = useForm();
 
-
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
 

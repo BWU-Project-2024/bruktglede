@@ -11,8 +11,6 @@ export const AdminPage = async () => {
         await supabase.auth.signOut();
         return redirect('/');
     };
-
-
     return (
         <div className="w-full md:px-[10rem] mt-10 min-h-screen">
             <form action={signOut} className="w-full flex justify-end mb-10">
@@ -29,7 +27,7 @@ export const AdminPage = async () => {
                     </div>
                     <div>
                         <h1 className="text-xl mb-4">Alle butikker</h1>
-                        <AllSuperUsers />
+                        {/* <AllSuperUsers /> */}
                     </div>
                 </div>
                 <div className="w-[95%] md:w-[45%]">
