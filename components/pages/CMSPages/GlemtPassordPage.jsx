@@ -1,4 +1,5 @@
 import { GlemtPassordForm } from "@/components/CMSComponents/Forms/GlemtPassordForm"
+
 export const GlemtPassordPage = () => {
     return (
         <div className="flex flex-col min-h-[90vh] w-full items-center">
