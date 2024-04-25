@@ -2,13 +2,16 @@ import { LandingHeader } from "../LandingHeader";
 import { Button } from "../Button";
 import tekopp from "@/public/tekopp.jpg";
 import { UkensHoydepunkt } from "../UkensHoydepunkt";
+import { EventCardLong } from "../EventCardLong";
+
+
 
 export const HomePage = async () => {
     return (
         <div className="flex flex-col min-h-screen">
             <LandingHeader />
 
-
+          
             <UkensHoydepunkt
                 image={tekopp}
                 text="Antikk kopp"
@@ -23,6 +26,8 @@ export const HomePage = async () => {
 
             <main className="flex-1">
                 <Button title="Se alle arrangementer" link="/" />
+
+             
             </main>
         </div>
     );
