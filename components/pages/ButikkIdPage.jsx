@@ -5,7 +5,7 @@ export const ButikkIdPage = async ({ params }) => {
 const storeData = await getStoreById(params.id);
 const data = storeData;
 
-
+ 
 console.log(data)
 
     return (
