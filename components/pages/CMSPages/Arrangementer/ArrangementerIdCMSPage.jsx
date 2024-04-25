@@ -14,9 +14,12 @@ export const ArrangementerIdCMSPage = async ({ params }) => {
 
     const handleDelete = async () => {
         "use server"
+        const confirms = confirm("Er du sikker på at du vil slette arrangement?");
+        if (confirms) {
+            await deletePost(params)
+            redirect("/CMS/arrangementer")
 
-        await deletePost(params)
-        redirect("/CMS/arrangementer")
+        }
     }
 
     return (

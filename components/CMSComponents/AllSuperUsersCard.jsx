@@ -15,11 +15,14 @@ export const AllSuperUsersCard = ({ superUserData }) => {
 
 
     const handleDeleteStoreUser = async (storeId) => {
-        try {
-            await deleteStoreUser(storeId);
-            router.refresh();
-        } catch (error) {
-            console.error("Error deleting store user:", error);
+        const confirms = confirm("Er du sikker på at du vil slette bruker?");
+        if (confirms) {
+            try {
+                await deleteStoreUser(storeId);
+                router.refresh();
+            } catch (error) {
+                console.error("Error deleting store user:", error);
+            }
         }
     };
     return (
