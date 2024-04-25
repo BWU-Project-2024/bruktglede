@@ -15,9 +15,7 @@ export const GlemtPassordForm = () => {
     } = useForm();
 
 
-    // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
-
         await glemtPassword(formData);
         setShowSuccessAlert(true);
         reset();
