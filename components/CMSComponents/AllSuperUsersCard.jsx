@@ -1,24 +1,41 @@
+"use client"
 import { FiXCircle } from "react-icons/fi";
-import { deleteAuthUser } from "@/lib/supabase/actionsAuth";
+import { useState, useEffect } from 'react';
+import { deleteStoreUser } from "@/lib/supabase/actionsAuth";
+import { useRouter } from 'next/navigation';
 
-export const AllSuperUsersCard = ({ name, username, email, accountId }) => {
+export const AllSuperUsersCard = ({ superUserData }) => {
     const delIconStyle = { marginRight: "10px", color: "#E89A9A" }
-    // const allSuperUsers = await readAllSuperUsers();
+    const [allSuperUsersData, setAllSuperUsersData] = useState([]);
+    const router = useRouter()
 
-    const handleDeleteUser = async () => {
+    useEffect(() => {
+        setAllSuperUsersData(superUserData || []);
+    }, [allSuperUsersData]);
+
+
+    const handleDeleteStoreUser = async (storeId) => {
         try {
-            await deleteAuthUser(accountId);
+            await deleteStoreUser(storeId);
+            router.refresh();
         } catch (error) {
-            console.error('Error deleting user:', error);
+            console.error("Error deleting store user:", error);
         }
     };
-
     return (
-        <div className="w-full flex justify-between items-center text-wrap py-2 pl-3 bg-[#F8F8F7]">
-            <button onClick={handleDeleteUser}><FiXCircle style={delIconStyle} /></button>
-            <p className="w-[30%] font-medium text-sm">{name}</p>
-            <p className="w-[30%] text-sm">{username}</p>
-            <p className="w-[40%] text-sm">{email}</p>
+        <div className="w-full text-wrap pl-3 bg-[#F8F8F7]">
+            {allSuperUsersData.length === 0 ? (
+                <p>Ingen superbrukere i databasen</p>
+            ) : (
+                allSuperUsersData.map((users, index) => (
+                    <div key={index} className="flex items-center py-2">
+                        <button onClick={() => handleDeleteStoreUser(users.accountData.store_id)}><FiXCircle style={delIconStyle} /></button>
+                        <p className="w-[30%] font-medium text-sm">{users.storeData}</p>
+                        <p className="w-[30%] text-sm">{users.accountData?.username}</p>
+                        <p className="w-[40%] text-sm">{users.accountData?.email}</p>
+                    </div>
+                ))
+            )}
         </div>
     )
 }
