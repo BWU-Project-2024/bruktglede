@@ -3,8 +3,12 @@ import { AllSuperUsers } from "@/components/CMSComponents/AllSuperUsers";
 import { RequestCard } from "@/components/CMSComponents/RequestCard";
 import { createClient } from '@/lib/supabase/supabaseServer';
 import { redirect } from 'next/navigation';
+import { readRequests } from "@/lib/supabase/actionsAuth";
 
 export const AdminPage = async () => {
+
+    const requestData = await readRequests()
+
     const signOut = async () => {
         "use server";
         const supabase = createClient();
@@ -34,7 +38,7 @@ export const AdminPage = async () => {
                 <div className="w-[95%] md:w-[45%]">
                     <h1 className="text-xl mb-4">Alle forespørsler</h1>
                     <div className="h-[400px] md:h-[840px] overflow-scroll gap-3 flex flex-wrap pb-3">
-                        <RequestCard />
+                        <RequestCard requestData={requestData} />
                     </div>
                 </div>
             </div>

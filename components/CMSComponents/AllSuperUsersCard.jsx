@@ -5,9 +5,10 @@ import { deleteStoreUser } from "@/lib/supabase/actionsAuth";
 import { useRouter } from 'next/navigation';
 
 export const AllSuperUsersCard = ({ superUserData }) => {
-    const delIconStyle = { marginRight: "10px", color: "#E89A9A" }
     const [allSuperUsersData, setAllSuperUsersData] = useState([]);
     const router = useRouter()
+
+    const delIconStyle = { marginRight: "10px", color: "#E89A9A" }
 
     useEffect(() => {
         setAllSuperUsersData(superUserData || []);
@@ -25,10 +26,11 @@ export const AllSuperUsersCard = ({ superUserData }) => {
             }
         }
     };
+
     return (
         <div className="w-full text-wrap pl-3 bg-[#F8F8F7]">
             {allSuperUsersData.length === 0 ? (
-                <p>Ingen superbrukere i databasen</p>
+                <p className="py-2 flex justify-center">Ingen superbrukere i databasen</p>
             ) : (
                 allSuperUsersData.map((users, index) => (
                     <div key={index} className="flex items-center py-2">
