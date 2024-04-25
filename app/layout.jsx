@@ -19,16 +19,15 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-    const {
-        data: { session },
-    } = await readUserSession();
-    // console.log("layout session", session);
+    const data = await readUserSession();
+    const session = data?.session;
+    const role = data?.roleData[0]?.role;
 
     return (
         <html lang="en">
             {/* Fjerne navbar fra mobil når er på [id] */}
             <body className={`${opensans.variable} ${jomhuria.variable}`}>
-                <Navbar session={session} />
+                <Navbar session={session} role={role} />
                 {children}
                 <Footer />
                 {/* <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script> */}
