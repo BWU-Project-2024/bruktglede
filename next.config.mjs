@@ -10,7 +10,13 @@ const nextConfig = {
         NEXT_PUBLIC_CLOUDINARY_PRESET_NAME:"gfsyydiz"
     },
     images: {
-        domains: ["res.cloudinary.com"],
+        remotePatterns: [
+            {
+              protocol: 'https',
+              hostname: 'res.cloudinary.com',
+              pathname: '**',
+            },
+        ],
     },
     serverActions: {
         bodySizeLimit: '2mb' 

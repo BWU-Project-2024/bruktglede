@@ -28,7 +28,7 @@ export const ArtikkelIdPage = async ({ params }) => {
 
     return (
         <div className="flex flex-col min-h-screen">
-            <main className="flex-1 font-opensans p-2 px-6 md:w-4/5 lg:w-3/4 max-w-readable md:px-20 lg:px-40 lg:pt-20">
+            <main className="flex-1 font-opensans p-2 px-6 md:px-28 lg:px-64 lg:pt-20 lg:pt-20">
 
                 <Image
                     src={imgUrl}
