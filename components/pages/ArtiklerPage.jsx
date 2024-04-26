@@ -1,8 +1,5 @@
 import { Header } from "../Header"
-import { ArticleCard } from "../ArticleCard"
-import test from "@/public/test.jpg";
 import { ArticleBarCard } from "../ArticleBarCard";
-
 
 export const ArtiklerPage = () => {
     return (

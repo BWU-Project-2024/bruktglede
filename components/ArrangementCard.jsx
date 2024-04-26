@@ -29,7 +29,6 @@ export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
     }, [eventsData, eventsType]);
 
 
-
     return (
         <>
             {eventsData.length === 0 ? (
