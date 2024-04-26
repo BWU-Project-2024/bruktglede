@@ -66,7 +66,7 @@ export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
                                 <StoreTag storename={event.store_name} />
                             </div>
                             <h4 className="text-lg font-medium py-4 underline">
-                                <Link href={`/events/${event.id}`}>
+                                <Link href={`/arrangementer/${event.id}`}>
                                     {event.title}
                                 </Link>
                             </h4>
