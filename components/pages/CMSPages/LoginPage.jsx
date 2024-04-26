@@ -5,14 +5,18 @@ import Link from 'next/link';
 
 
 export const LoginPage = async ({ searchParams }) => {
-    const { data: { session } } = await readUserSession();
+    const data = await readUserSession();
+    const session = data?.session;
+    const role = data?.roleData[0]?.role
 
-    // if logged in, redirect to homepage
-    if (session) {
+    // if logged in, redirect to CMS
+    if (session && role === 'superuser') {
         return redirect('/CMS/profil');
     };
 
-    // console.log("Login session", session);
+    if (session && role === 'admin') {
+        return redirect('/CMS/admin');
+    };
 
     const signIn = async (formData) => {
         'use server';
@@ -30,7 +34,12 @@ export const LoginPage = async ({ searchParams }) => {
             return redirect('/login?message=Feil epost eller passord');
         }
 
-        return redirect('/CMS/profil');
+        if (role === 'superuser') {
+            return redirect('/CMS/profil');
+        }
+        else if (role === 'admin') {
+            return redirect('/CMS/admin');
+        }
     };
 
     return (

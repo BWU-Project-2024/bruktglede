@@ -10,8 +10,6 @@ export const ArtikkelIdPage = async ({ params }) => {
     const articleData = await getArticleById(params);
     const data = articleData;
 
-    console.log(data)
-
     const imgUrl = articleData.img.publicUrl;
 
     //Get the date from the timestamp
