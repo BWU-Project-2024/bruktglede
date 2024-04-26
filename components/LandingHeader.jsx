@@ -4,7 +4,7 @@ import LandingImage from "@/public/LandingImage.svg"
 
 export const LandingHeader = () => {
     return (
-        <header className="bg-ivory-default h-fit mb-10 pb-2 overflow-hidden">
+        <header className="bg-ivory-default h-fit pb-2 overflow-hidden">
             <h1 className="font-opensans text-forestgreen-default text-3xl lg:text-5xl pt-6 lg:pt-30 p-2 px-6 lg:px-40 lg:pt-20">Velkommen til <span className="font-jomhuria text-7xl lg:text-8xl">Bruktglede</span></h1>
             <div className="lg:hidden md:hidden px-6">
                 <Image
