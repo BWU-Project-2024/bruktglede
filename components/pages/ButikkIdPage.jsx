@@ -14,7 +14,7 @@ console.log(data)
         <div className="flex flex-col min-h-screen">
  <p className="text-lg  lg:text-lg">{data.name}</p>
             <main className="flex-1">
-<StoreInfoBar params={params} time={data.created_at} />
+<StoreInfoBar params={params} time={data.created_at} address={data.address} phone={data.phone}  mail={data.contactEmail} categories={data.tags}/>
 
             </main>
         </div>
