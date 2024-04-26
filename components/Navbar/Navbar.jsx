@@ -26,8 +26,6 @@ export const Navbar = () => {
                     setSession(data.sessions.access_token);
                     setUserRole(data.roleData[0].role);
                 }
-
-                console.log(data.roleData[0].role);
             } catch (error) {
                 console.error('Error fetching user session:', error);
             }
@@ -173,16 +171,27 @@ export const Navbar = () => {
                         <NavItemMobile href="/blifrivillig" handleNav={handleNav} pathname={pathname}>Bli frivillig</NavItemMobile>
 
                         {/* Check if user is logged in */}
-                        {session && (
-                            <li role="menuitem">
+                        {session && userRole === "superuser" && (
+                            <li role="menuitem" className="flex gap-4 items-center">
                                 <Link onClick={handleNav} href="/CMS/butikkinfo" className={`${pathname === "/CMS/butikkinfo" ? "font-medium" : ""}`}>
                                     Min butikk
                                 </Link>
                                 {pathname === "/CMS/butikkinfo" && (
-                                    <div className="absolute w-2 h-2 bg-ivory-darker top-[562px] left-[133px] rounded-[1.5px] rotate-45"></div>
+                                    <div className="z-30 w-2 h-2 bg-ivory-darker rounded-[1.5px] rotate-45"></div>
                                 )}
                             </li>
                         )}
+                        {session && userRole === "admin" && (
+                            <li role="menuitem" className="flex gap-4 items-center">
+                                <Link onClick={handleNav} href="/CMS/admin" className={`${pathname === "/CMS/butikkinfo" ? "font-medium" : ""}`}>
+                                    Admin
+                                </Link>
+                                {pathname === "/CMS/admin" && (
+                                    <div className="z-30 w-2 h-2 bg-ivory-darker rounded-[1.5px] rotate-45"></div>
+                                )}
+                            </li>
+                        )}
+
                         <NavItemMobile href="/sok" handleNav={handleNav} pathname={pathname}><FiSearch style={searchIconStyle} /></NavItemMobile>
                     </ul>
                 </nav>

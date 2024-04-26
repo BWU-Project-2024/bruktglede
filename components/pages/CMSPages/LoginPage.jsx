@@ -46,7 +46,7 @@ export const LoginPage = async ({ searchParams }) => {
         <main className="flex flex-col items-center min-h-full">
             <h1 className="font-jomhuria pt-10 pb-4">Bruktglede</h1>
             <p className="text-center">Logg inn på din profil for å opprette og redigere innhold til din butikk.</p>
-            <div className="mt-14 w-full md:w-[20rem]">
+            <div className="mt-14 w-[90%] md:w-[20rem]">
                 <form action={signIn} className="flex flex-col" aria-label="Login form">
                     <label htmlFor="email">Epost</label>
                     <input
