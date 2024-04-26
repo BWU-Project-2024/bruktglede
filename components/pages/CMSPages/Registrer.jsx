@@ -5,12 +5,13 @@ import { createClient } from '@/lib/supabase/supabaseServer';
 import { redirect } from 'next/navigation';
 
 export const RegistrerPage = async ({ searchParams }) => {
+    const data = await readUserSession();
+    const session = data?.session;
 
-    const { data: { session } } = await readUserSession();
-
+    // if logged in, redirect to homepage
     if (session) {
         return redirect('/CMS/profil');
-    }
+    };
 
     // Sign up
     const signUp = async (formData) => {

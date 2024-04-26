@@ -9,7 +9,7 @@ import { FiMenu } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 
 
-export const Navbar = ({ session }) => {
+export const Navbar = ({ session, role }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const pathname = usePathname();
 
@@ -130,13 +130,23 @@ export const Navbar = ({ session }) => {
                         )}
                     </li>
                     {/* Check if user is logged in */}
-                    {session && (
+                    {session && role === 'superuser' && (
                         <li role="menuitem">
                             <Link href="/CMS/butikkinfo" className={`${pathname.startsWith("/CMS/") ? "font-medium" : "hover:font-medium"}`}>
                                 Min butikk
                             </Link>
                             {pathname.startsWith("/CMS/") && (
                                 <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-8 rounded-[1.5px] rotate-45"></div>
+                            )}
+                        </li>
+                    )}
+                    {session && role === 'admin' && (
+                        <li role="menuitem">
+                            <Link href="/CMS/admin" className={`${pathname.startsWith("/CMS/") ? "font-medium" : "hover:font-medium"}`}>
+                                Admin
+                            </Link>
+                            {pathname.startsWith("/CMS/") && (
+                                <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-5 rounded-[1.5px] rotate-45"></div>
                             )}
                         </li>
                     )}

@@ -14,9 +14,12 @@ export const StasjonerIdCMSPage = async ({ params }) => {
 
     const handleDelete = async () => {
         "use server"
+        const confirms = confirm("Er du sikker på at du vil slette høydepunkt?");
 
-        await deleteStation(params)
-        redirect("/CMS/innleveringsstasjoner")
+        if (confirms) {
+            await deleteStation(params)
+            redirect("/CMS/innleveringsstasjoner")
+        }
     }
 
     return (

@@ -14,9 +14,11 @@ export const ArtiklerIdCMSPage = async ({ params }) => {
 
     const handleDelete = async () => {
         "use server"
-
-        await deletePost(params)
-        redirect("/CMS/artikler")
+        const confirms = confirm("Er du sikker på at du vil slette artikkel?");
+        if (confirms) {
+            await deletePost(params)
+            redirect("/CMS/artikler")
+        }
     }
 
     return (
