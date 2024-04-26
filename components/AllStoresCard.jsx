@@ -6,6 +6,7 @@ import Image from "next/image";
 export const AllStoresCard = async () => {
   
 const storeInfo = await getStores();
+console.log(storeInfo)
 
     return (
         <div className="font-opensans">
@@ -14,16 +15,9 @@ const storeInfo = await getStores();
                    
                     <p className="text-base line-clamp-2">{stores.name}</p>
                     <div className="">
-                    <Link href={`/butikker/${encodeURIComponent(
-                            stores.name
-                                .toLowerCase()
-                                .replace(/\s+/g, '-') 
-                                .replace(/æ/g, 'ae')   
-                                .replace(/ø/g, 'o')    
-                                .replace(/å/g, 'a')    
-                        )}`} key={stores.id}>
+                    <Link href={`/butikker/${stores.id}`} key={stores.id}>
                             <Image
-                                src={stores.img}
+                                src={stores?.img}
                                 alt="artikkel cover bilde"
                                 width={500}
                                 height={500}
@@ -37,3 +31,14 @@ const storeInfo = await getStores();
         </div>
     );
 };
+
+
+/* {encodeURIComponent(
+    stores.name
+    .toLowerCase()
+    .replace(/\s+/g, '-') 
+    .replace(/æ/g, 'ae')   
+    .replace(/ø/g, 'o')    
+    .replace(/å/g, 'a')    
+)}*/
+

@@ -18,6 +18,7 @@ export const HomePage = async () => {
                         description="Denne uken er ukens høydepunkt en antikk kopp, som skinner i sin eldgamle prakt..."
                     />
                 </div>
+               
                 <BliFrivilligCard />
                 <Button title="Se alle arrangementer" link="/" />
             </main>
