@@ -9,9 +9,11 @@ export const HoydepunktIdCMSPage = async ({ params }) => {
 
     const handleDelete = async () => {
         "use server"
-
-        await deletePost(params)
-        redirect("/CMS/ukenshoydepunkt")
+        const confirms = confirm("Er du sikker på at du vil slette høydepunkt?");
+        if (confirms) {
+            await deletePost(params)
+            redirect("/CMS/ukenshoydepunkt")
+        }
     }
 
     return (

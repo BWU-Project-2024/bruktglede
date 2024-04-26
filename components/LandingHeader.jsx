@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SearchBar } from "./SearchBar";
+import LandingImage from "@/public/LandingImage.svg"
 
 export const LandingHeader = () => {
     return (
@@ -7,7 +8,7 @@ export const LandingHeader = () => {
             <h1 className="font-opensans text-forestgreen-default text-3xl pt-36 p-2 px-6 lg:px-40 lg:pt-20">Velkommen til <span className="font-jomhuria text-7xl lg:text-8xl">Bruktglede</span></h1>
             <div className="lg:hidden md:hidden px-6">
                 <Image
-                    src="/LandingImage.svg"
+                    src={LandingImage}
                     alt="Header illustration"
                     className="text-center"
                     width={500}
