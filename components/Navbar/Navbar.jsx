@@ -4,10 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import BruktgledeLogo from "@/public/bruktglede-logo.svg"
 import { usePathname } from 'next/navigation'
-import { FiSearch } from "react-icons/fi";
-import { FiMenu } from "react-icons/fi";
-import { FiPlus } from "react-icons/fi";
+import { FiSearch, FiMenu, FiPlus, FiChevronDown } from "react-icons/fi";
 import { readUserSession } from "@/lib/supabase/actionsAuth";
+import { getStores } from "@/lib/supabase/actionsPublic";
 import { NavbarItem } from "./NavbarItem"
 import { NavbarLoggedInItem } from "./NavbarLoggedInItem";
 import { NavItemMobile } from "./NavItemMobile";
@@ -16,6 +15,7 @@ export const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [session, setSession] = useState(null)
     const [userRole, setUserRole] = useState(null)
+    const [stores, setStores] = useState(null)
     const pathname = usePathname();
 
     useEffect(() => {
@@ -26,13 +26,15 @@ export const Navbar = () => {
                     setSession(data.sessions.access_token);
                     setUserRole(data.roleData[0].role);
                 }
+                const storesData = await getStores();
+                setStores(storesData)
             } catch (error) {
                 console.error('Error fetching user session:', error);
             }
         };
 
         fetchSession();
-    }, [session]);
+    }, [session, stores]);
 
     const handleNav = () => {
         setMenuOpen((menuOpen) => !menuOpen);
@@ -62,45 +64,30 @@ export const Navbar = () => {
                 <ul className="flex flex-row items-center justify-center gap-6">
                     <NavbarItem href="/" pathname={pathname} top="14" left="4">Hjem</NavbarItem>
 
-                    <li className="text-text" role="menuitem">
-                        <button id="dropdowns" data-dropdown-toggle="dropdown" className="text-black rounded-lg py-2.5 text-center inline-flex items-center hover:font-medium"
-                            type="button">
-                            Butikker
-                            <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                            {pathname === "/butikker" && (
-                                <div className="absolute w-2 h-2 bg-forestgreen-default top-14 ml-7 rounded-[1.5px] rotate-45"></div>
-                            )}
+                    <li className="text-text relative inline-block group" role="menuitem">
+                        <button className="flex items-center gap-1">
+                            <p>Butikker</p>
+                            <FiChevronDown />
                         </button>
-                        <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                            <ul className="text-base text-gray-700" aria-labelledby="dropdownDefaultButton">
-                                <li className="relative">
-                                    <Link href="/butikker" className="rounded-t-lg block hover:bg-ivory-lighter">
-                                        <p className="mx-4 pt-2">Alle butikker</p>
-                                        <hr className="mt-2"></hr>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-lighter">Fretex</Link>
-                                </li>
-                                <li>
-                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-lighter dark:hover:text-white">Ting og Tøy</Link>
-                                </li>
-                                <li>
-                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-lighter dark:hover:text-white">Ting og Tøy</Link>
-                                </li>
-                                <li>
-                                    <Link href="#" className="block px-4 py-2 hover:bg-ivory-lighter dark:hover:text-white">Ting og Tøy</Link>
-                                </li>
-                                <li className="relative">
-                                    <Link href="/blifrivillig" className="block rounded-b-lg hover:bg-ivory-lighter">
-                                        <hr className="mb-2"></hr>
-                                        <p className="mx-4 pb-2">Bli frivillig</p>
-                                    </Link>
-                                </li>
-                            </ul>
+                        <div className="bg-white min-w-[10rem] rounded flex flex-col absolute z-20 hidden group-hover:block">
+                            <div className="py-2 bg-ivory-default"></div>
+                            <Link href="/butikker" className="block hover:bg-ivory-lighter">
+                                <p className="mx-4 pt-2">Alle butikker</p>
+                                <hr className="mt-2"></hr>
+                            </Link>
+                            {stores && (
+                                stores.map((store) => (
+                                    <Link key={store.id} href={`/butikker/${store.id}`} className="block px-4 py-2 hover:bg-ivory-lighter">{store.name}</Link>
+                                ))
+                            )}
+                            <Link href="/blifrivillig" className="block rounded-b-lg hover:bg-ivory-lighter">
+                                <hr className="mb-2"></hr>
+                                <p className="mx-4 pb-2">Bli frivillig</p>
+                            </Link>
                         </div>
+                        {pathname.startsWith("/butikker") && (
+                            <div className="absolute w-2 h-2 bg-forestgreen-default rounded-[1.5px] top-8 rotate-45 left-1/2 transform -translate-x-1/2"></div>
+                        )}
                     </li>
 
                     <NavbarItem href="/arrangementer" pathname={pathname} >Arrangementer</NavbarItem>
@@ -196,7 +183,6 @@ export const Navbar = () => {
                     </ul>
                 </nav>
             </div>
-
         </div>
     );
 }
