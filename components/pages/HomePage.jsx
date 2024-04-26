@@ -9,7 +9,7 @@ export const HomePage = () => {
         <>
             <LandingHeader />
             <main className="flex flex-col min-h-screen w-full">
-                <div className="px-6 md:px-20 lg:px-64 pt-10 lg:pt-20">
+                <div className="px-6 md:px-28 lg:px-64 pt-10 lg:pt-20">
                     <h2 className="text-xl lg:text-2xl font-medium mb-6">Møt butikkene</h2>
                 </div>
                 <AlleButikker />
