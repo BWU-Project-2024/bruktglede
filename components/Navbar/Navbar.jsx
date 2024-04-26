@@ -65,7 +65,7 @@ export const Navbar = () => {
                     <NavbarItem href="/" pathname={pathname} top="14" left="4">Hjem</NavbarItem>
 
                     <li className="text-text relative inline-block group" role="menuitem">
-                        <button className="flex items-center gap-1">
+                        <button className={`${pathname === "/butikker" ? "font-medium flex items-center gap-1" : "flex items-center gap-1"}`}>
                             <p>Butikker</p>
                             <FiChevronDown />
                         </button>
