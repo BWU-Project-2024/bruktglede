@@ -14,7 +14,7 @@ export const ArticleCard = ({ articleData, articlePostTypeName }) => {
     useEffect(() => {
         setArticlesData(articleData || []);
         setArticlesType(articlePostTypeName)
-    }, [articlesData, articlesType]);
+    }, [articlesData]);
 
     return (
         <>
