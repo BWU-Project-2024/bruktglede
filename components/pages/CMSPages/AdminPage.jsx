@@ -13,7 +13,7 @@ export const AdminPage = async () => {
         "use server";
         const supabase = createClient();
         await supabase.auth.signOut();
-        return redirect('/');
+        return redirect('/login');
     };
 
     return (

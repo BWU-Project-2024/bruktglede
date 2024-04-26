@@ -17,7 +17,7 @@ export default async function Layout({ children }) {
         const supabase = createClient();
 
         await supabase.auth.signOut();
-        return redirect('/');
+        return redirect('/login');
     };
 
     return (
