@@ -17,24 +17,29 @@ export const HomePage = async () => {
                 <AlleButikker />
 
                 <h2 className="px-6 md:px-28 lg:px-64 pt-10 lg:pt-20 text-xl lg:text-2xl font-medium mb-8">Kommende arrangementer</h2>
-                <div className="flex justify-center gap-6 ">
+                <div className="flex justify-center gap-6 mb-8">
                     <ArrangementCard
                         eventData={events.eventData}
                         eventPostTypeName={events.eventPostTypeName}
                     />
                 </div>
+                <div className="flex justify-center">
+                    <Button title="Se alle arrrangementer" link="/arrangementer" />
+                </div>
 
                 <h2 className="px-6 md:px-28 lg:px-64 pt-10 lg:pt-20 text-xl lg:text-2xl font-medium mb-8">Siste nytt</h2>
-                <div className="flex flex-wrap justify-center gap-6 ">
+                <div className="flex flex-wrap justify-center gap-6 mb-8">
                     <ArticleCard
                         articleData={articles.articleData}
                         articlePostTypeName={articles.articlePostType}
                     />
                 </div>
+                <div className="flex justify-center mb-14">
+                    <Button title="Se alle artikler" link="/artikler" />
+                </div>
 
                 <BliFrivilligCard />
-                <Button title="Se alle arrangementer" link="/" />
-            </main>
+            </main >
         </>
     );
 };

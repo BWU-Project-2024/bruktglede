@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export const LoginPage = async ({ searchParams }) => {
     const data = await readUserSession();
-    const session = data?.session;
+    const session = data?.sessions;
     const role = data?.roleData[0]?.role
 
     // if logged in, redirect to CMS

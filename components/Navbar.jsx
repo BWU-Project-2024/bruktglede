@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BruktgledeLogo from "@/public/bruktglede-logo.svg"
@@ -7,11 +7,31 @@ import { usePathname } from 'next/navigation'
 import { FiSearch } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
+import { readUserSession } from "@/lib/supabase/actionsAuth";
 
-
-export const Navbar = ({ session, role }) => {
+export const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [session, setSession] = useState(null)
+    const [userRole, setUserRole] = useState(null)
     const pathname = usePathname();
+
+    useEffect(() => {
+        const fetchSession = async () => {
+            try {
+                const data = await readUserSession();
+                if (data) {
+                    setSession(data.sessions.access_token);
+                    setUserRole(data.roleData[0].role);
+                }
+
+                console.log(data.roleData[0].role);
+            } catch (error) {
+                console.error('Error fetching user session:', error);
+            }
+        };
+
+        fetchSession();
+    }, [session]);
 
     const handleNav = () => {
         setMenuOpen((menuOpen) => !menuOpen);
@@ -130,7 +150,7 @@ export const Navbar = ({ session, role }) => {
                         )}
                     </li>
                     {/* Check if user is logged in */}
-                    {session && role === 'superuser' && (
+                    {session && userRole === 'superuser' && (
                         <li role="menuitem">
                             <Link href="/CMS/butikkinfo" className={`${pathname.startsWith("/CMS/") ? "font-medium" : "hover:font-medium"}`}>
                                 Min butikk
@@ -140,7 +160,7 @@ export const Navbar = ({ session, role }) => {
                             )}
                         </li>
                     )}
-                    {session && role === 'admin' && (
+                    {session && userRole === 'admin' && (
                         <li role="menuitem">
                             <Link href="/CMS/admin" className={`${pathname.startsWith("/CMS/") ? "font-medium" : "hover:font-medium"}`}>
                                 Admin
