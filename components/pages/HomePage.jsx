@@ -20,6 +20,6 @@ export const HomePage = async () => {
                 <BliFrivilligCard />
                 <Button title="Se alle arrangementer" link="/" />
             </main>
-        </div>
+        </div> 
     );
 };
