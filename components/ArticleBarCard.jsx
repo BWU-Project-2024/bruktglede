@@ -1,10 +1,10 @@
 import { CategoryTag } from "./CategoryTag";
-import { getArticles } from "@/lib/supabase/actionsPublic";
+// import { getArticles } from "@/lib/supabase/actionsPublic";
 import { StoreTag } from "./StoreTag";
 import Link from "next/link";
 
-export const ArticleBarCard = async () => {
-    const articleInfo = await getArticles();
+export const ArticleBarCard = ({ articlesData }) => {
+    // const articleInfo = await getArticles();
 
     //Get the date from the timestamp
     const formatDate = (timestamp) => {
@@ -14,17 +14,17 @@ export const ArticleBarCard = async () => {
 
     return (
         <div className="font-opensans">
-            {articleInfo.map((articleData) => (
-                <div key={articleData.id} className="flex flex-col gap-1">
-                    <Link href={`/artikler/${articleData.id}`} key={articleData.id}>
-                        <span className="text-lg font-medium underline">{articleData.title}</span>
+            {articlesData?.map((article, index) => (
+                <div key={index} className="flex flex-col gap-1">
+                    <Link href={`/artikler/${article.id}`} key={index}>
+                        <span className="text-lg font-medium underline">{article.title}</span>
                     </Link>
-                    <p className="text-xs mb-1">{formatDate(articleData.created_at)}</p>
-                    <p className="text-base line-clamp-2">{articleData.ingress}</p>
+                    <p className="text-xs mb-1">{formatDate(article.created_at)}</p>
+                    <p className="text-base line-clamp-2">{article.ingress}</p>
                     <div className="mt-2 mb-5">
-                        <StoreTag storename={articleData.store_name} className="mr-1" />
-                        {articleData.tags.map((tag) => (
-                            <CategoryTag key={tag} title={tag} />
+                        <StoreTag storename={article.store_name} className="mr-1" />
+                        {article.tags.map((tag, index) => (
+                            <CategoryTag key={index} title={tag} />
                         ))}
                         <hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     </div>
