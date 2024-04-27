@@ -9,9 +9,17 @@ export const StoreHeader = ({ storeData, storeVisionData }) => {
         setIsVisionVisible(!isVisionVisible)
     }
 
+    const isBrowser = () => typeof window !== 'undefined';
+
+    function scrollToTop() {
+        if (!isBrowser()) return;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setIsVisionVisible(!isVisionVisible)
+    }
+
     return (
         <div className="relative">
-            <div className="relative w-full h-[450px]">
+            <div className="relative w-full h-[450px]" id="top-section">
                 <Image
                     src={storeData.img}
                     alt="Store"
@@ -19,10 +27,6 @@ export const StoreHeader = ({ storeData, storeVisionData }) => {
                     style={
                         { objectFit: "cover", objectPosition: "center" }
                     }
-                // layout="fill"
-                // objectFit="cover"
-                // objectPosition="center"
-                // priority
                 />
             </div>
             <div className="absolute top-0 left-0 w-full h-[450px] flex flex-col">
@@ -42,17 +46,36 @@ export const StoreHeader = ({ storeData, storeVisionData }) => {
                 </div>
             </div>
             {isVisionVisible && (
-                <div className="text-center">
-                    <h2>{storeVisionData[0].title}</h2>
-                    <h3>{storeVisionData[0].ingress}</h3>
-                    <h4>{storeVisionData[0].subtitle}</h4>
-                    <p>{storeVisionData[0].bodyText}</p>
-                    <Image
-                        src={storeVisionData[0].img}
-                    >
-                    </Image>
-                </div>
+                <>
+                    {storeVisionData.length === 0 ? (
+                        <p>Ingen visjon beskrivelse for butikken er tilgjengelig for øyeblikket.</p>
+                    ) : (
+                        <div className="flex flex-col items-center py-10 w-full bg-ivory-lighter">
+                            <div className="flex flex-col items-start w-[40%] mb-8">
+                                <h2 className="text-3xl mb-4">{storeVisionData[0].title}</h2>
+                                <h3 className="text-xl mb-6">{storeVisionData[0].ingress}</h3>
+                                <h4 className="text-lg font-medium mb-1">{storeVisionData[0].subtitle}</h4>
+                                <p>{storeVisionData[0].bodyText}</p>
+                            </div>
+                            <div className="flex justify-center mb-8">
+                                <Image
+                                    src={storeVisionData[0].img}
+                                    alt="Store"
+                                    width={600}
+                                    height={100}
+                                />
+                            </div>
+                            <button
+                                className="w-48 rounded py-1 font-medium drop-shadow bg-forestgreen-default text-ivory-default hover:bg-ivory-lighter hover:text-forestgreen-default transition duration-200 text-center"
+                                onClick={scrollToTop}
+                            >
+                                Tilbake til toppen
+                            </button>
+                        </div>
+                    )}
+                </>
             )}
+
         </div>
     );
 };
