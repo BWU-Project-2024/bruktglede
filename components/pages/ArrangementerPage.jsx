@@ -1,7 +1,6 @@
 import { Header } from "../Header";
 import { ArrangementCard } from "../ArrangementCard";
 import { getEvents } from "@/lib/supabase/actionsPublic";
-import { EventCardLong } from "../EventCardLong";
 
 export const ArrangementerPage = async () => {
     const { eventPostTypeName, eventData } = await getEvents();

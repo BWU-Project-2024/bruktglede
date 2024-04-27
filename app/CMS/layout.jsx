@@ -5,7 +5,7 @@ import { readUserSession } from '@/lib/supabase/actionsAuth';
 
 export default async function Layout({ children }) {
     const data = await readUserSession();
-    const session = data?.session;
+    const session = data?.sessions;
     const role = data?.roleData[0]?.role;
 
     if (!session) {
@@ -17,7 +17,7 @@ export default async function Layout({ children }) {
         const supabase = createClient();
 
         await supabase.auth.signOut();
-        return redirect('/');
+        return redirect('/login');
     };
 
     return (

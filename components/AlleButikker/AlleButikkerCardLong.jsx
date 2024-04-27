@@ -19,7 +19,7 @@ export const AlleButikkerCardLong = ({ index, storeData }) => {
                     />
                 </div>
             ) : null}
-            <div className="flex flex-col justify-center items-center px-5 md:px-0 gap-2 md:gap-8 w-[50%] md:w-[600px]">
+            <div className="flex flex-col justify-center items-center px-5 md:px-0 gap-2 md:gap-8 w-[50%] md:w-[600px] border">
                 <h3 className="text-base md:text-xl font-medium">{storeData.name}</h3>
                 <div className="flex flex-col gap-0 md:gap-4">
                     <div className="flex gap-2 md:items-center">

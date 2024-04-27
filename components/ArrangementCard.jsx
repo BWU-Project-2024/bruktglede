@@ -26,8 +26,7 @@ export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
         const monthIndex = date.getMonth()
         const monthName = monthNames[monthIndex];
         setMonthName(monthName)
-    }, [eventsData, eventsType]);
-
+    }, [eventsData]);
 
 
     return (
