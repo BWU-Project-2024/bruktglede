@@ -34,7 +34,7 @@ export const Navbar = () => {
         };
 
         fetchSession();
-    }, [session, stores]);
+    }, [session]);
 
     const handleNav = () => {
         setMenuOpen((menuOpen) => !menuOpen);
