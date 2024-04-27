@@ -41,8 +41,6 @@ export const HomePage = async () => {
                     />
                 </div>
 
-                <StoreHeader />
-
                 <div className="flex justify-center mb-14">
                     <Button title="Se alle artikler" link="/artikler" />
                 </div>
