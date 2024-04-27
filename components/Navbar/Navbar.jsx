@@ -42,7 +42,7 @@ export const Navbar = () => {
 
         fetchSession();
         fetchStores();
-    }, []);
+    }, [userRole]);
 
     const handleNav = () => {
         setMenuOpen((menuOpen) => !menuOpen);
