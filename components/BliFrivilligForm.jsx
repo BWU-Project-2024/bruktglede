@@ -20,7 +20,6 @@ export const BliFrivilligForm = ({ storeData }) => {
         // Create new station
         await sendEmail(formData);
         setShowSuccessAlert(true);
-
         reset();
     };
 
@@ -37,23 +36,40 @@ export const BliFrivilligForm = ({ storeData }) => {
                     aria-label="Volunteer form"
                     encType="multipart/form-data"
                 >
-                    <label className="text-md mb-2 font-medium" htmlFor="navn">
-                        Navn
+                    <label className="text-md mb-2 font-medium" htmlFor="fornavn">
+                        Fornavn
                     </label>
                     <input
                         className="rounded-md px-3 py-2 bg-inherit border mb-1"
-                        id="navn"
-                        name="navn"
-                        placeholder="Ditt navn.."
-                        {...register("navn", {
-                            required: "Vennligst skriv inn navnet ditt",
+                        id="fornavn"
+                        name="fornavn"
+                        placeholder="Ditt fornavn.."
+                        {...register("fornavn", {
+                            required: "Vennligst skriv inn fornavnet ditt",
                         })}
                     />
                     <p className="mb-6 italic text-error-darker">
-                        {errors.epost?.message}
+                        {errors.fornavn?.message}
+                    </p>
+                    
+                    <label className="text-md mb-2 font-medium" htmlFor="etternavn">
+                        Etternavn
+                    </label>
+                    <input
+                        className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                        id="etternavn"
+                        name="etternavn"
+                        placeholder="Ditt etternavn.."
+                        {...register("etternavn", {
+                            required: "Vennligst skriv inn etternavnet ditt",
+                        })}
+                    />
+                    <p className="mb-6 italic text-error-darker">
+                        {errors.etternavn?.message}
                     </p>
                     
                   
+
 
                     <label className="text-md mb-2 font-medium" htmlFor="epost">
                         E-post
@@ -70,6 +86,23 @@ export const BliFrivilligForm = ({ storeData }) => {
                     <p className="mb-6 italic text-error-darker">
                         {errors.epost?.message}
                     </p>
+
+                    <label className="text-md mb-2 font-medium" htmlFor="mobil">
+                        Mobilnummer
+                    </label>
+                    <input
+                        className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                        id="mobil"
+                        name="mobil"
+                        placeholder="Ditt mobilnummer.."
+                        {...register("mobil", {
+                            required: "Vennligst skriv inn et mobilnummer",
+                        })}
+                    />
+                    <p className="mb-6 italic text-error-darker">
+                        {errors.mobil?.message}
+                    </p>
+
 
                     <label
                         htmlFor="butikker"
@@ -93,7 +126,7 @@ export const BliFrivilligForm = ({ storeData }) => {
                         ))}
                     </select>
                     {errors.butikker && (
-                        <p className="text-red-500 text-sm mb-2">
+                        <p className="mb-6 -mt-5 italic text-error-darker">
                             {errors.butikker.message}
                         </p>
                     )}
@@ -113,7 +146,7 @@ export const BliFrivilligForm = ({ storeData }) => {
                         })}
                     />
                     <p className="mb-6 italic text-error-darker">
-                        {errors.epost?.message}
+                        {errors.beskrivelse?.message}
                     </p>
                     
                     

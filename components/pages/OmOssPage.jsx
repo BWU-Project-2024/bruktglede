@@ -19,7 +19,7 @@ export const OmOssPage = () => {
 
                 <div className="lg:mb-5">
 
-                    <h2 className="text-lg lg:text-xl font-semibold font-opensans mb-3">Ofte stilte spørsmål</h2>
+                    <h2 className="text-lg lg:text-2xl font-semibold font-opensans mb-3">Ofte stilte spørsmål</h2>
                 </div>
 
                 <div className=" w-full mb-10">

@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FiHome, FiMapPin, FiClock } from "react-icons/fi";
 import { StoreTag } from "./StoreTag";
-
+ 
 export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
     const [eventsData, setEventsData] = useState([]);
     const [eventsType, setEventsType] = useState()
     const [dayOfMonth, setDayOfMonth] = useState("")
     const [monthName, setMonthName] = useState("")
-
+ 
     useEffect(() => {
         setEventsData(eventData || []);
         setEventsType(eventPostTypeName)
