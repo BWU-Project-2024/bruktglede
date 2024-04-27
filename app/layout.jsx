@@ -1,6 +1,5 @@
 import { Jomhuria, Open_Sans } from "next/font/google";
 import "./globals.css"
-import Script from "next/script";
 import { Navbar } from "@/components/Navbar/Navbar";
 import { Footer } from "@/components/Footer";
 
@@ -18,12 +17,6 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-
-    const data = await readUserSession();
-    const session = data?.session;
-    const role = data?.roleData[0]?.role;
- 
-
     return (
         <html lang="en">
             {/* Fjerne navbar fra mobil når er på [id] */}
@@ -31,8 +24,6 @@ export default async function RootLayout({ children }) {
                 <Navbar />
                 {children}
                 <Footer />
-                {/* <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script> */}
-                {/* <script src="../path/to/flowbite/dist/datepicker.js"></script> */}
             </body>
         </html>
     );

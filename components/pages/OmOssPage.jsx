@@ -12,17 +12,8 @@ export const OmOssPage = () => {
                 <H2Section heading="Om oss" paragraph="Gjenbruksglede er en plattform med ett hovedfokus: å gjøre det lettere å orientere seg i gjenbruksmiljøet på Gjøvik. Ved å samle bruktbutikker, arrangementer og tilbud som finnes i kommunen gjør vi det lettere å navigere seg frem og holde seg oppdatert." />
                 <H2Section heading="Vår visjon" paragraph="Bærekraft, klimaet, et eller annet om det og sånn. Hvordan vi vil bidra til en grønnere klode. Something fancy like that. Bærekraft, klimaet, et eller annet om det og sånn. Hvordan vi vil bidra til en grønnere klode. Something fancy like that." />
 
-                <h2 className="text-lg lg:text-xl lg:mb-5 font-semibold font-opensans mb-3">Ofte stilte spørsmål</h2>
-
-
-
-                <div className="lg:mb-5">
-
-                    <h2 className="text-lg lg:text-2xl font-semibold font-opensans mb-3">Ofte stilte spørsmål</h2>
-                </div>
-
+                <h2 className="text-lg lg:text-2xl lg:mb-5 font-semibold font-opensans mb-3">Ofte stilte spørsmål</h2>
                 <div className=" w-full mb-10">
-
                     <Accordion question="Hvem står bak Bruktglede?" answer="Bruktglede ble utviklet som del av en Bacheloroppgave i Webutvikling av studentene Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje. Nettsiden ble skapt med Gjøvik Kommune som oppdragsgiver." />
                     <Accordion question="Kan butikken min bli en del av siden?" answer="Bruktglede ble utviklet som del av en Bacheloroppgave i Webutvikling av studentene Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje. Nettsiden ble skapt med Gjøvik Kommune som oppdragsgiver." />
                     <Accordion question="Dette er et langt spørsmål. hvorfor blir teksten så fucked" answer="Bruktglede ble utviklet som del av en Bacheloroppgave i Webutvikling av studentene Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje. Nettsiden ble skapt med Gjøvik Kommune som oppdragsgiver." />
