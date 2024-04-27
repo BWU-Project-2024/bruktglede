@@ -6,6 +6,7 @@ import Link from "next/link";
 export const ArticleBarCard = async () => {
     const articleInfo = await getArticles();
 
+
     //Get the date from the timestamp
     const formatDate = (timestamp) => {
         const date = new Date(timestamp);
@@ -14,7 +15,7 @@ export const ArticleBarCard = async () => {
 
     return (
         <div className="font-opensans">
-            {articleInfo.map((articleData) => (
+            {articleInfo.articleData.map((articleData) => (
                 <div key={articleData.id} className="flex flex-col gap-1">
                     <Link href={`/artikler/${articleData.id}`} key={articleData.id}>
                         <span className="text-lg font-medium underline">{articleData.title}</span>

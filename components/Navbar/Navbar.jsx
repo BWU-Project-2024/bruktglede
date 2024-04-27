@@ -26,15 +26,23 @@ export const Navbar = () => {
                     setSession(data.sessions.access_token);
                     setUserRole(data.roleData[0].role);
                 }
-                const storesData = await getStores();
-                setStores(storesData)
             } catch (error) {
                 console.error('Error fetching user session:', error);
             }
         };
 
+        const fetchStores = async () => {
+            try {
+                const storesData = await getStores();
+                setStores(storesData);
+            } catch (error) {
+                console.error('Error fetching stores:', error);
+            }
+        };
+
         fetchSession();
-    }, [session, stores]);
+        fetchStores();
+    }, []);
 
     const handleNav = () => {
         setMenuOpen((menuOpen) => !menuOpen);
