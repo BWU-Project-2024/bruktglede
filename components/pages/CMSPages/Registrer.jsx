@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 
 export const RegistrerPage = async ({ searchParams }) => {
     const data = await readUserSession();
-    const session = data?.session;
+    const session = data?.sessions;
 
     // if logged in, redirect to homepage
     if (session) {
