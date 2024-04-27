@@ -3,7 +3,6 @@ import { Button } from "../Button";
 import tekopp from "@/public/tekopp.jpg";
 import { UkensHoydepunkt } from "../UkensHoydepunkt";
 import { BliFrivilligCard } from "../BliFrivilligCard";
-import { StoreHeader } from "../StoreHeader";
 
 export const HomePage = async () => {
     return (
