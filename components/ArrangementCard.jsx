@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FiHome, FiMapPin, FiClock } from "react-icons/fi";
 import { StoreTag } from "./StoreTag";
-
+ 
 export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
     const [eventsData, setEventsData] = useState([]);
     const [eventsType, setEventsType] = useState()
     const [dayOfMonth, setDayOfMonth] = useState("")
     const [monthName, setMonthName] = useState("")
-
+ 
     useEffect(() => {
         setEventsData(eventData || []);
         setEventsType(eventPostTypeName)
@@ -26,8 +26,7 @@ export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
         const monthIndex = date.getMonth()
         const monthName = monthNames[monthIndex];
         setMonthName(monthName)
-    }, [eventsData, eventsType]);
-
+    }, [eventsData]);
 
 
     return (
@@ -66,7 +65,7 @@ export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
                                 <StoreTag storename={event.store_name} />
                             </div>
                             <h4 className="text-lg font-medium py-4 underline">
-                                <Link href={`/events/${event.id}`}>
+                                <Link href={`/arrangementer/${event.id}`}>
                                     {event.title}
                                 </Link>
                             </h4>

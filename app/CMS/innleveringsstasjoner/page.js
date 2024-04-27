@@ -14,7 +14,7 @@ export default async function ArtiklerCMSRoute() {
         const supabase = createClient();
 
         await supabase.auth.signOut();
-        return redirect('/');
+        return redirect('/login');
     };
     return (
         <div className="sm:hidden flex flex-col min-h-[90vh] w-full">

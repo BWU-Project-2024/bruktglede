@@ -2,9 +2,11 @@
 import { Header } from "../Header"
 import { BliFrivilligForm } from "../BliFrivilligForm"
 import { H2Section } from "../H2Section"
+import { getStore } from "@/lib/supabase/actionsPublicForms";
 
-
-export const BliFrivilligPage = () => {
+ 
+export const BliFrivilligPage = async () => {
+    const store = await getStore();
     return (
         <div className="flex flex-col min-h-screen">
             <Header title="Vil du bli frivillig?" description="Jobb som frivillig i Gjøvik" />
@@ -15,7 +17,7 @@ export const BliFrivilligPage = () => {
 " />
             <H2Section heading="En til overskrift" paragraph="lala" />
 
-<BliFrivilligForm />
+<BliFrivilligForm storeData={store}/>
             </main>
 
 

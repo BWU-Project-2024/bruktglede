@@ -13,7 +13,7 @@ export const AdminPage = async () => {
         "use server";
         const supabase = createClient();
         await supabase.auth.signOut();
-        return redirect('/');
+        return redirect('/login');
     };
 
     return (
@@ -24,7 +24,7 @@ export const AdminPage = async () => {
                 </button>
             </form>
             <div className="flex flex-col md:flex-row items-center md:justify-between ">
-                <div className="w-[95%] md:w-[45%] mb-16 md:mb-0">
+                <div className="w-[95%] md:w-[45%] mb-10 md:mb-0">
                     <div className="mb-16">
                         <h1 className="text-xl">Opprett ny butikk</h1>
                         <p className="my-4">I skjemaet under kan du opprette ny butikk basert på forespørslene. Den nye brukeren vil få en epost med innloggingslink for å opprette egent passord.</p>

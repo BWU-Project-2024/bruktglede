@@ -13,7 +13,7 @@ export default async function ArtiklerCMSRoute() {
         const supabase = createClient();
 
         await supabase.auth.signOut();
-        return redirect('/');
+        return redirect('/login');
     };
     return (
         // mobile

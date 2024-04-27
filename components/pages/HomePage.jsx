@@ -1,27 +1,54 @@
 import { LandingHeader } from "../LandingHeader";
 import { Button } from "../Button";
-import tekopp from "@/public/tekopp.jpg";
-import { UkensHoydepunkt } from "../UkensHoydepunkt";
+import { getEvents, getArticles } from "@/lib/supabase/actionsPublic";
 import { BliFrivilligCard } from "../BliFrivilligCard";
 
 export const HomePage = async () => {
+    const [events, articles] = await Promise.all([getEvents(), getArticles()]);
+
     return (
-        <div className="flex flex-col min-h-screen">
+        <>
             <LandingHeader />
-            <main>
-                <div className="flex-1 lg:-mt-10 p-2 px-6 md:px-20 lg:px-40 lg:pt-20">
-                    <UkensHoydepunkt
-                        image={tekopp}
-                        text="Antikk kopp"
-                        store="Fretex"
-                        description="Denne uken er ukens høydepunkt en antikk kopp, som skinner i sin eldgamle prakt..."
+            <main className="flex flex-col min-h-screen w-full">
+                <h2 className="px-6 md:px-28 lg:px-64 pt-10 lg:pt-20 text-xl lg:text-2xl font-medium mb-6">
+                    Møt butikkene
+                </h2>
+                <AlleButikker />
+
+                <h2 className="px-6 md:px-28 lg:px-64 pt-10 lg:pt-20 text-xl lg:text-2xl font-medium mb-8">
+                    Kommende arrangementer
+                </h2>
+                <div className="flex justify-center gap-6 mb-8">
+                    <ArrangementCard
+                        eventData={events.eventData}
+                        eventPostTypeName={events.eventPostTypeName}
                     />
                 </div>
+                <div className="flex justify-center">
+                    <Button
+                        title="Se alle arrrangementer"
+                        link="/arrangementer"
+                    />
+                </div>
+
+                <h2 className="px-6 md:px-28 lg:px-64 pt-10 lg:pt-20 text-xl lg:text-2xl font-medium mb-8">
+                    Siste nytt
+                </h2>
+                <div className="flex flex-wrap justify-center gap-6 mb-8">
+                    <ArticleCard
+                        articleData={articles.articleData}
+                        articlePostTypeName={articles.articlePostType}
+                    />
+                </div>
+
                 <StoreHeader />
 
+                <div className="flex justify-center mb-14">
+                    <Button title="Se alle artikler" link="/artikler" />
+                </div>
+
                 <BliFrivilligCard />
-                <Button title="Se alle arrangementer" link="/" />
             </main>
-        </div>
+        </>
     );
 };
