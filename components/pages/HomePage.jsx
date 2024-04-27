@@ -4,7 +4,6 @@ import tekopp from "@/public/tekopp.jpg";
 import { UkensHoydepunkt } from "../UkensHoydepunkt";
 import { BliFrivilligCard } from "../BliFrivilligCard";
 import { StoreHeader } from "../StoreHeader";
-import test from "@/public/test.jpg";
 
 export const HomePage = async () => {
     return (
@@ -19,6 +18,7 @@ export const HomePage = async () => {
                         description="Denne uken er ukens høydepunkt en antikk kopp, som skinner i sin eldgamle prakt..."
                     />
                 </div>
+                <StoreHeader />
 
                 <BliFrivilligCard />
                 <Button title="Se alle arrangementer" link="/" />
