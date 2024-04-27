@@ -9,6 +9,9 @@ export const StoreInfoBar = ({ time, address, phone, mail, categories }) => {
             <div className="p-5 flex flex-col lg:flex-row md:flex-row justify-center lg:gap-56 md:gap-56">
                 <div>
                     <div className="flex flex-col gap-2 pl-2">
+                    <h3 className="uppercase text-ivory-default text-base font-semibold pl-2">
+                      Nøkkelinformasjon
+                    </h3>
                         <div className="flex items-center gap-8 text-ivory-default">
                             <FiClock style={iconStyle} />
                             <p>{time}</p>
@@ -28,13 +31,13 @@ export const StoreInfoBar = ({ time, address, phone, mail, categories }) => {
                     </div>
                 </div>
                 <div className="pt-5 lg:pt-0 md:pt-0">
-                    <span className="uppercase text-ivory-default pl-2">
+                    <h3 className="uppercase text-ivory-default pl-2 text-base font-semibold">
                         Overordnet kategorier
-                    </span>
+                    </h3>
                     <div className="flex flex-wrap pt-3">
                         {categories &&
                             categories.map((tagName, index) => (
-                                <CategoryTag key={index} title={tagName} />
+                                <CategoryTag key={index} title={tagName} bgColor="ivory-default" />
                             ))}
                     </div>
                 </div>
