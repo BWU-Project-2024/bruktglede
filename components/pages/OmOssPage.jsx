@@ -14,7 +14,15 @@ export const OmOssPage = () => {
 
                 <h2 className="text-lg lg:text-xl lg:mb-5 font-semibold font-opensans mb-3">Ofte stilte spørsmål</h2>
 
-                <div className="w-full">
+
+
+                <div className="lg:mb-5">
+
+                    <h2 className="text-lg lg:text-2xl font-semibold font-opensans mb-3">Ofte stilte spørsmål</h2>
+                </div>
+
+                <div className=" w-full mb-10">
+
                     <Accordion question="Hvem står bak Bruktglede?" answer="Bruktglede ble utviklet som del av en Bacheloroppgave i Webutvikling av studentene Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje. Nettsiden ble skapt med Gjøvik Kommune som oppdragsgiver." />
                     <Accordion question="Kan butikken min bli en del av siden?" answer="Bruktglede ble utviklet som del av en Bacheloroppgave i Webutvikling av studentene Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje. Nettsiden ble skapt med Gjøvik Kommune som oppdragsgiver." />
                     <Accordion question="Dette er et langt spørsmål. hvorfor blir teksten så fucked" answer="Bruktglede ble utviklet som del av en Bacheloroppgave i Webutvikling av studentene Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje. Nettsiden ble skapt med Gjøvik Kommune som oppdragsgiver." />
