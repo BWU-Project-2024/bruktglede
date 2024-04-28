@@ -1,6 +1,7 @@
 import { getStoreById, getStoreVisions } from "@/lib/supabase/actionsPublic"
 import { StoreInfoBar } from "../StoreInfoBar";
 import { StoreHeader } from "../StoreHeader";
+import { UrlPath } from "../UrlPath";
 
 export const ButikkIdPage = async ({ params }) => {
     const storeData = await getStoreById(params);
@@ -14,6 +15,7 @@ export const ButikkIdPage = async ({ params }) => {
                     storeData={storeData}
                     storeVisionData={storeVisionData}
                 />
+                <UrlPath />
                 <StoreInfoBar
                     params={params}
                     time={data.created_at}

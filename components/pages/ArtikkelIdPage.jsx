@@ -2,6 +2,7 @@ import { getArticleById } from "@/lib/supabase/actionsPublic";
 import { StoreTag } from "../StoreTag";
 import { CategoryTag } from "../CategoryTag";
 import Image from "next/image";
+import { UrlPath } from "../UrlPath"
 
 export const ArtikkelIdPage = async ({ params }) => {
 
@@ -21,6 +22,7 @@ export const ArtikkelIdPage = async ({ params }) => {
 
     return (
         <div className="flex flex-col min-h-screen">
+            <UrlPath />
             <main className="flex-1 font-opensans p-2 px-6 md:px-28 lg:px-64 lg:pt-20 lg:pt-20">
                 <Image
                     src={articleData.img}
