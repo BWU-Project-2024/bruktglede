@@ -2,6 +2,9 @@ import { LandingHeader } from "../LandingHeader";
 import { Button } from "../Button";
 import { getEvents, getArticles } from "@/lib/supabase/actionsPublic";
 import { BliFrivilligCard } from "../BliFrivilligCard";
+import { AlleButikker } from "../AlleButikker/AlleButikker";
+import { ArrangementCard } from "../ArrangementCard";
+import { ArticleCard } from "../ArticleCard";
 
 export const HomePage = async () => {
     const [events, articles] = await Promise.all([getEvents(), getArticles()]);
