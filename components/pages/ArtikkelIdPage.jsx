@@ -23,14 +23,14 @@ export const ArtikkelIdPage = async ({ params }) => {
     return (
         <div className="flex flex-col min-h-screen">
             <UrlPath />
-            <main className="flex-1 font-opensans p-2 px-6 md:px-28 lg:px-64 lg:pt-20 lg:pt-20">
+            <main className="flex-1 font-opensans  px-6 md:px-28 lg:px-64  lg:pt-10">
                 <Image
                     src={articleData.img}
                     alt="artikkel cover bilde"
                     width={500}
                     height={200}>
                 </Image>
-                <div className="flex flex-row gap-x-3">
+                <div className="flex mt-4 flex-row gap-x-3">
                     <p className="uppercase text-xs font-semibold pt-1">Artikkel</p>
                     <StoreTag storename={articleData.store_name} className="mr-1" />
                 </div>
@@ -44,7 +44,7 @@ export const ArtikkelIdPage = async ({ params }) => {
                     <CategoryTag key={index} title={tag} />
                 ))}
 
-                <div className="mt-6">
+                <div className="mt-6 mb-10">
                     <p className="text-xs lg:text-lg text-gray-600">Publisert : {formatDate(articleData.created_at)}</p>
                     <p className="text-xs lg:text-lg text-gray-600">Klokkeslett : {formatTime(articleData.created_at)}</p>
                 </div>

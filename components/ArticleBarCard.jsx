@@ -2,6 +2,7 @@ import { CategoryTag } from "./CategoryTag";
 // import { getArticles } from "@/lib/supabase/actionsPublic";
 import { StoreTag } from "./StoreTag";
 import Link from "next/link";
+import Image from "next/image";
 
 export const ArticleBarCard = ({ articlesData }) => {
     // const articleInfo = await getArticles();
@@ -26,6 +27,13 @@ export const ArticleBarCard = ({ articlesData }) => {
                         {article.tags.map((tag, index) => (
                             <CategoryTag key={index} title={tag} />
                         ))}
+                          <Image
+                                    src={article.img}
+                                    alt="artikkel cover bilde"
+                                    width={400}
+                                    height={400}
+                                    className="object-cover hidden md:block w-80 h-80 md:w-64 md:h-64 overflow-hidden "
+                                />
                         <hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700"></hr>
                     </div>
                 </div>
