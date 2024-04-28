@@ -69,7 +69,7 @@ export const Navbar = () => {
                             <p>Butikker</p>
                             <FiChevronDown />
                         </button>
-                        <div className="bg-white min-w-[10rem] rounded flex flex-col absolute z-20 hidden group-hover:block">
+                        <div className="bg-white min-w-[10rem] rounded flex flex-col absolute z-20 group-hover:block">
                             <div className="py-2 bg-ivory-default"></div>
                             <Link href="/butikker" className="block hover:bg-ivory-lighter">
                                 <p className="mx-4 pt-2">Alle butikker</p>

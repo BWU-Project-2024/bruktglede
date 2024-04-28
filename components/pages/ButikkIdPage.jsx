@@ -1,6 +1,7 @@
 import { getStoreById, getStoreVisions } from "@/lib/supabase/actionsPublic"
 import { StoreInfoBar } from "../StoreInfoBar";
 import { StoreHeader } from "../StoreHeader";
+import { UkensHoydepunkt } from "../UkensHoydepunkt";
 import { UrlPath } from "../UrlPath";
 
 export const ButikkIdPage = async ({ params }) => {
@@ -18,11 +19,12 @@ export const ButikkIdPage = async ({ params }) => {
                 <UrlPath />
                 <StoreInfoBar
                     params={params}
-                    time={data.created_at}
+                    
                     address={data.address}
                     phone={data.phone}
                     mail={data.contactEmail}
                     categories={data.tags} />
+                    <UkensHoydepunkt />
             </main>
         </div>
     )
