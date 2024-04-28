@@ -22,7 +22,7 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
             {searchResultsStore?.map((store, index) => (
                 <div key={index} className="flex flex-col">
                     <div className="flex justify-between">
-                        <div className='flex flex-col gap-1'>
+                        <div className='flex flex-col gap-1 mr-4'>
                             <Link href={`/artikler/${store.id}`} key={index}>
                                 <span className="text-lg font-medium underline">{store.name}</span>
                             </Link>
@@ -42,6 +42,7 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                             width={200}
                             height={100}
                             alt="Post bilde"
+                            className="hidden md:block"
                         >
                         </Image>
 
@@ -72,6 +73,7 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                             width={200}
                             height={100}
                             alt="Post bilde"
+                            className="hidden md:block"
                         >
                         </Image>
 

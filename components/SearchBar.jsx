@@ -18,7 +18,7 @@ export const SearchBar = ({ onSearch }) => {
                 <input
                     type="search"
                     id="default-search"
-                    className="font-opensans block w-full py-2 p-4  text-sm md:text-base  border border-gray-200 rounded-lg bg-white"
+                    className="font-opensans block w-full py-2 p-4 text-sm md:text-base border border-gray-200 rounded-lg bg-white focus:bg-white"
                     placeholder="F.eks klær, møbler, servise.."
                     onChange={(e) => setSearchQuery(e.target.value)}
                     required

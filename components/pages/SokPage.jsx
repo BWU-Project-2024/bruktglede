@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from 'react';
 import { SokHeader } from "../SokHeader"
 import { UrlPath } from "../UrlPath"
@@ -24,7 +24,8 @@ export const SokPage = () => {
             <SokHeader onSearch={handleSearch} />
             <UrlPath />
             <main className="flex-1 px-6 md:px-28 lg:px-64">
-                <SearchResults searchResultsStore={searchResultsStore}
+                <SearchResults
+                    searchResultsStore={searchResultsStore}
                     searchResultsPost={searchResultsPost}
                     searchQuery={searchQuery} />
             </main>
