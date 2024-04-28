@@ -21,7 +21,10 @@ export const LandingHeader = () => {
                 <div className="flex flex-col justify-center md:w-1/2">
                     <p className="font-opensans py-6 px-6 text-base overflow-hidden md:text-lg lg:px-0 lg:mb-4">Har du lyst til å se utvalget Gjøvik har å by på når det kommer til gjenbruk? Begynn å utforsk mulighetene!</p>
                     <h2 className="px-6 font-opensans text-base font-semibold lg:px-0 pb-4">Start eventyret med et enkelt søk</h2>
-                    <SearchBar />
+                    <div className="ml-6 lg:ml-0 w-[80%] md:w-[90%]">
+                        <SearchBar />
+                    </div>
+
                 </div>
                 <div className="hidden md:block lg:block">
                     <Image
