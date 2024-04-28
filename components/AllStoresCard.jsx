@@ -5,7 +5,6 @@ import Image from "next/image";
 
 export const AllStoresCard = async () => {
     const storeInfo = await getStores();
-    console.log(storeInfo);
     return (
         <div className="flex justify-center">
             <div className="w-fit ">
