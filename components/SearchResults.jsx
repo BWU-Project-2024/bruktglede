@@ -16,19 +16,19 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
     return (
         <div className="py-10">
             {totalCount > 0 && (
-                <p className="pb-20 text-xl">{`${totalCount} treff for "${searchQuery}"`}</p>
+                <p className="pb-16 text-xl">{`${totalCount} treff for "${searchQuery}"`}</p>
             )}
 
             {searchResultsStore?.map((store, index) => (
                 <div key={index} className="flex flex-col">
-                    <div className="flex justify-between">
+                    <div className="flex justify-between h-full">
                         <div className='flex flex-col gap-1 mr-4'>
                             <Link href={`/artikler/${store.id}`} key={index}>
                                 <span className="text-lg font-medium underline">{store.name}</span>
                             </Link>
                             <p className="text-xs mb-1">{formatDate(store.created_at)}</p>
                             <p className="text-base line-clamp-2">{store.description}</p>
-                            <div className="mt-4 mb-2">
+                            <div className="mt-4 mt-2 md:mt-6">
                                 <StoreTag storename={store.name} className="mr-1" />
 
                                 {store.tags.map((tag, index) => (
@@ -39,8 +39,8 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                         </div>
                         <Image
                             src={store.img}
-                            width={200}
-                            height={100}
+                            width={250}
+                            height={90}
                             alt="Post bilde"
                             className="hidden md:block"
                         >
@@ -70,7 +70,7 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                         </div>
                         <Image
                             src={post.img}
-                            width={200}
+                            width={250}
                             height={100}
                             alt="Post bilde"
                             className="hidden md:block"
