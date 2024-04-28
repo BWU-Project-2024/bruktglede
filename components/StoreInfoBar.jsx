@@ -1,60 +1,66 @@
-import { FiMapPin, FiClock, FiMail, FiPhone } from "react-icons/fi";
+import { FiMapPin, FiMail, FiHome, FiPhone } from "react-icons/fi";
 import { CategoryTag } from "./CategoryTag";
 
-export const StoreInfoBar = ({ openingTimes, address, phone, mail, categories }) => {
+export const StoreInfoBar = ({ storeIdData }) => {
     const iconStyle = { fontSize: "1.1em" };
+
+    const sortedOpeningTimes = storeIdData.openingTimesWithDay.sort((a, b) => {
+        const dayOrder = { Mandag: 1, Tirsdag: 2, Onsdag: 3, Torsdag: 4, Fredag: 5, Lørdag: 6, Søndag: 7 };
+        return dayOrder[a.dayName] - dayOrder[b.dayName];
+    });
+
     return (
-        <div className="w-full py-4 bg-forestgreen-default text-ivory-default mb-5 ">
-            <div className="container mx-auto">
-                <div className="p-5 flex flex-col md:flex-row justify-center  md:gap-8 lg:gap-0">
-                    <div className="lg:w-1/4 ">
-                        <div className="flex flex-col gap-2 mb-5">
-                            <h3 className="uppercase text-base font-semibold pl-2">
-                                Nøkkelinformasjon
-                            </h3>
-                            <div className="flex items-center pl-2 gap-8">
-                                <FiMapPin style={iconStyle} />
-                                <p>{address}</p>
-                            </div>
-                            <div className="flex items-center pl-2 gap-8">
-                                <FiPhone style={iconStyle} />
-                                <p>{phone}</p>
-                            </div>
-                            <div className="flex items-center pl-2 gap-8">
-                                <FiMail style={iconStyle} />
-                                <p>{mail}</p>
-                            </div>
+        <div className="w-full py-6 px-6 md:px-40 md:flex justify-evenly bg-forestgreen-default text-ivory-default mx-auto">
+            {/* <div className="p-5 flex flex-col md:flex-row justify-center md:gap-8 lg:gap-0"> */}
+
+            <div className="flex flex-col gap-1 md:gap-2 mb-10 md:mb-0">
+                <h3 className="uppercase text-sm font-semibold mb-4">
+                    Nøkkelinformasjon
+                </h3>
+                <div className="flex items-center gap-4">
+                    <FiHome style={iconStyle} />
+                    <p>{storeIdData.stores.name}</p>
+                </div>
+                <div className="flex items-center gap-4">
+                    <FiMapPin style={iconStyle} />
+                    <p>{storeIdData.stores.address}</p>
+                </div>
+                <div className="flex items-center gap-4">
+                    <FiPhone style={iconStyle} />
+                    <p>{storeIdData.stores.phone}</p>
+                </div>
+                <div className="flex items-center gap-4">
+                    <FiMail style={iconStyle} />
+                    <p>{storeIdData.stores.contactEmail}</p>
+                </div>
+            </div>
+
+            <div className="flex flex-col mb-10 md:mb-0">
+                <h3 className="uppercase text-sm font-semibold mb-4">
+                    Våre åpningstider
+                </h3>
+                <div className="flex flex-col gap-1">
+                    {sortedOpeningTimes.map((openingTime, index) => (
+                        <div key={index} className="flex">
+                            <p className="w-[75px]">{openingTime.dayName}:</p>
+                            <p>{openingTime.open ? `${openingTime.openingHour}-${openingTime.closingHour}` : 'Stengt'}</p>
                         </div>
-                    </div>
-                    <div className="lg:w-1/4 lg:ml-20">
-                        <div className="flex flex-col">
-                            <h3 className="uppercase pl-2 text-base font-semibold">
-                                Våre åpningstider
-                            </h3>
-                            <div className="pl-2 pt-2">
-                                <p>Mandag: </p>
-                                <p>Tirsdag:</p>
-                                <p>Onsdag:</p>
-                                <p>Torsdag:</p>
-                                <p>Fredag:</p>
-                                <p>Lørdag:</p>
-                                <p>Søndag:</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="lg:w-1/4 pt-5 lg:pt-0 md:pt-0">
-                        <h3 className="uppercase pl-2 text-base font-semibold">
-                            Overordnet kategorier
-                        </h3>
-                        <div className="flex pl-2 flex-wrap text-forestgreen-darker pt-2">
-                            {categories &&
-                                categories.map((tagName, index) => (
-                                    <CategoryTag key={index} title={tagName} bgColor="ivory-default" />
-                                ))}
-                        </div>
-                    </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="mb-2 md:mb-0">
+                <h3 className="uppercase text-sm font-semibold mb-4">
+                    Overordnet kategorier
+                </h3>
+                <div className="flex flex-wrap text-forestgreen-darker gap-1">
+                    {storeIdData.stores.tags &&
+                        storeIdData.stores.tags.map((tagName, index) => (
+                            <CategoryTag key={index} title={tagName} bgColor="ivory-darker" />
+                        ))}
                 </div>
             </div>
         </div>
+        // </div>
     );
 };

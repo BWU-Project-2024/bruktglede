@@ -7,24 +7,19 @@ import { UrlPath } from "../UrlPath";
 export const ButikkIdPage = async ({ params }) => {
     const storeData = await getStoreById(params);
     const storeVisionData = await getStoreVisions(params)
-    const data = storeData;
 
     return (
         <div className="flex flex-col min-h-screen">
             <main className="flex-1">
+                <UrlPath />
                 <StoreHeader
-                    storeData={storeData}
+                    storeData={storeData.stores}
                     storeVisionData={storeVisionData}
                 />
-                <UrlPath />
                 <StoreInfoBar
-                    params={params}
-                    
-                    address={data.address}
-                    phone={data.phone}
-                    mail={data.contactEmail}
-                    categories={data.tags} />
-                    <UkensHoydepunkt />
+                    storeIdData={storeData}
+                />
+                <UkensHoydepunkt />
             </main>
         </div>
     )
