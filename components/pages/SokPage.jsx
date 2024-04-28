@@ -23,7 +23,7 @@ export const SokPage = () => {
         <div className="flex flex-col min-h-screen">
             <SokHeader onSearch={handleSearch} />
             <UrlPath />
-            <main className="flex-1">
+            <main className="flex-1 px-6 md:px-28 lg:px-64">
                 <SearchResults searchResultsStore={searchResultsStore}
                     searchResultsPost={searchResultsPost}
                     searchQuery={searchQuery} />
