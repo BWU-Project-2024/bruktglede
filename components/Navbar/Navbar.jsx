@@ -69,21 +69,23 @@ export const Navbar = () => {
                             <p>Butikker</p>
                             <FiChevronDown />
                         </button>
-                        <div className="bg-white min-w-[10rem] rounded flex flex-col absolute z-20 group-hover:block">
+                        <div className="bg-white min-w-[10rem] rounded absolute z-20 hidden group-hover:block">
                             <div className="py-2 bg-ivory-default"></div>
-                            <Link href="/butikker" className="block hover:bg-ivory-lighter">
-                                <p className="mx-4 pt-2">Alle butikker</p>
-                                <hr className="mt-2"></hr>
-                            </Link>
-                            {stores && (
-                                stores.map((store) => (
-                                    <Link key={store.id} href={`/butikker/${store.id}`} className="block px-4 py-2 hover:bg-ivory-lighter">{store.name}</Link>
-                                ))
-                            )}
-                            <Link href="/blifrivillig" className="block rounded-b-lg hover:bg-ivory-lighter">
-                                <hr className="mb-2"></hr>
-                                <p className="mx-4 pb-2">Bli frivillig</p>
-                            </Link>
+                            <div className="flex flex-col">
+                                <Link href="/butikker" className="block hover:bg-ivory-lighter">
+                                    <p className="mx-4 pt-2">Alle butikker</p>
+                                    <hr className="mt-2"></hr>
+                                </Link>
+                                {stores && (
+                                    stores.map((store) => (
+                                        <Link key={store.id} href={`/butikker/${store.id}`} className="block px-4 py-2 hover:bg-ivory-lighter">{store.name}</Link>
+                                    ))
+                                )}
+                                <Link href="/blifrivillig" className="block rounded-b-lg hover:bg-ivory-lighter">
+                                    <hr className="mb-2"></hr>
+                                    <p className="mx-4 pb-2">Bli frivillig</p>
+                                </Link>
+                            </div>
                         </div>
                         {pathname.startsWith("/butikker") && (
                             <div className="absolute w-2 h-2 bg-forestgreen-default rounded-[1.5px] top-8 rotate-45 left-1/2 transform -translate-x-1/2"></div>
