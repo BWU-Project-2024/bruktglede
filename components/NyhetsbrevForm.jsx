@@ -27,12 +27,12 @@ export const NyhetsbrevForm = () => {
 
     return (
         <>
-        <section className="mx-5">
+        <section className="mx-5 md:w-1/3 max-w-readable ">
             {showSuccessAlert ? (
            
            <div
                     id="alert-1"
-                    className="flex items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50"
+                    className="flex items-center p-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 "
                     role="alert"
                 >
                     <svg

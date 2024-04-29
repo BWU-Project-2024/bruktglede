@@ -5,12 +5,29 @@ import { BliFrivilligCard } from "../BliFrivilligCard";
 import { AlleButikker } from "../AlleButikker/AlleButikker";
 import { ArrangementCard } from "../ArrangementCard";
 import { ArticleCard } from "../ArticleCard";
-import { NyhetsbrevForm } from "../NyhetsbrevForm";
+import { sendNewsletter } from "@/lib/supabase/actionsPublicForms";
+
+import cron from 'node-cron';
+
 
 
 export const HomePage = async () => {
     const [events, articles] = await Promise.all([getEvents(), getArticles()]);
-   
+
+    
+    cron.schedule(
+        "0 12 * * 1", //every monday at 12:00 the newsletter will be sent  
+        () => {
+            console.log("Cron job  ajajaj yeye");
+ sendNewsletter();
+        
+        },
+        {   scheduled: true,
+            timezone: "Europe/Oslo",
+        }
+    );
+    
+    
 
     return (
         <>
@@ -52,7 +69,7 @@ export const HomePage = async () => {
                     <Button title="Se alle artikler" link="/artikler" />
                 </div>
 
-<NyhetsbrevForm />
+
                 <BliFrivilligCard />
                 
             </main>
