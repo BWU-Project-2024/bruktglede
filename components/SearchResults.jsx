@@ -26,6 +26,7 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                             <Link href={`/artikler/${store.id}`} key={index}>
                                 <span className="text-lg font-medium underline">{store.name}</span>
                             </Link>
+                            <p className="text-sm md:text-md text-textLight flex-grow font-medium uppercase">Butikk</p>
                             <p className="text-xs mb-1">{formatDate(store.created_at)}</p>
                             <p className="text-base line-clamp-2">{store.description}</p>
                             <div className="mt-4 mt-2 md:mt-6">
@@ -58,6 +59,7 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                             <Link href={`/artikler/${post.id}`} key={index}>
                                 <span className="text-lg font-medium underline">{post.title}</span>
                             </Link>
+                            <p className="text-sm md:text-md flex-grow text-textLight font-medium uppercase">{post.post_type}</p>
                             <p className="text-xs mb-1">{formatDate(post.created_at)}</p>
                             <p className="text-base line-clamp-2">{post.ingress}</p>
                             <div className="mt-4 mb-2">

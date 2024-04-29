@@ -60,7 +60,7 @@ export const ArticleCard = ({ articleData, articlePostTypeName }) => {
                                     </Image>
                                     <div className="p-5">
                                         <div className="flex items-center justify-center">
-                                            <p className="text-sm md:text-md flex-grow font-semibold uppercase">
+                                            <p className="text-sm md:text-md flex-grow font-semibold text-textLight uppercase">
                                                 {articlesType}
                                             </p>
                                             <StoreTag storename={article.store_name} />

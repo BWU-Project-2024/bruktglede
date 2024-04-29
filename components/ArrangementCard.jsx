@@ -94,7 +94,7 @@ export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
 
                             <div className="p-5">
                                 <div className="flex flex-row items-center justify-center">
-                                    <p className="text-sm md:text-md flex-grow font-semibold uppercase">
+                                    <p className="text-sm md:text-md text-textLight flex-grow font-semibold uppercase">
                                         {eventsType}
                                     </p>
                                     <StoreTag

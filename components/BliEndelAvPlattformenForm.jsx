@@ -27,6 +27,8 @@ export const BliEndelAvPlattformenForm = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-[90%] md:w-[30%]" aria-label="CMS form" encType="multipart/form-data">
+            <h2 className="text-xl">Vil du bli endel av Bruktglede?</h2>
+            <p className="text-lg mb-10">Send oss en forespørsel</p>
             <label className="text-md mb-2 font-medium" htmlFor="navn">
                 Fult navn
             </label>
@@ -88,11 +90,11 @@ export const BliEndelAvPlattformenForm = () => {
                 Kort melding
             </label>
             <textarea
-                className="bg-white rounded-md min-h-20 px-3 py-2 bg-inherit border border-[#DBDBDB]"
+                className="bg-white rounded-md min-h-32 h-58 px-3 py-2 bg-inherit border border-[#DBDBDB]"
                 id="melding"
                 name="melding"
-                placeholder=""
-                row="2"
+                placeholder="Hvem er du, og hvorfor vil du bli endel av Bruktglede?"
+                row="3"
                 {...register("melding", {
                     required: "Vennligst skriv inn en kort melding",
                 })}
@@ -117,7 +119,12 @@ export const BliEndelAvPlattformenForm = () => {
                     </button>
                 </div>
             )}
-            <button type="submit" className="w-full bg-success-lighter hover:bg-success-default py-2 rounded mt-4 font-medium">Send forespørsel</button>
+            <button
+                type="submit"
+                className="mt-4 w-fit bg-forestgreen-default text-ivory-default px-16 rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200"
+            >
+                Send forespørsel
+            </button>
         </form>
     )
 }
