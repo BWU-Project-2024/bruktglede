@@ -1,11 +1,9 @@
 import { CategoryTag } from "./CategoryTag";
-// import { getArticles } from "@/lib/supabase/actionsPublic";
 import { StoreTag } from "./StoreTag";
 import Link from "next/link";
 import Image from "next/image";
 
 export const ArticleBarCard = ({ articlesData }) => {
-    // const articleInfo = await getArticles();
 
     //Get the date from the timestamp
     const formatDate = (timestamp) => {

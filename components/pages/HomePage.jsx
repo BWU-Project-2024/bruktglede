@@ -1,6 +1,6 @@
 import { LandingHeader } from "../LandingHeader";
 import { Button } from "../Button";
-import { getEvents, getArticles } from "@/lib/supabase/actionsPublic";
+import { getTopFourEvents, getTopFourArticles } from "@/lib/supabase/actionsPublic";
 import { BliFrivilligCard } from "../BliFrivilligCard";
 import { AlleButikker } from "../AlleButikker/AlleButikker";
 import { ArrangementCard } from "../ArrangementCard";
@@ -12,7 +12,7 @@ import cron from 'node-cron';
 
 
 export const HomePage = async () => {
-    const [events, articles] = await Promise.all([getEvents(), getArticles()]);
+    const [events, articles] = await Promise.all([getTopFourEvents(), getTopFourArticles()]);
 
     
     cron.schedule(
@@ -39,14 +39,17 @@ export const HomePage = async () => {
                 </h2>
                 <AlleButikker />
 
-                <h2 className="px-6 md:px-28 lg:px-64 pt-10 lg:pt-20 text-xl lg:text-2xl font-medium mb-8">
+                <h2 className="px-6 md:px-28 lg:px-64 pt-10 lg:pt-20 text-xl lg:text-2xl font-medium mt-6 mb-10">
                     Kommende arrangementer
                 </h2>
                 <div className="flex justify-center gap-6 mb-8">
-                    <ArrangementCard
-                        eventData={events.eventData}
-                        eventPostTypeName={events.eventPostTypeName}
-                    />
+                    <div className="w-[100%] md:w-[80%] lg:w-[70%]">
+                        <ArrangementCard
+                            eventData={events.eventData}
+                            eventPostTypeName={events.eventPostTypeName}
+                        />
+
+                    </div>
                 </div>
                 <div className="flex justify-center">
                     <Button
@@ -58,14 +61,16 @@ export const HomePage = async () => {
                 <h2 className="px-6 md:px-28 lg:px-64 pt-10 lg:pt-20 text-xl lg:text-2xl font-medium mb-8">
                     Siste nytt
                 </h2>
-                <div className="flex flex-wrap justify-center gap-6 mb-8">
-                    <ArticleCard
-                        articleData={articles.articleData}
-                        articlePostTypeName={articles.articlePostType}
-                    />
+                <div className="flex justify-center gap-6 mb-8">
+                    <div className="w-[100%] md:w-[80%] lg:w-[70%]">
+                        <ArticleCard
+                            articleData={articles.articleData}
+                            articlePostTypeName={articles.articlePostType}
+                        />
+                    </div>
                 </div>
 
-                <div className="flex justify-center mb-14">
+                <div className="flex justify-center mb-20">
                     <Button title="Se alle artikler" link="/artikler" />
                 </div>
 

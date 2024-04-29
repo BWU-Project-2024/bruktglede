@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { StoreTag } from "./StoreTag";
 import { FiChevronRight } from "react-icons/fi";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
 export const ArticleCard = ({ articleData, articlePostTypeName }) => {
     const [articlesData, setArticlesData] = useState([]);
@@ -18,41 +20,66 @@ export const ArticleCard = ({ articleData, articlePostTypeName }) => {
 
     return (
         <>
-            {articlesData.length === 0 ? (
-                <p>Ingen artikler tilgjengelige for øyeblikket.</p>
-            ) : (
-                articlesData.map((article, index) => (
-                    <div
-                        key={index}
-                        className="shadow-md rounded-xl w-[80%] md:w-[30%] lg:w-[20%] mb-5"
-                    >
-                        <Image
-                            src={article.img}
-                            alt="Artikkel cover bilde"
-                            height={200}
-                            width={500}
-                            className="rounded-t-lg"
-                        >
-                        </Image>
-                        <div className="p-5">
-                            <div className="flex items-center justify-center">
-                                <p className="text-sm md:text-md flex-grow font-semibold uppercase">
-                                    {articlesType}
-                                </p>
-                                <StoreTag storename={article.store_name} />
+            <Splide
+                options={{
+                    perPage: 3,
+                    padding: { left: '3rem', right: '3rem' },
+                    width: '100%',
+                    pagination: true,
+                    gap: "1rem",
+                    height: "27rem",
+
+                    breakpoints: {
+                        1000: {
+                            perPage: 2,
+                            gap: '1rem',
+                            padding: { left: '3rem', right: '3rem' },
+                        },
+                        480: {
+                            perPage: 1,
+                            gap: '1rem',
+                            padding: { left: '0rem', right: '0rem' },
+                        },
+                    },
+                }}
+            >
+                {articlesData.length === 0 ? (
+                    <p>Ingen artikler tilgjengelige for øyeblikket.</p>
+                ) : (
+                    articlesData.map((article, index) => (
+                        <SplideSlide key={index} className="flex justify-center">
+                            <div className="shadow-md h-fit rounded-xl mb-5 mx-14 md:mx-2">
+                                <div className="h-auto w-100 relative flex flex-col justify-center">
+                                    <Image
+                                        src={article.img}
+                                        alt="Artikkel cover bilde"
+                                        height={200}
+                                        width={500}
+                                        className="object-cover w-[500px] h-[200px] overflow-hidden rounded-t-lg"
+                                    >
+                                    </Image>
+                                    <div className="p-5">
+                                        <div className="flex items-center justify-center">
+                                            <p className="text-sm md:text-md flex-grow font-semibold uppercase">
+                                                {articlesType}
+                                            </p>
+                                            <StoreTag storename={article.store_name} />
+                                        </div>
+                                        <h4 className="text-lg font-medium pt-4 pb-1">
+                                            {article.title}
+                                        </h4>
+                                        <p className="pb-4">{article.bodyText}</p>
+                                        <Link href={`/artikler/${article.id}`} className="underline flex items-center font-semibold text-forestgreen-default">
+                                            Les mer
+                                            <FiChevronRight style={iconStyle} />
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
-                            <h4 className="text-lg font-medium pt-4 pb-1">
-                                {article.title}
-                            </h4>
-                            <p className="pb-4">{article.bodyText}</p>
-                            <Link href={`/artikler/${article.id}`} className="underline flex items-center font-semibold text-forestgreen-default">
-                                Les mer
-                                <FiChevronRight style={iconStyle} />
-                            </Link>
-                        </div>
-                    </div>
-                ))
-            )}
+                        </SplideSlide>
+                    ))
+                )}
+            </Splide >
         </>
     );
 };
