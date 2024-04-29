@@ -19,7 +19,7 @@ export const StationForm = ({ tagOptions, existingStation, existingTags }) => {
             tagger: existingTags.tagger
             // Set other fields' default values here
         } : {},
-    });
+    }); 
 
     // On submit async function and passing in formData from the form into the supabase function.
     const onSubmit = async (formData) => {
