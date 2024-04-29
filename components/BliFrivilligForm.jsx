@@ -39,10 +39,10 @@ export const BliFrivilligForm = ({ storeData }) => {
                         Fornavn
                     </label>
                     <input
-                        className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                        className="rounded-md px-3 py-2 bg-white border mb-1"
                         id="fornavn"
                         name="fornavn"
-                        placeholder="Ditt fornavn.."
+                        placeholder=""
                         {...register("fornavn", {
                             required: "Vennligst skriv inn fornavnet ditt",
                         })}
@@ -55,10 +55,10 @@ export const BliFrivilligForm = ({ storeData }) => {
                         Etternavn
                     </label>
                     <input
-                        className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                        className="rounded-md px-3 py-2 bg-white border mb-1"
                         id="etternavn"
                         name="etternavn"
-                        placeholder="Ditt etternavn.."
+                        placeholder=""
                         {...register("etternavn", {
                             required: "Vennligst skriv inn etternavnet ditt",
                         })}
@@ -71,10 +71,10 @@ export const BliFrivilligForm = ({ storeData }) => {
                         E-post
                     </label>
                     <input
-                        className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                        className="rounded-md px-3 py-2 bg-white border mb-1"
                         id="epost"
                         name="epost"
-                        placeholder="Din e-post addresse.."
+                        placeholder=""
                         {...register("epost", {
                             required: "Vennligst skriv inn en e-post addresse",
                         })}
@@ -87,10 +87,10 @@ export const BliFrivilligForm = ({ storeData }) => {
                         Mobilnummer
                     </label>
                     <input
-                        className="rounded-md px-3 py-2 bg-inherit border mb-1"
+                        className="rounded-md px-3 py-2 bg-white border mb-1"
                         id="mobil"
                         name="mobil"
-                        placeholder="Ditt mobilnummer.."
+                        placeholder=""
                         {...register("mobil", {
                             required: "Vennligst skriv inn et mobilnummer",
                         })}
@@ -164,7 +164,7 @@ export const BliFrivilligForm = ({ storeData }) => {
 
                     <button
                         type="submit"
-                        className="w-1/2 mt-4 lg:mt-8 lg:ml-20 lg:w-60 outline outline-1 p-2 md:p-2 px-4 font-opensans font-semibold rounded-sm outline-forestgreen-default md:px-4 md:outline-1.5 text-forestgreen-default hover:bg-forestgreen-default hover:text-ivory-default transition transition-duration-300"
+                        className="mt-4 w-fit bg-forestgreen-default text-ivory-default px-16 rounded py-2 font-medium drop-shadow hover:bg-ivory-darker hover:text-forestgreen-darker transition duration-200"
                     >
                         Send søknad
                     </button>

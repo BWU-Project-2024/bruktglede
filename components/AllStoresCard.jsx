@@ -2,13 +2,12 @@ import { getStores } from "@/lib/supabase/actionsPublic";
 import Link from "next/link";
 import Image from "next/image";
 
-
 export const AllStoresCard = async () => {
     const storeInfo = await getStores();
     return (
         <div className="flex justify-center">
-            <div className="w-fit ">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16" >
+            <div className="w-fit">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
                     {storeInfo.map((stores, index) => (
                         <Link key={index} href={`/butikker/${stores.id}`} className="w-full">
                             <div className="flex w-full flex-col justify-center items-center transition">
