@@ -47,23 +47,32 @@ export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
         <>
             <Splide
                 options={{
-                    perPage: 3,
-                    gap: "1rem",
+                    padding: "2rem",
+                    autoWidth: true,
                     pagination: true,
+                    gap: "2rem",
+                    breakpoints: {
+                        750: {
+                            width: "100%",
+                            autoWidth: false,
+                            padding: "2rem",
+                            gap: "1rem",
+                        },
+                    },
                 }}
             >
                 {eventsData.length === 0 ? (
                     <p>Ingen arrangement tilgjengelige for øyeblikket.</p>
                 ) : (
                     eventsData.map((event, index) => (
-                        <SplideSlide key={index}>
-                            <div className="shadow-md rounded-xl w-[80%] md:w-[30%] lg:w-[20%] mb-5">
+                        <SplideSlide key={index} className="lg:w-64">
+                            <div className="shadow-md rounded-xl  mb-5">
                                 <div className="h-auto w-100 relative flex justify-center items-center">
                                     <Image
                                         src={event.img}
                                         alt="Arrangement cover image"
-                                        width={500}
-                                        height={200}
+                                        width={225}
+                                        height={125}
                                         className="rounded-tr-lg rounded-tl-lg"
                                     />
                                     <div className="absolute w-[110px] aspect-square rounded-full bg-white flex justify-center items-center flex-col">
