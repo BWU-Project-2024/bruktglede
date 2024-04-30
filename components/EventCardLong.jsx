@@ -5,31 +5,10 @@ import { FiMapPin, FiClock } from "react-icons/fi";
 
 export const EventCardLong = ({ eventData }) => {
     const [eventsData, setEventsData] = useState([]);
-    const [dayOfMonth, setDayOfMonth] = useState("");
-    const [monthName, setMonthName] = useState("");
 
     useEffect(() => {
         if (eventData && eventData.length > 0) {
             setEventsData(eventData);
-
-            const date = new Date(eventData[0].date);
-            setDayOfMonth(date.getDate());
-
-            const monthNames = [
-                "JAN",
-                "FEB",
-                "MAR",
-                "APR",
-                "MAI",
-                "JUN",
-                "JUL",
-                "AUG",
-                "SEP",
-                "OKT",
-                "NOV",
-                "DES",
-            ];
-            setMonthName(monthNames[date.getMonth()]);
         }
     }, [eventData]);
 
@@ -45,17 +24,19 @@ export const EventCardLong = ({ eventData }) => {
                     >
                         <div className="bg-ivory-default flex flex-col items-center justify-center h-auto w-[90px] rounded">
                             <span className="font-jomhuria text-5xl/3 mb-2 pt-4">
-                                {dayOfMonth}
+                                {new Date(event.date).getDate()}
                             </span>
-                            <span className="text-xl">{monthName}</span>
+                            <span className="text-xl">
+                                {new Date(event.date).toLocaleString('default', { month: 'short' })}
+                            </span>
                         </div>
                         <div className="flex flex-col flex-grow ml-5">
-                           
-                                <Link href={`/arrangementer/${event.id}`} 
+
+                            <Link href={`/arrangementer/${event.id}`}
                                 className=" font-medium pb-3 underline text-forestgreen-darker text-lg  hover:text-forestgreen-lighter transition duration-300">
-                                    {event.title}
-                                </Link>
-                           
+                                {event.title}
+                            </Link>
+
                             <div className="flex items-center gap-2">
                                 <FiMapPin style={{ fontSize: "1.1em" }} />
                                 <p>{event.address}</p>
