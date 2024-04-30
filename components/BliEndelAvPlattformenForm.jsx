@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { sendRequestToAdmin } from "@/lib/supabase/actionsPublicForms";
 
-export const BliEndelAvPlattformenForm = () => {
+export const BliEndelAvPlattformenForm = ({ toggleForm }) => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
     // Create react-hook-form
@@ -19,6 +19,7 @@ export const BliEndelAvPlattformenForm = () => {
         await sendRequestToAdmin(formData);
         setShowSuccessAlert(true);
         reset()
+        toggleForm();
     };
 
     const onCloseAlert = () => {
