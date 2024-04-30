@@ -68,8 +68,8 @@ export const ArticleCard = ({ articleData, articlePostTypeName }) => {
                                         <h4 className="text-lg font-medium pt-4 pb-1">
                                             {article.title}
                                         </h4>
-                                        <p className="pb-4">{article.bodyText}</p>
-                                        <Link href={`/artikler/${article.id}`} className="underline flex items-center font-semibold text-forestgreen-default">
+                                        <p className="mb-4 line-clamp-2 ">{article.bodyText}</p>
+                                        <Link href={`/artikler/${article.id}`} className="underline flex items-center font-semibold text-forestgreen-darker text-lg  hover:text-forestgreen-lighter transition duration-300">
                                             Les mer
                                             <FiChevronRight style={iconStyle} />
                                         </Link>

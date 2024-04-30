@@ -15,10 +15,10 @@ export const AllStoresCard = async () => {
                                 alt="artikkel cover bilde"
                                 width={400}
                                 height={400}
-                                className="object-cover w-80 h-80 md:w-64 md:h-64 overflow-hidden opacity-80  "
+                                className="object-cover w-80 h-80 md:w-64 md:h-64 overflow-hidden opacity-80"
                             />
-                            <div className="absolute w-[150px] aspect-square rounded-full bg-white flex  transition transition-300 justify-center items-center flex-col hover:bg-ivory-default hover:text-forestgreen-darker">
-                                <h2 className="text-5xl max-w-[130px] font-jomhuria break-words leading-7 text-forestgreen-default  pt-2.5 block">
+                            <div className="absolute w-[150px] aspect-square rounded-full bg-white flex transition transition-300 justify-center items-center flex-col hover:bg-ivory-default hover:text-forestgreen-darker">
+                                <h2 className="text-5xl text-center font-jomhuria leading-7 text-forestgreen-default">
                                     {stores.name}
                                 </h2>
                             </div>
@@ -29,6 +29,7 @@ export const AllStoresCard = async () => {
         </div>
     );
 };
+
 /* {encodeURIComponent(
     stores.name
     .toLowerCase()

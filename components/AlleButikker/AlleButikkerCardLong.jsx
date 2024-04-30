@@ -31,7 +31,7 @@ export const AlleButikkerCardLong = ({ index, storeData }) => {
                         <p className="text-sm md:text-lg">{storeData.phone}</p>
                     </div>
                 </div>
-                <Link href={`/butikker/${storeData.id}`} className="ml-6 flex items-center gap-1 text-sm md:text-lg underline text-forestgreen-default hover:text-forestgreen-lighter font-medium">
+                <Link href={`/butikker/${storeData.id}`} className="ml-6 flex items-center gap-1 text-sm md:text-lg underline text-forestgreen-darker hover:text-forestgreen-lighter transition duration-300 font-medium">
                     Til butikksiden <FiChevronRight />
                 </Link>
             </div>

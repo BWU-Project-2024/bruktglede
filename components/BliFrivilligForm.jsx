@@ -28,13 +28,14 @@ export const BliFrivilligForm = ({ storeData }) => {
 
     return (
         <>
-            <section className="mb-40">
+            <section className="mb-40 ">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="flex flex-col"
+                    className="flex flex-col font-opensans"
                     aria-label="Volunteer form"
                     encType="multipart/form-data"
                 >
+                    <h3 className="text-xl text-medium mb-3">Bli frivillig søknadsskjema</h3>
                     <label className="text-md mb-2 font-medium" htmlFor="fornavn">
                         Fornavn
                     </label>
