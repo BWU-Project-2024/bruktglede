@@ -28,8 +28,6 @@ export const HomePage = async () => {
         }
     );
 
-
-
     return (
         <>
             <LandingHeader />

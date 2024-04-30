@@ -23,30 +23,34 @@ export const ArtikkelIdPage = async ({ params }) => {
     return (
         <div className="flex flex-col min-h-screen">
             <UrlPath />
-            <main className="flex-1 font-opensans  px-6 md:px-28 lg:px-64 pt-5  lg:pt-10">
+            <main className="flex-1 font-opensans px-6 md:px-28 lg:px-64 pt-5">
                 <Image
                     src={articleData.img}
-                    alt="artikkel cover bilde"
-                    width={500}
-                    height={200}>
-                </Image>
-                <div className="flex mt-4 flex-row gap-x-3">
+                    alt="Artikkel cover bilde"
+                    width={1000}
+                    height={200}
+                    style={
+                        { objectFit: "cover", objectPosition: "center" }
+                    }
+                    className="h-[350px]"
+                />
+                <div className="flex mt-4 flex-row gap-x-3 mb-10">
                     <p className="uppercase text-sm font-semibold pt-1">Artikkel</p>
                     <StoreTag storename={articleData.store_name} className="mr-1" />
                 </div>
 
-                <div className="flex flex-col gap-2 mb-10 mt-5">
+                <div className="flex flex-col gap-3 mb-14 mt-5">
                     <h1 className="text-lg lg:text-xl font-semibold">{articleData.title}</h1>
-                    <p className="text-lg  lg:text-lg">{articleData.ingress}</p>
+                    <p className="text-lg  lg:text-lg mb-2">{articleData.ingress}</p>
                     <p className="text-base lg:text-lg">{articleData.bodyText}</p>
                 </div>
+
                 {articleData.tags.map((tag, index) => (
                     <CategoryTag key={index} title={tag} />
                 ))}
-
                 <div className="mt-6 mb-10">
-                    <p className="text-xs lg:text-lg text-gray-600">Publisert : {formatDate(articleData.created_at)}</p>
-                    <p className="text-xs lg:text-lg text-gray-600">Klokkeslett : {formatTime(articleData.created_at)}</p>
+                    <p className="text-xs lg:text-base text-gray-600">Publisert : {formatDate(articleData.created_at)}</p>
+                    <p className="text-xs lg:text-base text-gray-600">Klokkeslett : {formatTime(articleData.created_at)}</p>
                 </div>
             </main>
         </div>
