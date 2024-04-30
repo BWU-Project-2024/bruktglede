@@ -19,7 +19,7 @@ export const ButikkIdPage = async ({ params }) => {
                 <StoreInfoBar
                     storeIdData={storeData}
                 />
-                <UkensHoydepunkt />
+                {/* <UkensHoydepunkt /> */}
             </main>
         </div>
     )
