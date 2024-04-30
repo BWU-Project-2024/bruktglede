@@ -28,7 +28,7 @@ export const BliFrivilligForm = ({ storeData }) => {
 
     return (
         <>
-            <section className="mb-40 ">
+            <section className="mb-10 md:mb-40">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className="flex flex-col font-opensans"
