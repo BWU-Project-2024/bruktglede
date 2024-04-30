@@ -101,7 +101,7 @@ export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
                                         storename={event.store_name}
                                     />
                                 </div>
-                                <h4 className="text-lg font-medium py-4 underline">
+                                <h4 className="text-lg text-forestgreen-darker hover:text-forestgreen-lighter transition duration-300 font-medium py-4 underline">
                                     <Link
                                         href={`/arrangementer/${event.id}`}
                                     >

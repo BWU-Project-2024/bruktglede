@@ -20,15 +20,15 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
             )}
 
             {searchResultsStore?.map((store, index) => (
-                <div key={index} className="flex flex-col">
+                <div key={index} className="flex flex-col font-opensans">
                     <div className="flex justify-between h-full">
-                        <div className='flex flex-col gap-1 mr-4'>
+                        <div className='flex flex-col gap-1'>
                             <Link href={`/butikker/${store.id}`} key={index}>
                                 <span className="text-lg font-medium underline">{store.name}</span>
                             </Link>
                             <p className="text-sm md:text-md text-textLight flex-grow font-medium uppercase">Butikk</p>
                             <p className="text-xs mb-1">{formatDate(store.created_at)}</p>
-                            <p className="text-base line-clamp-2">{store.description}</p>
+                            <p className="text-base line-clamp-2 mr-4 ">{store.description}</p>
                             <div className="mt-4 md:mt-6">
                                 <StoreTag storename={store.name} className="mr-1" />
 
@@ -55,13 +55,13 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
             {searchResultsPost?.map((post, index) => (
                 <div key={index} className="flex flex-col">
                     <div className="flex justify-between">
-                        <div className="flex flex-col gap-1">
+                        <div className="flex flex-col gap-1 ">
                             <Link href={`/artikler/${post.id}`} key={index}>
                                 <span className="text-lg font-medium underline">{post.title}</span>
                             </Link>
                             <p className="text-sm md:text-md flex-grow text-textLight font-medium uppercase">{post.post_type}</p>
                             <p className="text-xs mb-1">{formatDate(post.created_at)}</p>
-                            <p className="text-base line-clamp-2">{post.ingress}</p>
+                            <p className="text-base line-clamp-2 mr-4">{post.ingress}</p>
                             <div className="mt-4 mb-2">
                                 <StoreTag storename={post.store_name} className="mr-1" />
                                 {post.tags.map((tag, index) => (

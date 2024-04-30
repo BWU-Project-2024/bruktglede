@@ -39,9 +39,9 @@ export const ArrangementIdPage = async ({ params }) => {
                     <StoreTag storename={eventIdData.store_name} className="mr-1" />
                 </div>
 
-                <div className="flex flex-col gap-3 mb-14 mt-5">
-                    <h1 className="text-lg lg:text-xl font-semibold">{eventIdData.title}</h1>
-                    <p className="text-lg lg:text-lg mb-2">{eventIdData.ingress}</p>
+                <div className="flex flex-col gap-3 mb-14  md:max-w-[80%] lg:max-w-[70%]">
+                    <h1 className="text-lg mb-2 lg:text-xl font-semibold">{eventIdData.title}</h1>
+                    <p className="text-lg lg:text-xl mb-2">{eventIdData.ingress}</p>
                     <p className="text-base lg:text-lg">{eventIdData.bodyText}</p>
                 </div>
                 {eventIdData.tags.map((tag, index) => (
