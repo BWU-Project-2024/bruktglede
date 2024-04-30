@@ -18,7 +18,7 @@ export const AllStoresCard = async () => {
                                 className="object-cover w-80 h-80 md:w-64 md:h-64 overflow-hidden opacity-80"
                             />
                             <div className="absolute w-[150px] aspect-square rounded-full bg-white flex transition transition-300 justify-center items-center flex-col hover:bg-ivory-default hover:text-forestgreen-darker">
-                                <h2 className="text-5xl text-center font-jomhuria leading-7 text-forestgreen-default">
+                                <h2 className="text-5xl text-center w-[140px] break-words font-jomhuria leading-7 text-forestgreen-default">
                                     {stores.name}
                                 </h2>
                             </div>

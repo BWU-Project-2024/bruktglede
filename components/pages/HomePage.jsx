@@ -72,7 +72,7 @@ export const HomePage = async () => {
                 </div>
 
 
-                <BliFrivilligCard />
+                <BliFrivilligCard tittel="Ønsker du å bli frivillig?" tekst="Ønsker du å hjelpe bruktmiljøet? Ved å være frivillig er du med på å gjøre en forandring. Les mer om hva det går ut på og bli frivillig i dag!" link="/blifrivillig" knapptekst="Bli frivillig" />
 
             </main>
         </>

@@ -35,7 +35,7 @@ export const BliFrivilligForm = ({ storeData }) => {
                     aria-label="Volunteer form"
                     encType="multipart/form-data"
                 >
-                    <h3 className="text-xl text-medium mb-3">Bli frivillig søknadsskjema</h3>
+                    <h3 className="text-xl font-medium mb-3">Bli frivillig søknadsskjema</h3>
                     <label className="text-md mb-2 font-medium" htmlFor="fornavn">
                         Fornavn
                     </label>

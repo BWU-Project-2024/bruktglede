@@ -50,11 +50,12 @@ export const EventCardLong = ({ eventData }) => {
                             <span className="text-xl">{monthName}</span>
                         </div>
                         <div className="flex flex-col flex-grow ml-5">
-                            <h3 className="font-medium text-base pb-3 underline">
-                                <Link href={`/events/${event.id}`}>
+                           
+                                <Link href={`/arrangementer/${event.id}`} 
+                                className=" font-medium pb-3 underline text-forestgreen-darker text-lg  hover:text-forestgreen-lighter transition duration-300">
                                     {event.title}
                                 </Link>
-                            </h3>
+                           
                             <div className="flex items-center gap-2">
                                 <FiMapPin style={{ fontSize: "1.1em" }} />
                                 <p>{event.address}</p>
@@ -65,9 +66,9 @@ export const EventCardLong = ({ eventData }) => {
                             </div>
                         </div>
                         <div className="transform bg-peach-default flex-col items-center justify-center ml-auto hidden sm:flex w-[90px] h-[90px] rounded-full">
-                            <span className="text-4xl/3 font-jomhuria pt-2.5 text-center items-center leading-6">
+                            <p className="text-4xl/3 font-jomhuria max-w-[80px] break-words word-breaks pt-2.5 text-center items-center leading-6">
                                 {event.store_name}
-                            </span>
+                            </p>
                         </div>
                     </div>
                 ))

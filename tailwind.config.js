@@ -12,6 +12,7 @@ module.exports = {
         extend: {
             maxWidth: {
                 'readable': '96ch',
+                'smaller' : '80ch',
               },
               outlineWidth: {
                 1.5: '1.5px',
