@@ -45,7 +45,7 @@ export const ButikkIdPage = async ({ params }) => {
 
                 <section className="pt-5 lg:pt-10">
                     <H2 heading="Ukens høydepunkt" />
-                    <div className="px-6 md:px-28 lg:px-64 ml-14">
+                    <div className="px-6 md:px-28 lg:px-64 lg:ml-14">
                         <div className="w-full md:w-[80%] lg:w-[70%]">
                             <UkensHoydepunkt highlightData={getHighlight} />
                         </div>
@@ -54,7 +54,7 @@ export const ButikkIdPage = async ({ params }) => {
 
                 <section className="pt-5 lg:pt-10">
                     <H2 heading="Våre innleveringsstasjoner" />
-                    <div className="px-6 md:px-28 lg:px-64 ml-14">
+                    <div className="px-6 md:px-28 lg:px-64 lg:ml-14">
                         <StationInfoId stationInfo={getStations} />
                     </div>
                 </section>
