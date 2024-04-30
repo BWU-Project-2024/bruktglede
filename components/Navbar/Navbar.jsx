@@ -46,7 +46,7 @@ export const Navbar = () => {
     const exitIconStyle = { fontSize: "3em", transform: "rotate(45deg)", marginLeft: "-10px" }
 
     return (
-        <div className="w-full bg-ivory-default">
+        <div className="w-full bg-ivory-default pb-2">
             {/* Nav Desktop */}
             <nav className="hidden lg:flex w-full justify-between items-center bg-purple-dark text-purple-light px-10 py-3" role="navigation" aria-label="Bruktglede navigasjon">
                 <Link href="/" className="flex justify-center items-center gap-3 pointer">
