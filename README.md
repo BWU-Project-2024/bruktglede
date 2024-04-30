@@ -36,4 +36,7 @@ Andre funksjonaliteter:
 - Sende søknad om å bli endel av plattformen, Bruktglede. 
 
 ## Teknologier
-Denne nettsiden er utviklet med Next.js som et fullstack rammeverk, med Supabase som database, og Tailwind som CSS rammeverk. Nettsiden er hostet på Vercel.
+Denne nettsiden er utviklet med Next.js som et fullstack rammeverk, med Supabase som database, og Tailwind som CSS rammeverk. Nettsiden er hostet på Vercel. 
+
+## Merknad
+Alle butikkene på nettsiden er per nå fiktive bruktbutikker. 
