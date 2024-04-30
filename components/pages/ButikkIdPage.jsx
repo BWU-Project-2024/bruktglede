@@ -25,7 +25,7 @@ export const ButikkIdPage = async ({ params }) => {
             <StoreHeader
                 storeData={storeData.stores}
                 storeVisionData={storeVisionData}
-            />
+            />   
             <main className="flex-1">
                 <StoreInfoBar storeIdData={storeData} />
 
