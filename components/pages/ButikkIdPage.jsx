@@ -1,19 +1,16 @@
-import { getStoreById, getStoreVisions, getHighlightsByStore, fetchAllStationsSortedByStoreId } from "@/lib/supabase/actionsPublic";
+import { getStoreById, getStoreVisions, getHighlightsByStore, fetchAllStationsSortedByStoreId, getTopFourEventsId } from "@/lib/supabase/actionsPublic";
 import { StoreInfoBar } from "../StoreInfoBar";
 import { StoreHeader } from "../StoreHeader";
 import { UkensHoydepunkt } from "../UkensHoydepunkt";
 import { UrlPath } from "../UrlPath";
 import { ArrangementCard } from "../ArrangementCard";
 import { StationInfoId } from "../StationInfoId";
-import {
-    getTopFourEvents,
-} from "@/lib/supabase/actionsPublic";
 import { H2 } from "../H2";
 
 export const ButikkIdPage = async ({ params }) => {
 
     const [events, storeData, storeVisionData, getHighlight, getStations] = await Promise.all([
-        getTopFourEvents(),
+        getTopFourEventsId(params),
         getStoreById(params),
         getStoreVisions(params),
         getHighlightsByStore(params),
