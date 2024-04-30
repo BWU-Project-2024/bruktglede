@@ -32,7 +32,7 @@ export const ArtikkelIdPage = async ({ params }) => {
                     style={
                         { objectFit: "cover", objectPosition: "center" }
                     }
-                    className="h-[350px]"
+                    className="h-[200px] md:h-[300px] lg:h-[350px]"
                 />
                 <div className="flex mt-4 flex-row gap-x-3 mb-10">
                     <p className="uppercase text-sm font-semibold pt-1">Artikkel</p>

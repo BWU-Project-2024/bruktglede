@@ -31,7 +31,7 @@ export const ArrangementIdPage = async ({ params }) => {
                     style={
                         { objectFit: "cover", objectPosition: "center" }
                     }
-                    className="h-[350px]"
+                    className="h-[200px] md:h-[300px] lg:h-[350px]"
                 >
                 </Image>
                 <div className="flex mt-4 flex-row gap-x-3 mb-10">
