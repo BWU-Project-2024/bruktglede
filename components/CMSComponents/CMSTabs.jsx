@@ -29,7 +29,7 @@ export const CMSTabs = ({ path, type, data }) => {
     const iconStyles = { color: "#656565" }
 
     return (
-        <ul className="flex flex-col w-full gap-2">
+        <ul className="flex flex-col w-full md:w-[319px] gap-2">
             {/* static link */}
             <Link
                 href={`/CMS/${path}/${url}`}
