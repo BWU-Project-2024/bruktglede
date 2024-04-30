@@ -27,9 +27,9 @@ export const CMSNavbar = ({ signOut }) => {
     return (
         <>
             {/* navbar desktop */}
-            <nav className="hidden sm:flex flex-col items-start min-h-vh w-72 border-r border-[#DBDBDB]">
-                <p className="text-xl py-3 px-6 border-b border-[#DBDBDB] w-full">Type</p>
-                <ul className="mt-3 px-6 text-text flex flex-col gap-6 w-full">
+            <nav className="hidden sm:flex w-full md:w-[319px] flex-col items-start min-h-vh w-72 border-r border-[#DBDBDB]">
+                <p className="text-xl py-3 px-6 border-b border-[#DBDBDB] w-full md:w-[319px]">Type</p>
+                <ul className="mt-3 px-6 text-text flex flex-col gap-6 w-full md:w-[319px]">
                     {menuItems.map((item, index) => (
                         <li key={index} role="menuitem">
                             <Link onClick={handleNav} href={item.href} className="flex items-center gap-6">
