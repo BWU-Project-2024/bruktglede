@@ -18,7 +18,6 @@ export const ArrangementerIdCMSPage = async ({ params }) => {
         if (confirms) {
             await deletePost(params)
             redirect("/CMS/arrangementer")
-
         }
     }
 
