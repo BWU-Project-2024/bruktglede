@@ -43,10 +43,7 @@ export const EventCardLong = ({ eventData }) => {
                         key={index}
                         className="flex flex-row rounded-xl shadow py-2 px-2 w-full md:w-[80%] lg:w-[70%] mb-4"
                     >
-                        <div
-                            className="bg-ivory-default flex flex-col items-center justify-center h-auto w-[90px] rounded"
-                            /* style={{ width: "90px", height: "90px" }} */
-                        >
+                        <div className="bg-ivory-default flex flex-col items-center justify-center h-auto w-[90px] rounded">
                             <span className="font-jomhuria text-5xl/3 mb-2 pt-4">
                                 {dayOfMonth}
                             </span>
@@ -67,14 +64,7 @@ export const EventCardLong = ({ eventData }) => {
                                 <p>{`${event.startTime} - ${event.endTime}`}</p>
                             </div>
                         </div>
-                        <div
-                            className="transform bg-peach-default flex-col items-center justify-center ml-auto hidden sm:flex w-[90px] h-[90px] rounded-full"
-                            /* style={{
-                                width: "90px",
-                                height: "90px",
-                                borderRadius: "50%",
-                            }} */
-                        >
+                        <div className="transform bg-peach-default flex-col items-center justify-center ml-auto hidden sm:flex w-[90px] h-[90px] rounded-full">
                             <span className="text-4xl/3 font-jomhuria pt-2.5 text-center items-center leading-6">
                                 {event.store_name}
                             </span>
