@@ -13,7 +13,7 @@ export const UkensHoydepunkt = ({ highlightData }) => {
                 <p>Ingen høydepunkt er tilgjengelig for øyeblikket.</p>
             ) : (
                 highlightData.map((highlight, index) => (
-                    <div key={index} className="relative w-full">
+                    <div key={index} className="relative w-full mb-10">
                         <div className="absolute left-1/2 -translate-x-1/2 bg-forestgreen-default w-full h-12 opacity-95 z-10">
                             <div className="flex w-full z-20 items-center justify-between mt-2 px-3">
                                 <h2 className="text-ivory-lighter text-lg">
