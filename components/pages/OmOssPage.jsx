@@ -24,7 +24,7 @@ export const OmOssPage = () => {
                 <div className="md:mb-20 md:mt-12">
                     <H2Section heading="Fikk du ikke svar på spørsmålet ditt?" paragraph="For flere spørsmål, send oss gjerne en mail til bruktglede@hotmail.com." />
                 </div>
-            </main>
+            </main> 
         </div>
     )
 }
