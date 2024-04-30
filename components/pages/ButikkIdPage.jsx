@@ -1,22 +1,23 @@
-import { getStoreById, getStoreVisions } from "@/lib/supabase/actionsPublic";
+import { getStoreById, getStoreVisions, getHighlightsByStore, fetchAllStationsSortedByStoreId } from "@/lib/supabase/actionsPublic";
 import { StoreInfoBar } from "../StoreInfoBar";
 import { StoreHeader } from "../StoreHeader";
 import { UkensHoydepunkt } from "../UkensHoydepunkt";
 import { UrlPath } from "../UrlPath";
-import { ArticleCard } from "../ArticleCard";
 import { ArrangementCard } from "../ArrangementCard";
+import { StationInfoId } from "../StationInfoId";
 import {
     getTopFourEvents,
-    getTopFourArticles,
 } from "@/lib/supabase/actionsPublic";
 import { H2 } from "../H2";
 
 export const ButikkIdPage = async ({ params }) => {
-    const storeData = await getStoreById(params);
-    const storeVisionData = await getStoreVisions(params);
-    const [events, articles] = await Promise.all([
+
+    const [events, storeData, storeVisionData, getHighlight, getStations] = await Promise.all([
         getTopFourEvents(),
-        getTopFourArticles(),
+        getStoreById(params),
+        getStoreVisions(params),
+        getHighlightsByStore(params),
+        fetchAllStationsSortedByStoreId(params)
     ]);
 
     return (
@@ -26,23 +27,40 @@ export const ButikkIdPage = async ({ params }) => {
             <StoreHeader
                 storeData={storeData.stores}
                 storeVisionData={storeVisionData}
-            />  
-             <main className="flex-1">
+            />
+            <main className="flex-1 mb-20">
                 <StoreInfoBar
                     storeIdData={storeData}
                 />
 
-                <section className="pt-5 lg:pt-10">
-                    <H2 heading="Vi arrangerer"/>
-                    <ArticleCard
-                      articleData={articles.articleData}
-                      articlePostTypeName={articles.articlePostType} />
+                <section className="w-full pt-5 lg:pt-10">
+                    <H2 heading="Vi arrangerer" />
+                    <div className="flex justify-center gap-6 mb-8">
+                        <div className="w-[100%] md:w-[80%] lg:w-[70%]">
+                            <ArrangementCard
+                                eventData={events.eventData}
+                                eventPostTypeName={events.eventPostTypeName}
+                            />
+
+                        </div>
+                    </div>
                 </section>
 
                 <section className="pt-5 lg:pt-10">
-                     <H2 heading="Ukens høydepunkt"/>
-                   {/* <UkensHoydepunkt /> */}
-                 </section>
+                    <H2 heading="Ukens høydepunkt" />
+                    <div className="px-6 md:px-28 lg:px-64 ml-14">
+                        <div className="w-full md:w-[80%] lg:w-[70%]">
+                            <UkensHoydepunkt highlightData={getHighlight} />
+                        </div>
+                    </div>
+                </section>
+
+                <section className="pt-5 lg:pt-10">
+                    <H2 heading="Våre innleveringsstasjoner" />
+                    <div className="px-6 md:px-28 lg:px-64 ml-14">
+                        <StationInfoId stationInfo={getStations} />
+                    </div>
+                </section>
             </main>
         </div>
     );
