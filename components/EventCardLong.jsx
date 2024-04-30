@@ -41,11 +41,11 @@ export const EventCardLong = ({ eventData }) => {
                 eventsData.map((event, index) => (
                     <div
                         key={index}
-                        className="flex flex-row rounded-xl shadow py-3 px-2 w-full md:w-3/5 lg:w-2/5"
+                        className="flex flex-row rounded-xl shadow py-2 px-2 w-full md:w-[80%] lg:w-[70%] mb-4"
                     >
                         <div
-                            className="bg-ivory-default flex flex-col items-center justify-center"
-                            style={{ width: "90px", height: "90px" }}
+                            className="bg-ivory-default flex flex-col items-center justify-center h-auto w-[90px] rounded"
+                            /* style={{ width: "90px", height: "90px" }} */
                         >
                             <span className="font-jomhuria text-5xl/3 mb-2 pt-4">
                                 {dayOfMonth}
@@ -53,7 +53,7 @@ export const EventCardLong = ({ eventData }) => {
                             <span className="text-xl">{monthName}</span>
                         </div>
                         <div className="flex flex-col flex-grow ml-5">
-                            <h3 className="font-bold text-base pb-3 underline">
+                            <h3 className="font-medium text-base pb-3 underline">
                                 <Link href={`/events/${event.id}`}>
                                     {event.title}
                                 </Link>
@@ -68,14 +68,14 @@ export const EventCardLong = ({ eventData }) => {
                             </div>
                         </div>
                         <div
-                            className="transform bg-peach-default flex-col items-center justify-center ml-auto hidden sm:flex"
-                            style={{
+                            className="transform bg-peach-default flex-col items-center justify-center ml-auto hidden sm:flex w-[90px] h-[90px] rounded-full"
+                            /* style={{
                                 width: "90px",
                                 height: "90px",
                                 borderRadius: "50%",
-                            }}
+                            }} */
                         >
-                            <span className="text-4xl/3 font-jomhuria pt-2.5">
+                            <span className="text-4xl/3 font-jomhuria pt-2.5 text-center items-center leading-6">
                                 {event.store_name}
                             </span>
                         </div>
