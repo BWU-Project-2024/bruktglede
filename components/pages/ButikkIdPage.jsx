@@ -1,21 +1,25 @@
-import { Header } from "../Header"
-import { getStoreById } from "@/lib/supabase/actionsPublic"
+import { getStoreById, getStoreVisions } from "@/lib/supabase/actionsPublic"
 import { StoreInfoBar } from "../StoreInfoBar";
-
+import { StoreHeader } from "../StoreHeader";
+import { UkensHoydepunkt } from "../UkensHoydepunkt";
+import { UrlPath } from "../UrlPath";
 
 export const ButikkIdPage = async ({ params }) => {
     const storeData = await getStoreById(params);
-    const data = storeData;
-    
- 
-console.log(data)
+    const storeVisionData = await getStoreVisions(params)
 
     return (
         <div className="flex flex-col min-h-screen">
- <p className="text-lg  lg:text-lg">{data.name}</p>
             <main className="flex-1">
-<StoreInfoBar params={params} time={data.created_at} address={data.address} phone={data.phone}  mail={data.contactEmail} categories={data.tags}/>
-
+                <UrlPath />
+                <StoreHeader
+                    storeData={storeData.stores}
+                    storeVisionData={storeVisionData}
+                />
+                <StoreInfoBar
+                    storeIdData={storeData}
+                />
+                <UkensHoydepunkt />
             </main>
         </div>
     )
