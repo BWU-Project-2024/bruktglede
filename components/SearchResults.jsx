@@ -29,7 +29,7 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                             <p className="text-sm md:text-md text-textLight flex-grow font-medium uppercase">Butikk</p>
                             <p className="text-xs mb-1">{formatDate(store.created_at)}</p>
                             <p className="text-base line-clamp-2">{store.description}</p>
-                            <div className="mt-4 mt-2 md:mt-6">
+                            <div className="mt-4 md:mt-6">
                                 <StoreTag storename={store.name} className="mr-1" />
 
                                 {store.tags.map((tag, index) => (
@@ -48,7 +48,7 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                         </Image>
 
                     </div>
-                    <hr className="w-full h-px my-5 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                    <hr className="w-full h-px my-5 bg-gray-200 border-0 "></hr>
                 </div>
             ))}
 
@@ -80,7 +80,7 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                         </Image>
 
                     </div>
-                    <hr className="w-full h-px my-5 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                    <hr className="w-full h-px my-5 bg-gray-200 border-0 "></hr>
                 </div>
             ))}
 
