@@ -2,23 +2,27 @@
 import Image from "next/image";
 import { StoreTag } from "./StoreTag";
 
-export const UkensHoydepunkt = (highlightData) => {
-    const data = highlightData.highlightData;
+export const UkensHoydepunkt = ({ highlightData }) => {
+
+    console.log(highlightData);
+
 
     return (
         <>
-            {highlightData.length === 0 ? (
+            {highlightData.length < 0 ? (
                 <p>Ingen høydepunkt er tilgjengelig for øyeblikket.</p>
             ) : (
-                data.map((highlight, index) => (
-                    <div key={index} className="relative w-full">
-                        <div className="absolute left-1/2 -translate-x-1/2 bg-forestgreen-default w-full h-12 opacity-80 z-10">
-                            <div className="flex w-full z-20 flex items-center justify-between mt-2 px-3 w-full">
+                highlightData.map((highlight, index) => (
+                    <div key={index} className="relative w-full mb-10">
+                        <div className="absolute left-1/2 -translate-x-1/2 bg-forestgreen-default w-full h-12 opacity-95 z-10">
+                            <div className="flex w-full z-20 items-center justify-between mt-2 px-3">
                                 <h2 className="text-ivory-lighter text-lg">
                                     {highlight.title}
                                 </h2>
                                 <div className="mt-0.5">
-                                    <StoreTag storename={highlight.store_name} />
+                                    <StoreTag
+                                        storename={highlight.store_name}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -28,7 +32,7 @@ export const UkensHoydepunkt = (highlightData) => {
                                 alt="Weekly Highlight"
                                 width={500}
                                 height={300}
-                                className="w-full"
+                                className="object-cover w-full h-[450px] overflow-hidden"
                             />
                         </div>
                         <div className="mx-auto flex justify-center z-20 bg-ivory-default w-full py-4 px-3 mb-5">

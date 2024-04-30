@@ -32,7 +32,7 @@ export const StoreHeader = ({ storeData, storeVisionData }) => {
             <div className="absolute top-0 left-0 w-full h-[450px] flex flex-col">
                 <div className="h-[50%] flex items-center justify-center">
                     <div className="w-[150px] h-[150px] lg:w-[150px]  lg:h-[150px] aspect-square rounded-full flex justify-center leading-7  items-center font-jomhuria  bg-white">
-                       <h2 className="max-w-[130px] break-words leading-7 text-center mt-2 text-6xl"> {storeData?.name} </h2>
+                        <h2 className="max-w-[130px] break-words leading-7 text-center text-forestgreen-default mt-2 text-6xl"> {storeData?.name} </h2>
                     </div>
                 </div>
                 <div className="h-[50%] flex flex-col items-center justify-center bg-opacity-95 bg-ivory-default gap-16">
@@ -75,7 +75,6 @@ export const StoreHeader = ({ storeData, storeVisionData }) => {
                     )}
                 </>
             )}
-
         </div>
     );
 };

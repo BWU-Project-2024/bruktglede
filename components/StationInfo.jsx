@@ -1,20 +1,16 @@
-// import React, { useEffect, useState } from "react";
 import { CategoryTag } from "./CategoryTag";
-import { fetchAllStationsSortedByStore } from "@/lib/supabase/actionsPublic";
 
-
-export const StationInfo = async () => {
-    const storeInfo = await fetchAllStationsSortedByStore();
+export const StationInfo = async ({ stationInfo }) => {
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10">
-            {storeInfo && storeInfo.map((storeData) => (
-                <div key={storeData.store.id}>
+            {stationInfo && stationInfo.map((stationData, index) => (
+                <div key={index}>
                     <h2 className="text-xl lg:text-2xl font-semibold font-opensans mb-1 mt-10">
-                        {storeData.store.name}
+                        {stationData?.store.name}
                     </h2>
                     <hr className="h-px my-3 bg-gray-200 border-0"></hr>
-                    {storeData?.stations.map((station) => (
+                    {stationData?.stations.map((station) => (
                         <div key={station.id} className="flex flex-col gap-3">
                             <h3 className="font-opensans text-base md:text-lg font-semibold text-color-jet">
                                 {station.title}
@@ -34,7 +30,6 @@ export const StationInfo = async () => {
                             </div>
                         </div>
                     ))}
-
                 </div>
             ))}
         </div>
