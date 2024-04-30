@@ -10,37 +10,10 @@ import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
     const [eventsData, setEventsData] = useState([]);
     const [eventsType, setEventsType] = useState();
-    const [dayOfMonth, setDayOfMonth] = useState("");
-    const [monthName, setMonthName] = useState("");
 
     useEffect(() => {
         setEventsData(eventData || []);
         setEventsType(eventPostTypeName);
-
-        // get date
-        const dateString = eventData[0].date;
-        const date = new Date(dateString);
-        const dayOfMonth = date.getDate();
-        setDayOfMonth(dayOfMonth);
-
-        // get month
-        const monthNames = [
-            "JAN",
-            "FEB",
-            "MAR",
-            "APR",
-            "MAI",
-            "JUN",
-            "JUL",
-            "AUG",
-            "SEP",
-            "OKT",
-            "NOV",
-            "DES",
-        ];
-        const monthIndex = date.getMonth();
-        const monthName = monthNames[monthIndex];
-        setMonthName(monthName);
     }, [eventsData, eventsType]);
 
 
@@ -73,7 +46,7 @@ export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
             ) : (
                 eventsData.map((event, index) => (
                     <SplideSlide key={index} className="flex justify-center">
-                        <div className="shadow-md h-fit rounded-xl mb-5 mx-14 md:mx-2">
+                        <div className="shadow-md h-fit rounded-xl mb-5 mx-14 md:mx-2 font-open-sans">
                             <div className="h-auto w-100 relative flex justify-center items-center">
                                 <Image
                                     src={event.img}
@@ -83,11 +56,11 @@ export const ArrangementCard = ({ eventData, eventPostTypeName }) => {
                                     className="object-cover w-[500px] h-[200px] overflow-hidden rounded-tr-lg rounded-tl-lg"
                                 />
                                 <div className="absolute w-[110px] aspect-square rounded-full bg-white flex justify-center items-center flex-col">
-                                    <span className="text-5xl/6 font-bold font-jomhuria pt-2.5">
-                                        {dayOfMonth}
+                                    <span className="text-5xl/6 font-medium font-jomhuria pt-2.5">
+                                        {new Date(event.date).getDate()}
                                     </span>
-                                    <span className="text-xl max-h-8 font-normal">
-                                        {monthName}
+                                    <span className="uppercase text-xl max-h-8 font-medium">
+                                        {new Date(event.date).toLocaleString('default', { month: 'short' })}
                                     </span>
                                 </div>
                             </div>

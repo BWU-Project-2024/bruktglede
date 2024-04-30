@@ -49,7 +49,7 @@ export const StoreInfoBar = ({ storeIdData }) => {
                 </div>
             </div>
 
-            <div className="mb-2 md:mb-0">
+            <div className="md:w-[25%] mb-2 md:mb-0">
                 <h3 className="uppercase text-sm font-semibold mb-4">
                     Overordnet kategorier
                 </h3>

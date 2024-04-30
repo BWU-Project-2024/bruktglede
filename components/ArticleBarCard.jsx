@@ -20,8 +20,9 @@ export const ArticleBarCard = ({ articlesData }) => {
                             <Link href={`/artikler/${article.id}`} key={index}>
                                 <span className="text-lg font-medium underline">{article.title}</span>
                             </Link>
+                            <p className="text-sm md:text-md text-textLight flex-grow font-medium uppercase">Artikkel</p>
                             <p className="text-xs mb-1">{formatDate(article.created_at)}</p>
-                            <p className="text-base line-clamp-2   ">{article.ingress}</p>
+                            <p className="text-base line-clamp-2">{article.ingress}</p>
                             <div className="mt-4 mb-2">
                                 <StoreTag storename={article.store_name} className="mr-1" />
                                 {article.tags.map((tag, index) => (
