@@ -12,13 +12,15 @@ export const UkensHoydepunkt = (highlightData) => {
             ) : (
                 data.map((highlight, index) => (
                     <div key={index} className="relative w-full">
-                        <div className="absolute left-1/2 -translate-x-1/2 bg-forestgreen-default w-full h-12 opacity-80 z-10">
-                            <div className="flex w-full z-20 flex items-center justify-between mt-2 px-3 w-full">
+                        <div className="absolute left-1/2 -translate-x-1/2 bg-forestgreen-default w-full h-12 opacity-95 z-10">
+                            <div className="flex w-full z-20 items-center justify-between mt-2 px-3">
                                 <h2 className="text-ivory-lighter text-lg">
                                     {highlight.title}
                                 </h2>
                                 <div className="mt-0.5">
-                                    <StoreTag storename={highlight.store_name} />
+                                    <StoreTag
+                                        storename={highlight.store_name}
+                                    />
                                 </div>
                             </div>
                         </div>
