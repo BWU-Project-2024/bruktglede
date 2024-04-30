@@ -15,33 +15,30 @@ export const ButikkIdPage = async ({ params }) => {
 
 
     return (
+
         <div className="flex flex-col min-h-screen font-opensans">
-           
-                <UrlPath />
-                <StoreHeader
-                    storeData={storeData.stores}
-                    storeVisionData={storeVisionData}
-                />
-                 <main className="flex-1">
+      
+            <UrlPath />
+            <StoreHeader
+                storeData={storeData.stores}
+                storeVisionData={storeVisionData}
+            />
+             <main className="flex-1">
                 <StoreInfoBar
                     storeIdData={storeData}
                 />
 
-
-
-<section className="pt-5 lg:pt-10">
-    <H2 heading="Vi arrangerer"/>
-                <ArticleCard
-                  articleData={articles.articleData}
-                  articlePostTypeName={articles.articlePostType} />
+                <section className="pt-5 lg:pt-10">
+                    <H2 heading="Vi arrangerer"/>
+                    <ArticleCard
+                      articleData={articles.articleData}
+                      articlePostTypeName={articles.articlePostType} />
                 </section>
 
-
-<section className="pt-5 lg:pt-10">
-    <H2 heading="Ukens høydepunkt"/>
-               
-                {/* <UkensHoydepunkt /> */}
-                </section>
+                <section className="pt-5 lg:pt-10">
+                     <H2 heading="Ukens høydepunkt"/>
+                   {/* <UkensHoydepunkt /> */}
+                 </section>
             </main>
         </div>
     )
