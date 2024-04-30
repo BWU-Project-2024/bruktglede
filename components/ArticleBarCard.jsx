@@ -37,7 +37,7 @@ export const ArticleBarCard = ({ articlesData }) => {
                             className="hidden md:block"
                         />
                     </div>
-                    <hr className="w-full h-px my-5 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                    <hr className="w-full h-px my-5 bg-gray-200 border-0 "></hr>
                 </div>
             ))}
         </div>
