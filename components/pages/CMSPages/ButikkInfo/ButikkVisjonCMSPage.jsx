@@ -6,7 +6,7 @@ export const ButikkVisjonCMSPage = async () => {
     const postData = await readAccountDataId()
 
     return (
-        <main className="flex flex-col min-h-[90vh] w-full sm:max-w-full gap-3 mt-6 mb-16 sm:mb-8 sm:mt-2 px-6">
+        <main className="flex flex-col min-h-[90vh] w-full md:w-[70%] gap-3 mt-6 mb-16 sm:mb-8 sm:mt-2 px-6">
             <CMSTilbakeBtn />
             <div className="flex flex-col my-2">
                 <p>Butikk informasjon /</p>

@@ -9,7 +9,7 @@ export const OmOssPage = () => {
             <UrlPath />
             <Header title="Om Bruktglede" description="Hva er Bruktglede? Her finner du informasjon om hvem vi er og vår visjon. " />
 
-            <main className="p-2 px-6 md:px-28 lg:px-64 md:max-w-[85%] lg:max-w-[75%] pt-5 lg:pt-10">
+            <main className="p-2 px-6 md:px-28 lg:px-64 md:max-w-[85%] lg:max-w-[75%] pt-5 lg:pt-10 font-opensans">
                 <H2Section heading="Om oss" paragraph="Gjenbruksglede er en plattform med ett hovedfokus: å gjøre det lettere å orientere seg i gjenbruksmiljøet på Gjøvik. Ved å samle bruktbutikker, arrangementer og tilbud som finnes i kommunen gjør vi det lettere å navigere seg frem og holde seg oppdatert." />
                 <H2Section heading="Vår visjon" paragraph="Bærekraft, klimaet, et eller annet om det og sånn. Hvordan vi vil bidra til en grønnere klode. Something fancy like that. Bærekraft, klimaet, et eller annet om det og sånn. Hvordan vi vil bidra til en grønnere klode. Something fancy like that." />
 
