@@ -18,7 +18,7 @@ export const CMSTabsStoreInfo = () => {
                 href={`/CMS/butikkinfo/nokkelInfo`}
                 className="border-b border-t sm:border-t-0 border-[#DBDBDB] px-6 py-2">
                 <li onClick={() => handleTabClick("nokkelinfo")} className={selectedTab === "nokkelinfo" ? 'font-medium flex justify-between items-center' : 'flex justify-between items-center'}>
-                    Nøkkel informasjon <FiEdit style={iconStyles} />
+                    Nøkkelinformasjon <FiEdit style={iconStyles} />
                 </li>
             </Link>
             <Link
