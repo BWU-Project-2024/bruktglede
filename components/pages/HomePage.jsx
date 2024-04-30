@@ -6,7 +6,6 @@ import { AlleButikker } from "../AlleButikker/AlleButikker";
 import { ArrangementCard } from "../ArrangementCard";
 import { ArticleCard } from "../ArticleCard";
 import { sendNewsletter } from "@/lib/supabase/actionsPublicForms";
-
 import cron from 'node-cron';
 
 

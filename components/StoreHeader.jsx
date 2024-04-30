@@ -31,12 +31,12 @@ export const StoreHeader = ({ storeData, storeVisionData }) => {
             </div>
             <div className="absolute top-0 left-0 w-full h-[450px] flex flex-col">
                 <div className="h-[50%] flex items-center justify-center">
-                    <div className="w-[110px] lg:w-[150px] h-[110px] lg:h-[150px] aspect-square rounded-full flex justify-center items-center font-jomhuria text-6xl bg-white">
+                    <div className="w-[150px] h-[150px] lg:w-[150px]  lg:h-[150px] aspect-square rounded-full flex justify-center leading-7 text-center items-center font-jomhuria text-6xl bg-white">
                         {storeData?.name}
                     </div>
                 </div>
                 <div className="h-[50%] flex flex-col items-center justify-center bg-opacity-95 bg-ivory-default gap-16">
-                    <p className="w-[50%] text-wrap flex justify-center">{storeData.description}</p>
+                    <p className="w-[90%] md:w-[50%] text-wrap flex justify-center">{storeData.description}</p>
                     <button
                         onClick={OpenCloseVision}
                         className="w-48 rounded py-1 font-medium drop-shadow bg-forestgreen-default text-ivory-default hover:bg-ivory-lighter hover:text-forestgreen-default transition duration-200 text-center"
@@ -50,7 +50,7 @@ export const StoreHeader = ({ storeData, storeVisionData }) => {
                     {storeVisionData.length === 0 ? (
                         <p>Ingen visjon beskrivelse for butikken er tilgjengelig for øyeblikket.</p>
                     ) : (
-                        <div className="flex flex-col items-center py-10 w-full bg-ivory-lighter">
+                        <div className="flex flex-col items-center py-10 w-full font-opensans bg-ivory-lighter">
                             <div className="flex flex-col items-start w-[40%] mb-8">
                                 <h2 className="text-3xl mb-4">{storeVisionData[0].title}</h2>
                                 <h3 className="text-xl mb-6">{storeVisionData[0].ingress}</h3>

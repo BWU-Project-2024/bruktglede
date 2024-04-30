@@ -1,10 +1,10 @@
 import { Header } from "../Header";
-import { ArrangementCard } from "../ArrangementCard";
+import { UrlPath } from "../UrlPath";
+import { EventCardLong } from "../EventCardLong";
 import { getEvents } from "@/lib/supabase/actionsPublic";
-import { UrlPath } from "../UrlPath"
 
 export const ArrangementerPage = async () => {
-    const { eventPostTypeName, eventData } = await getEvents();
+    const { eventData } = await getEvents();
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -14,8 +14,8 @@ export const ArrangementerPage = async () => {
                 description="Her finner du en oversikt over alle kommende arrangementer"
             />
             <main className="">
-                <div className="p-2 px-6 md:px-28 lg:px-64 lg:pt-20">
-
+                <div className="py-2 px-2 md:px-28 lg:px-64 lg:pt-20">
+                    <EventCardLong eventData={eventData} />
                 </div>
             </main>
         </div>

@@ -22,7 +22,9 @@ export const ArticleBarCard = ({ articlesData }) => {
                             </Link>
                             <p className="text-sm md:text-md text-textLight flex-grow font-medium uppercase">Artikkel</p>
                             <p className="text-xs mb-1">{formatDate(article.created_at)}</p>
-                            <p className="text-base line-clamp-2">{article.ingress}</p>
+
+                            <p className="text-base line-clamp-2 mr-4">{article.ingress}</p>
+
                             <div className="mt-4 mb-2">
                                 <StoreTag storename={article.store_name} className="mr-1" />
                                 {article.tags.map((tag, index) => (
@@ -38,7 +40,7 @@ export const ArticleBarCard = ({ articlesData }) => {
                             className="hidden md:block"
                         />
                     </div>
-                    <hr className="w-full h-px my-5 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+                    <hr className="w-full h-px my-5 bg-gray-200 border-0 "></hr>
                 </div>
             ))}
         </div>
