@@ -8,11 +8,11 @@ export const ArrangementerPage = async () => {
 
     return (
         <div className="flex flex-col min-h-screen">
+            <UrlPath />
             <Header
                 title="Arrangementer"
                 description="Her finner du en oversikt over alle kommende arrangementer"
             />
-            <UrlPath />
             <main className="">
                 <div className="p-2 px-6 md:px-28 lg:px-64 lg:pt-20">
 

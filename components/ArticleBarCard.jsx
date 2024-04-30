@@ -31,7 +31,7 @@ export const ArticleBarCard = ({ articlesData }) => {
                         </div>
                         <Image
                             src={article.img}
-                            width={200}
+                            width={250}
                             height={100}
                             alt="Artikkel cover bilde"
                             className="hidden md:block"

@@ -31,7 +31,7 @@ export const ArtikkelIdPage = async ({ params }) => {
                     height={200}>
                 </Image>
                 <div className="flex mt-4 flex-row gap-x-3">
-                    <p className="uppercase text-xs font-semibold pt-1">Artikkel</p>
+                    <p className="uppercase text-sm font-semibold pt-1">Artikkel</p>
                     <StoreTag storename={articleData.store_name} className="mr-1" />
                 </div>
 

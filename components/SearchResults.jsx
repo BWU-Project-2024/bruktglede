@@ -23,7 +23,7 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                 <div key={index} className="flex flex-col">
                     <div className="flex justify-between h-full">
                         <div className='flex flex-col gap-1 mr-4'>
-                            <Link href={`/artikler/${store.id}`} key={index}>
+                            <Link href={`/butikker/${store.id}`} key={index}>
                                 <span className="text-lg font-medium underline">{store.name}</span>
                             </Link>
                             <p className="text-sm md:text-md text-textLight flex-grow font-medium uppercase">Butikk</p>
