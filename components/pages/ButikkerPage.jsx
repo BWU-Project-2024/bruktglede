@@ -1,7 +1,8 @@
 import { Header } from "../Header"
 import { UrlPath } from "../UrlPath"
 import { AllStoresCard } from "../AllStoresCard";
-import { BliEndelAvPlattformenForm } from "../BliEndelAvPlattformenForm";
+import { BliEndelCard } from "../BliEndelCard";
+
 
 export async function ButikkerPage() {
     return (
@@ -10,10 +11,12 @@ export async function ButikkerPage() {
             <Header title="Alle butikker" description="Her finner du en oversikt over alle butikkene på plattformen" />
             <main className="mt-5 font-opensans">
                 <AllStoresCard />
-                <div className="my-20 flex flex-col items-center justify-center">
-                    <BliEndelAvPlattformenForm />
-                </div>
+
+
+                <BliEndelCard tittel="Savner du butikken din her?" tekst="Driver du en bruktbutikk i Gjøvik og ønsker å bli en del av Bruktglede? Send en søknad og bli en del av plattformen vår." knapptekst="Send søknad" />
+
+              
             </main>
-        </div>
+        </div> 
     )
 }

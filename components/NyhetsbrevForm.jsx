@@ -1,5 +1,6 @@
 "use client";
 
+
 import { Controller, useForm } from "react-hook-form";
 import { useState } from "react";
 import { newContact } from "@/lib/supabase/actionsPublicForms";
@@ -8,14 +9,15 @@ export const NyhetsbrevForm = () => {
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     const {
         register,
-        handleSubmit, // Moved handleSubmit here
+        handleSubmit, 
         formState: { errors },
         reset,
     } = useForm();
 
-    // On submit async function and passing in formData from the form into the supabase function.
+
+
     const onSubmit = async (formData) => {
-        // Create new  station
+        
         await newContact(formData);
         setShowSuccessAlert(true);
         reset();
@@ -24,6 +26,7 @@ export const NyhetsbrevForm = () => {
     const onCloseAlert = () => {
         setShowSuccessAlert(false);
     };
+
 
     return (
         <>
