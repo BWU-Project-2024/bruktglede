@@ -14,7 +14,7 @@ export const ArrangementerPage = async () => {
                 description="Her finner du en oversikt over alle kommende arrangementer"
             />
             <main className="font-opensans">
-                <div className="py-2 px-2 md:px-28 lg:px-64 lg:pt-20">
+                <div className="px-2 md:px-28 lg:px-64 lg:pt-20">
                     <EventCardLong eventData={eventData} />
                 </div>
             </main>

@@ -31,8 +31,8 @@ export const StoreHeader = ({ storeData, storeVisionData }) => {
             </div>
             <div className="absolute top-0 left-0 w-full h-[450px] flex flex-col">
                 <div className="h-[50%] flex items-center justify-center">
-                    <div className="w-[150px] h-[150px] lg:w-[150px]  lg:h-[150px] aspect-square rounded-full flex justify-center leading-7 text-center items-center font-jomhuria text-6xl bg-white">
-                        {storeData?.name}
+                    <div className="w-[150px] h-[150px] lg:w-[150px]  lg:h-[150px] aspect-square rounded-full flex justify-center leading-7  items-center font-jomhuria  bg-white">
+                       <h2 className="max-w-[130px] break-words leading-7 text-center mt-2 text-6xl"> {storeData?.name} </h2>
                     </div>
                 </div>
                 <div className="h-[50%] flex flex-col items-center justify-center bg-opacity-95 bg-ivory-default gap-16">
@@ -51,11 +51,11 @@ export const StoreHeader = ({ storeData, storeVisionData }) => {
                         <p>Ingen visjon beskrivelse for butikken er tilgjengelig for øyeblikket.</p>
                     ) : (
                         <div className="flex flex-col items-center py-10 w-full font-opensans bg-ivory-lighter">
-                            <div className="flex flex-col items-start w-[40%] mb-8">
-                                <h2 className="text-3xl mb-4">{storeVisionData[0].title}</h2>
-                                <h3 className="text-xl mb-6">{storeVisionData[0].ingress}</h3>
-                                <h4 className="text-lg font-medium mb-1">{storeVisionData[0].subtitle}</h4>
-                                <p>{storeVisionData[0].bodyText}</p>
+                            <div className="flex flex-col items-start p-3 md:max-w-smaller mb-8">
+                                <h2 className="text-xl font-medium lg:text-2xl mb-4">{storeVisionData[0].title}</h2>
+                                <p className="text-lg md:text-xl mb-8">{storeVisionData[0].ingress}</p>
+                                <h4 className="text-lg md:text-xl  md-1 md:mb-3 font-medium ">{storeVisionData[0].subtitle}</h4>
+                                <p className="text-base md:text-lg">{storeVisionData[0].bodyText}</p>
                             </div>
                             <div className="flex justify-center mb-8">
                                 <Image
