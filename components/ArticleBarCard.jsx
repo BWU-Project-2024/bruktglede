@@ -18,7 +18,7 @@ export const ArticleBarCard = ({ articlesData }) => {
                     <div className="flex justify-between">
                         <div className="flex flex-col gap-1 md:mr-4">
                             <Link href={`/artikler/${article.id}`} key={index}>
-                                <span className="text-lg font-medium underline">{article.title}</span>
+                                <span className="text-lg font-medium underline text-forestgreen-darker hover:text-forestgreen-lighter transition transition-300">{article.title}</span>
                             </Link>
                             <p className="text-sm md:text-md text-textLight flex-grow font-medium uppercase">Artikkel</p>
                             <p className="text-xs mb-1">{formatDate(article.created_at)}</p>
