@@ -6,7 +6,7 @@ export const StationInfo = async ({ stationInfo }) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-10">
             {stationInfo && stationInfo.map((stationData, index) => (
                 <div key={index}>
-                    <h2 className="text-xl lg:text-2xl font-semibold font-opensans mb-1 mt-10">
+                    <h2 className="text-xl lg:text-2xl font-medium font-opensans mb-1 mt-10">
                         {stationData?.store.name}
                     </h2>
                     <hr className="h-px my-3 bg-gray-200 border-0"></hr>
