@@ -5,7 +5,7 @@ import Image from "next/image";
 export const AllStoresCard = async () => {
     const storeInfo = await getStores();
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-10">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
                 {storeInfo.map((stores, index) => (
                     <Link key={index} href={`/butikker/${stores.id}`} className="w-full">

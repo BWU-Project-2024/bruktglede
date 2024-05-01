@@ -27,7 +27,7 @@ export const ArticleCard = ({ articleData, articlePostTypeName }) => {
                     width: '100%',
                     pagination: true,
                     gap: "1rem",
-                    height: "27rem",
+                    height: "28rem",
 
                     breakpoints: {
                         1000: {
