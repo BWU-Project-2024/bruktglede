@@ -1,7 +1,7 @@
-import { Header } from "../Header"
-import { Accordion } from "../Accordion"
-import { H2Section } from "../H2Section"
-import { UrlPath } from "../UrlPath"
+import { Header } from "../Headers/Header"
+import { Accordion } from "../Misc/Accordion"
+import { H2Section } from "../Misc/H2Section"
+import { UrlPath } from "../Navbar/UrlPath"
 
 export const OmOssPage = () => {
     return (

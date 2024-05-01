@@ -1,4 +1,4 @@
-import { CategoryTag } from "./CategoryTag";
+import { CategoryTag } from "../Tags/CategoryTag";
 
 export const StationInfo = async ({ stationInfo }) => {
 

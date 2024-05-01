@@ -1,8 +1,8 @@
-import { Header } from "../Header"
-import { UrlPath } from "../UrlPath"
-import { AllStoresCard } from "../AllStoresCard";
-import { BliEndelCard } from "../BliEndelCard";
-import { Map } from "../Map";
+import { Header } from "../Headers/Header"
+import { UrlPath } from "../Navbar/UrlPath"
+import { AllStoresCard } from "../Cards/AllStoresCard";
+import { BliEndelCard } from "../Cards/BliEndelCard";
+import { Map } from "../Misc/Map";
 
 export async function ButikkerPage() {
     return (

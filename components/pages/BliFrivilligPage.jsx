@@ -1,7 +1,7 @@
-import { Header } from "../Header"
-import { UrlPath } from "../UrlPath"
-import { BliFrivilligForm } from "../BliFrivilligForm"
-import { H2Section } from "../H2Section"
+import { Header } from "../Headers/Header"
+import { UrlPath } from "../Navbar/UrlPath"
+import { BliFrivilligForm } from "../Forms/BliFrivilligForm"
+import { H2Section } from "../Misc/H2Section"
 import { getStore } from "@/lib/supabase/actionsPublicForms";
 
 export const BliFrivilligPage = async () => {

@@ -1,6 +1,6 @@
-import { Header } from "../Header"
-import { StationInfo } from "../StationInfo"
-import { UrlPath } from "../UrlPath"
+import { Header } from "../Headers/Header"
+import { StationInfo } from "../Info/StationInfo"
+import { UrlPath } from "../Navbar/UrlPath"
 import { fetchAllStationsSortedByStore } from "@/lib/supabase/actionsPublic";
 
 export const StasjonerPage = async () => {

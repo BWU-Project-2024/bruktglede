@@ -1,18 +1,15 @@
-import { LandingHeader } from "../LandingHeader";
-import { Button } from "../Button";
+import { LandingHeader } from "../Headers/LandingHeader";
+import { Button } from "../Misc/Button";
 import { getTopFourEvents, getTopFourArticles } from "@/lib/supabase/actionsPublic";
-import { BliFrivilligCard } from "../BliFrivilligCard";
-import { AlleButikker } from "../AlleButikker/AlleButikker";
-import { ArrangementCard } from "../ArrangementCard";
-import { ArticleCard } from "../ArticleCard";
+import { BliFrivilligCard } from "../Cards/BliFrivilligCard";
+import { AlleButikker } from "../Cards/AlleButikker/AlleButikker";
+import { ArrangementCard } from "../Cards/ArrangementCard";
+import { ArticleCard } from "../Cards/ArticleCard";
 import { sendNewsletter } from "@/lib/supabase/actionsPublicForms";
 import cron from 'node-cron';
 
-
-
 export const HomePage = async () => {
     const [events, articles] = await Promise.all([getTopFourEvents(), getTopFourArticles()]);
-
 
     cron.schedule(
         "0 12 * * 1", //every monday at 12:00 the newsletter will be sent  

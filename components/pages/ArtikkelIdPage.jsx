@@ -1,8 +1,8 @@
 import { getArticleById } from "@/lib/supabase/actionsPublic";
-import { StoreTag } from "../StoreTag";
-import { CategoryTag } from "../CategoryTag";
+import { StoreTag } from "../Tags/StoreTag";
+import { CategoryTag } from "../Tags/CategoryTag";
 import Image from "next/image";
-import { UrlPath } from "../UrlPath"
+import { UrlPath } from "../Navbar/UrlPath"
 
 export const ArtikkelIdPage = async ({ params }) => {
 

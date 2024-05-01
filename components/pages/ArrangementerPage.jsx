@@ -1,6 +1,6 @@
-import { Header } from "../Header";
-import { UrlPath } from "../UrlPath";
-import { EventCardLong } from "../EventCardLong";
+import { Header } from "../Headers/Header";
+import { UrlPath } from "../Navbar/UrlPath";
+import { EventCardLong } from "../Cards/EventCardLong";
 import { getEvents } from "@/lib/supabase/actionsPublic";
 
 export const ArrangementerPage = async () => {

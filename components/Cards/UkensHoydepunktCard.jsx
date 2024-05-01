@@ -1,12 +1,10 @@
 "use client";
 import Image from "next/image";
-import { StoreTag } from "./StoreTag";
+import { StoreTag } from "../Tags/StoreTag";
 
-export const UkensHoydepunkt = ({ highlightData }) => {
+export const UkensHoydepunktCard = ({ highlightData }) => {
 
     console.log(highlightData);
-
-
     return (
         <>
             {highlightData.length < 0 ? (

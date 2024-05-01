@@ -1,5 +1,5 @@
 import { FiMapPin, FiMail, FiHome, FiPhone } from "react-icons/fi";
-import { CategoryTag } from "./CategoryTag";
+import { CategoryTag } from "../Tags/CategoryTag";
 
 export const StoreInfoBar = ({ storeIdData }) => {
     const iconStyle = { fontSize: "1.1em" };

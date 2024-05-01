@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from "next/image";
-import { StoreTag } from './StoreTag';
-import { CategoryTag } from './CategoryTag';
+import { StoreTag } from '../Tags/StoreTag';
+import { CategoryTag } from '../Tags/CategoryTag';
 
 export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQuery }) => {
     const storeCount = searchResultsStore ? searchResultsStore.length : 0;

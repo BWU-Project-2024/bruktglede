@@ -1,5 +1,5 @@
-import { CategoryTag } from "./CategoryTag";
-import { StoreTag } from "./StoreTag";
+import { CategoryTag } from "../Tags/CategoryTag";
+import { StoreTag } from "../Tags/StoreTag";
 import Link from "next/link";
 import Image from "next/image";
 

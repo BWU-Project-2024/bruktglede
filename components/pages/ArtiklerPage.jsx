@@ -1,6 +1,6 @@
-import { Header } from "../Header"
-import { UrlPath } from "../UrlPath"
-import { ArticleBarCard } from "../ArticleBarCard";
+import { Header } from "../Headers/Header"
+import { UrlPath } from "../Navbar/UrlPath"
+import { ArticleBarCard } from "../Cards/ArticleBarCard";
 import { getArticles } from "@/lib/supabase/actionsPublic";
 
 export const ArtiklerPage = async () => {

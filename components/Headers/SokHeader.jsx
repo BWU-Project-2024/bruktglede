@@ -1,4 +1,4 @@
-import { SearchBar } from "./SearchBar";
+import { SearchBar } from "../Search/SearchBar";
 
 export const SokHeader = ({ onSearch }) => {
     return (

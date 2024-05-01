@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { SearchBar } from "./SearchBar";
+import { SearchBar } from "../Search/SearchBar";
 import LandingImage from "@/public/LandingImage.svg"
 import { useRouter } from 'next/navigation';
 
