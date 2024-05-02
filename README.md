@@ -38,6 +38,10 @@ Andre funksjonaliteter:
 - Sende inn søknad om å bli frivillig til bruktbutikkene.
 - Sende søknad om å bli endel av plattformen, Bruktglede. 
 - Søkefunksjonalitet, der du har muligheten å søke på overordnet kategoritagger. Du vil få resultat på butikker, artikler og arrangement som inneholder desse kategoritaggene.
+- Om du har glemt passord, kan du få en midertidlig innloggingslink på epost, slik du har muligheten å oppdatere passord.
+- Når admin oppretter ny bruker, vil den nye brukeren få mail med midertidlig innlogginslink på epost, slik den har mulighet til å oppdatere passord.
+- Autentisering: Bekreftelse av identiteten til en bruker ved innlogging med epost og passord.
+- Autorisasjon: Bestemmelse hvilke funksjonaliteter en autentisert bruker har tillatelse til å få tilgang til ved hjelp av session, token og cookies.
 
 ## Teknologier
 Denne nettsiden er utviklet med Next.js som et fullstack rammeverk, med Supabase som database, og Tailwind som CSS rammeverk. Nettsiden er hostet på Vercel. 
