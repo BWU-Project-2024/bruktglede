@@ -1,8 +1,8 @@
 "use client";
 import { useState } from 'react';
-import { SokHeader } from "../SokHeader"
-import { UrlPath } from "../UrlPath"
-import { SearchResults } from "../SearchResults"
+import { SokHeader } from "../Headers/SokHeader"
+import { UrlPath } from "../Navbar/UrlPath"
+import { SearchResults } from "../Search/SearchResults"
 import { searchTags } from '@/lib/supabase/actionsCMSForms';
 
 export const SokPage = () => {

@@ -28,19 +28,19 @@ export const BliFrivilligForm = ({ storeData }) => {
 
     return (
         <>
-            <section className="mb-10 md:mb-40">
+            <section className="mb-10 md:mb-28 mt-14">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className="flex flex-col font-opensans"
                     aria-label="Volunteer form"
                     encType="multipart/form-data"
                 >
-                    <h3 className="text-xl font-medium mb-3">Bli frivillig søknadsskjema</h3>
+                    <h3 className="text-xl font-medium mb-4">Bli frivillig søknadsskjema</h3>
                     <label className="text-md mb-2 font-medium" htmlFor="fornavn">
                         Fornavn
                     </label>
                     <input
-                        className="rounded-md px-3 py-2 bg-white border mb-1"
+                        className="rounded-md px-3 py-2 bg-white border"
                         id="fornavn"
                         name="fornavn"
                         placeholder=""
@@ -56,7 +56,7 @@ export const BliFrivilligForm = ({ storeData }) => {
                         Etternavn
                     </label>
                     <input
-                        className="rounded-md px-3 py-2 bg-white border mb-1"
+                        className="rounded-md px-3 py-2 bg-white border"
                         id="etternavn"
                         name="etternavn"
                         placeholder=""
@@ -72,7 +72,7 @@ export const BliFrivilligForm = ({ storeData }) => {
                         E-post
                     </label>
                     <input
-                        className="rounded-md px-3 py-2 bg-white border mb-1"
+                        className="rounded-md px-3 py-2 bg-white border"
                         id="epost"
                         name="epost"
                         placeholder=""
@@ -88,7 +88,7 @@ export const BliFrivilligForm = ({ storeData }) => {
                         Mobilnummer
                     </label>
                     <input
-                        className="rounded-md px-3 py-2 bg-white border mb-1"
+                        className="rounded-md px-3 py-2 bg-white border"
                         id="mobil"
                         name="mobil"
                         placeholder=""

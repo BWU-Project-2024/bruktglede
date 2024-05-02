@@ -53,9 +53,9 @@ export const StoreHeader = ({ storeData, storeVisionData }) => {
                         <div className="flex flex-col items-center py-10 w-full font-opensans bg-ivory-lighter">
                             <div className="flex flex-col items-start p-3 md:max-w-smaller mb-8">
                                 <h2 className="text-xl font-medium lg:text-2xl mb-4">{storeVisionData[0].title}</h2>
-                                <p className="text-lg md:text-xl mb-8">{storeVisionData[0].ingress}</p>
-                                <h4 className="text-lg md:text-xl  md-1 md:mb-3 font-medium ">{storeVisionData[0].subtitle}</h4>
-                                <p className="text-base md:text-lg">{storeVisionData[0].bodyText}</p>
+                                <p className="text-lg mb-8">{storeVisionData[0].ingress}</p>
+                                <h4 className="text-lg md:text-xl mb-3 md:mb-2 font-medium ">{storeVisionData[0].subtitle}</h4>
+                                <p className="text-base">{storeVisionData[0].bodyText}</p>
                             </div>
                             <div className="flex justify-center mb-8">
                                 <Image

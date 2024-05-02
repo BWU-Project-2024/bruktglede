@@ -1,5 +1,5 @@
 "use client";
-import { BliEndelAvPlattformenForm } from "./BliEndelAvPlattformenForm";
+import { BliEndelAvPlattformenForm } from "../Forms/BliEndelAvPlattformenForm";
 import { useState } from "react";
 
 export const BliEndelCard = ({ tittel, tekst }) => {

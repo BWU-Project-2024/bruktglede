@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { StoreTag } from "./StoreTag";
+import { StoreTag } from "../Tags/StoreTag";
 import { FiChevronRight } from "react-icons/fi";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
@@ -27,7 +27,7 @@ export const ArticleCard = ({ articleData, articlePostTypeName }) => {
                     width: '100%',
                     pagination: true,
                     gap: "1rem",
-                    height: "27rem",
+                    height: "28rem",
 
                     breakpoints: {
                         1000: {

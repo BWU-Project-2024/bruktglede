@@ -1,7 +1,7 @@
 import { Jomhuria, Open_Sans } from "next/font/google";
 import "./globals.css"
 import { Navbar } from "@/components/Navbar/Navbar";
-import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/Misc/Footer";
 
 const opensans = Open_Sans({ subsets: ["latin"], variable: "--font-opensans" });
 const jomhuria = Jomhuria({

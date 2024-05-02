@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FiHome, FiMapPin, FiClock } from "react-icons/fi";
-import { StoreTag } from "./StoreTag";
+import { StoreTag } from "../Tags/StoreTag";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 

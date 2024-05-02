@@ -1,11 +1,11 @@
 import { getStoreById, getStoreVisions, getHighlightsByStore, fetchAllStationsSortedByStoreId, getTopFourEventsId } from "@/lib/supabase/actionsPublic";
-import { StoreInfoBar } from "../StoreInfoBar";
-import { StoreHeader } from "../StoreHeader";
-import { UkensHoydepunkt } from "../UkensHoydepunkt";
-import { UrlPath } from "../UrlPath";
-import { ArrangementCard } from "../ArrangementCard";
-import { StationInfoId } from "../StationInfoId";
-import { H2 } from "../H2";
+import { StoreInfoBar } from "../Info/StoreInfoBar";
+import { StoreHeader } from "../Headers/StoreHeader";
+import { UkensHoydepunktCard } from "../Cards/UkensHoydepunktCard";
+import { UrlPath } from "../Navbar/UrlPath";
+import { ArrangementCard } from "../Cards/ArrangementCard";
+import { StationInfoId } from "../Info/StationInfoId";
+import { H2 } from "../Misc/H2";
 
 export const ButikkIdPage = async ({ params }) => {
 
@@ -47,7 +47,7 @@ export const ButikkIdPage = async ({ params }) => {
                     <H2 heading="Ukens høydepunkt" />
                     <div className="px-6 md:px-28 lg:px-64 lg:ml-14">
                         <div className="w-full md:w-[80%] lg:w-[70%]">
-                            <UkensHoydepunkt highlightData={getHighlight} />
+                            <UkensHoydepunktCard highlightData={getHighlight} />
                         </div>
                     </div>
                 </section>

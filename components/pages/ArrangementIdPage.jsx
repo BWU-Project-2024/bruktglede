@@ -1,7 +1,7 @@
 import { getEventById } from "@/lib/supabase/actionsPublic"
-import { UrlPath } from "../UrlPath"
-import { StoreTag } from "../StoreTag";
-import { CategoryTag } from "../CategoryTag";
+import { UrlPath } from "../Navbar/UrlPath"
+import { StoreTag } from "../Tags/StoreTag";
+import { CategoryTag } from "../Tags/CategoryTag";
 import Image from "next/image";
 
 export const ArrangementIdPage = async ({ params }) => {
