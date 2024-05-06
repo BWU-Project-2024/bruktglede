@@ -4,7 +4,7 @@ import { StoreTag } from "../Tags/StoreTag";
 
 export const UkensHoydepunktCard = ({ highlightData }) => {
 
-    console.log(highlightData);
+    // console.log(highlightData);
     return (
         <>
             {highlightData.length < 0 ? (

@@ -14,7 +14,6 @@ export const HomePage = async () => {
     cron.schedule(
         "0 12 * * 1", //every monday at 12:00 the newsletter will be sent  
         () => {
-            console.log("Cron job  ajajaj yeye");
             sendNewsletter();
 
         },
