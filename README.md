@@ -1,5 +1,6 @@
 # Bruktglede 
 ### En samlet digital plattform for bruktbutikkene i Gjøvik
+[bruktglede.vercel.app](https://bruktglede.vercel.app)
 
 Bruktglede ble utviklet som del av en Bacheloroppgave i Webutvikling av studentene Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje. Nettsiden ble skapt med Gjøvik Kommune som oppdragsgiver. 
 
@@ -48,3 +49,5 @@ Denne nettsiden er utviklet med Next.js som et fullstack rammeverk, med Supabase
 
 ## Merknad
 Alle butikkene på nettsiden er per nå fiktive bruktbutikker. 
+
+
