@@ -34,23 +34,23 @@ export const ArrangementIdPage = async ({ params }) => {
                     className="h-[200px] md:h-[300px] lg:h-[350px]"
                 >
                 </Image>
-                <div className="flex mt-4 flex-row gap-x-3 mb-10">
+                <div className="flex mt-4 flex-row gap-x-3 mb-8">
                     <p className="uppercase text-sm font-semibold pt-1">Arrangement</p>
                     <StoreTag storename={eventIdData.store_name} className="mr-1" />
                 </div>
 
-                <div className="flex flex-col gap-3 mb-14  md:max-w-[80%] lg:max-w-[70%]">
-                    <h1 className="text-lg mb-2 lg:text-xl font-semibold">{eventIdData.title}</h1>
-                    <p className="text-lg lg:text-xl mb-2">{eventIdData.ingress}</p>
-                    <p className="text-base lg:text-lg">{eventIdData.bodyText}</p>
+                <div className="flex flex-col gap-3 mb-12 md:max-w-[80%] lg:max-w-[70%]">
+                    <h1 className="text-lg lg:text-xl font-semibold">{eventIdData.title}</h1>
+                    <p className="text-lg lg:text-lg mb-2">{eventIdData.ingress}</p>
+                    <p className="text-base">{eventIdData.bodyText}</p>
                 </div>
                 {eventIdData.tags.map((tag, index) => (
                     <CategoryTag key={index} title={tag} />
                 ))}
 
                 <div className="mt-6 mb-10">
-                    <p className="text-xs lg:text-base text-gray-600">Publisert : {formatDate(eventIdData.created_at)}</p>
-                    <p className="text-xs lg:text-base text-gray-600">Klokkeslett : {formatTime(eventIdData.created_at)}</p>
+                    <p className="text-xs lg:text-sm text-gray-600">Publisert : {formatDate(eventIdData.created_at)}</p>
+                    <p className="text-xs lg:text-sm text-gray-600">Klokkeslett : {formatTime(eventIdData.created_at)}</p>
                 </div>
             </main>
         </div>

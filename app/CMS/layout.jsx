@@ -25,7 +25,7 @@ export default async function Layout({ children }) {
             {session && role === 'superuser' && (
                 <>
                     {/* desktop layout */}
-                    <section className="hidden sm:flex sm:flex-row">
+                    <section className="hidden min-h-[90vh] sm:flex sm:flex-row">
                         <CMSNavbar signOut={signOut} />
                         {children}
                     </section>

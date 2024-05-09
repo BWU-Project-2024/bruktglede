@@ -45,6 +45,6 @@ export const LandingHeader = () => {
                     </Image>
                 </div>
             </div>
-        </header >
+        </header>
     );
 };

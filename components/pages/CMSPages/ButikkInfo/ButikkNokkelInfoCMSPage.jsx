@@ -5,7 +5,7 @@ import { readAccountDataId } from "@/lib/supabase/actionsAuth";
 
 export const ButikkNokkelInfoCMSPage = async () => {
     const tagOptions = await readAllTags();
-    const postData = await readAccountDataId()
+    const postData = await readAccountDataId();
 
     return (
         <main className="flex flex-col min-h-[90vh] w-full md:w-[70%] gap-3 mt-6 mb-16 sm:mb-8 sm:mt-2 px-6">

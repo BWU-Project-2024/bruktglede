@@ -25,7 +25,7 @@ export const ArticleBarCard = ({ articlesData }) => {
 
                             <p className="text-base line-clamp-2 mr-4">{article.ingress}</p>
 
-                            <div className="mt-4 mb-2">
+                            <div className="mt-4 mb-2 flex flex-wrap w-[90%]">
                                 <StoreTag storename={article.store_name} className="mr-1" />
                                 {article.tags.map((tag, index) => (
                                     <CategoryTag key={index} title={tag} />

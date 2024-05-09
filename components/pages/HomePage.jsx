@@ -27,7 +27,7 @@ export const HomePage = async () => {
         <>
             <LandingHeader />
             <main className="flex flex-col min-h-screen w-full font-opensans">
-                <h2 className="px-6 md:px-28 lg:px-64 pt-10 lg:pt-20 text-xl lg:text-2xl font-medium mb-6">
+                <h2 className="px-6 md:px-28 lg:px-64 pt-8 lg:pt-20 text-xl lg:text-2xl font-medium mb-6">
                     Møt butikkene
                 </h2>
                 <AlleButikker />

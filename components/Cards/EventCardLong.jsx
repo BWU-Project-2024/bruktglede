@@ -18,17 +18,16 @@ export const EventCardLong = ({ eventData }) => {
                 <p>No events available at the moment.</p>
             ) : (
                 eventsData.map((event, index) => (
-                    <>
+                    <div key={index}>
                         <p className="uppercase text-xs font-semibold mb-1 pl-1 text-forestgreen-default">{event.store_name}</p>
                         <div
-                            key={index}
                             className="flex flex-row rounded-xl shadow py-2 px-2 w-full md:w-[80%] lg:w-[70%] mb-6"
                         >
                             <div className="bg-ivory-default flex flex-col items-center justify-center h-auto w-[90px] rounded">
                                 <span className="font-jomhuria text-5xl/3 mb-2 pt-4">
                                     {new Date(event.date).getDate()}
                                 </span>
-                                <span className="text-xl">
+                                <span className="text-xl uppercase">
                                     {new Date(event.date).toLocaleString('default', { month: 'short' })}
                                 </span>
                             </div>
@@ -54,7 +53,7 @@ export const EventCardLong = ({ eventData }) => {
                                 </p>
                             </div>
                         </div>
-                    </>
+                    </div>
                 ))
             )}
         </>

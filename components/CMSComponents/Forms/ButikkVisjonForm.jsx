@@ -100,7 +100,7 @@ export const ButikkVisjonForm = ({ existingData }) => {
                 id="ingress"
                 name="ingress"
                 placeholder=""
-                rows="2"
+                rows="4"
                 {...register("ingress", {
                     required: "Vennligst skriv inn ingress",
                 })}
@@ -126,7 +126,7 @@ export const ButikkVisjonForm = ({ existingData }) => {
                 id="brodtekst"
                 name="brodtekst"
                 placeholder=""
-                rows="3"
+                rows="6"
                 {...register("brodtekst", {
                     required: "Vennligst skriv inn brødtekst",
                 })}
