@@ -62,8 +62,8 @@ export const SearchResults = ({ searchResultsStore, searchResultsPost, searchQue
                             <p className="text-sm md:text-md flex-grow text-textLight font-medium uppercase">{post.post_type}</p>
                             <p className="text-xs mb-1">{formatDate(post.created_at)}</p>
                             <p className="text-base line-clamp-2 mr-4">{post.ingress}</p>
-                            <div className="mt-4 mb-2">
-                                <StoreTag storename={post.store_name} className="mr-1" />
+                            <div className="w-[95%] mt-4 mb-2 flex flex-wrap">
+                                <StoreTag storename={post.store_name} className="mr-1 mb-1" />
                                 {post.tags.map((tag, index) => (
                                     <CategoryTag key={index} title={tag} />
                                 ))}

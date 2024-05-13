@@ -142,7 +142,7 @@ export const ButikkInfoForm = ({ tagOptions, existingData, existingTags }) => {
                 id="beskrivelse"
                 name="beskrivelse"
                 placeholder=""
-                rows="2"
+                rows="4"
                 {...register("beskrivelse", {
                     required: "Vennligst skriv inn en kort beskrivelse",
                 })}

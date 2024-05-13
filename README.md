@@ -2,7 +2,17 @@
 ### En samlet digital plattform for bruktbutikkene i Gjøvik
 [bruktglede.vercel.app](https://bruktglede.vercel.app)
 
-Bruktglede ble utviklet som del av en Bacheloroppgave i Webutvikling av studentene Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje. Nettsiden ble skapt med Gjøvik Kommune som oppdragsgiver. 
+Bruktglede ble utviklet som del av en Bacheloroppgave i Webutvikling av studentene Lisa Mari Myrene, Anosh Chaudhry og Alexandra Vanje. Nettsiden ble skapt med Gjøvik Kommune som oppdragsgiver.
+
+## Sett opp kodemiljøet lokalt
+For å sette opp kodemiljøet lokalt, er det noen steg som må gjøres for at det skal kunne kjøres korrekt.
+
+1. Åpne terminalen
+
+1. Skriv inn `yarn install` for å laste ned alle nødvendige dependencies. 
+3. Skriv inn `yarn build` for å generere en optimalisert versjon av applikasjonen.
+4. Skriv inn `yarn dev` for å starte applikasjonen på localhost:3000. Nå vil du ha muligheten til å kjøre applikasjonen på din lokale server. 
+5. Om du ikke ønsker å laste ned prosjektet lokalt, kan du alltids utforske nettsiden på [bruktglede.vercel.app](https://bruktglede.vercel.app).
 
 ## Hva er Bruktglede?
 Bruktglede er en plattform med ett hovedfokus: å gjøre det lettere å orientere seg i gjenbruksmiljøet på Gjøvik. Ved å samle bruktbutikker, arrangementer og tilbud som finnes i hos bruktbutikker i kommunen gjør vi det lettere å navigere seg frem og holde seg oppdatert på informasjon.
