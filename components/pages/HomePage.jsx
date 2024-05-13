@@ -12,10 +12,10 @@ export const HomePage = async () => {
     const [events, articles] = await Promise.all([getTopFourEvents(), getTopFourArticles()]);
 
     cron.schedule(
-        "0 12 * * 1", //every monday at 12:00 the newsletter will be sent  
+        // Every Monday at 12 pm the newsletter will be sent  
+        "0 12 * * 1",
         () => {
             sendNewsletter();
-
         },
         {
             scheduled: true,
